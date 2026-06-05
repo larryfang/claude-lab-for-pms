@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Lab — Hands-on Claude for Knowledge Workers</title>
+  <script>/* set theme before first paint to avoid a flash of the wrong theme */try{var _s=JSON.parse(localStorage.getItem("claudelab.v1"))||{};var _t=_s.theme||((window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+  <meta name="description" content="A fun, interactive, no-code-required hands-on lab that teaches you Claude Desktop, Cowork, Connectors, Skills, Plugins, MCP, and Claude Code 101 — built for product managers and curious beginners." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Claude Lab — Hands-on Claude for Knowledge Workers" />
+  <meta property="og:description" content="Learn Claude Desktop & Cowork step by step. Build Skills, use Atlassian connectors, and try Claude Code 101 — no coding background required." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23d97757'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts (graceful fallback to system fonts if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Top bar -->
+  <header class="topbar" id="topbar">
+    <button class="icon-btn nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <a class="brand" href="#/" aria-label="Claude Lab home">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span class="brand-text">Claude&nbsp;Lab</span>
+    </a>
+
+    <div class="topbar-progress" id="topbarProgress" title="Your overall progress" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="topbar-progress-track"><div class="topbar-progress-fill" id="topbarProgressFill"></div></div>
+      <span class="topbar-progress-label" id="topbarProgressLabel">0%</span>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search lessons (press /)" title="Search (press /)">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+      <a class="icon-btn github-link" id="githubLink" href="https://github.com/larryfang/claude-lab-for-pms" target="_blank" rel="noopener" aria-label="View on GitHub" title="View on GitHub">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Course navigation">
+      <nav class="nav" id="nav"><!-- built by app.js --></nav>
+      <div class="sidebar-footer">
+        <button class="reset-btn" id="resetBtn" title="Clear your saved progress">Reset progress</button>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- Content -->
+    <main class="content" id="main" tabindex="-1">
+      <div id="content"><!-- rendered by app.js --></div>
+    </main>
+  </div>
+
+  <!-- Search modal -->
+  <div class="modal" id="searchModal" hidden>
+    <div class="modal-backdrop" data-close-search></div>
+    <div class="modal-panel search-panel" role="dialog" aria-modal="true" aria-label="Search lessons">
+      <div class="search-input-wrap">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="text" id="searchInput" placeholder="Search lessons, concepts, labs…" autocomplete="off" aria-label="Search lessons" />
+        <kbd>esc</kbd>
+      </div>
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <canvas id="confetti" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="assets/js/markdown.js"></script>
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

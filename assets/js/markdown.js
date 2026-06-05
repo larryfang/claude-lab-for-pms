@@ -1,0 +1,262 @@
+/* ============================================================
+   Claude Lab — tiny self-contained Markdown engine
+   Supports: headings, lists (nested + ordered), task checklists,
+   tables, blockquotes, code blocks, inline styling, links/images,
+   and custom blocks:  :::tip/note/warning/concept/try/lab/details,
+   ```prompt  and  ```quiz
+   ============================================================ */
+(function () {
+  "use strict";
+
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function escAttr(s) {
+    return escapeHtml(s).replace(/"/g, "&quot;");
+  }
+  // URL sanitizer: allow relative URLs + in-page anchors + a safe scheme allow-list.
+  // Anything with a scheme outside the list (javascript:, data:, vbscript:, …) becomes "#".
+  // Content is author-trusted, but forks accept community Markdown — keep this.
+  function safeUrl(s) {
+    s = String(s).trim();
+    if (/^[a-z][a-z0-9+.\-]*:/i.test(s) && !/^(https?|mailto|tel):/i.test(s)) return "#";
+    return s;
+  }
+  function slug(s) {
+    return String(s).toLowerCase().replace(/<[^>]+>/g, "").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-").slice(0, 60);
+  }
+
+  function parseInline(text) {
+    if (text == null) return "";
+    const codes = [];
+    text = text.replace(/`([^`]+)`/g, function (m, c) { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
+    text = escapeHtml(text);
+    // images
+    text = text.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g, function (m, alt, src, title) {
+      return '<img src="' + escAttr(safeUrl(src)) + '" alt="' + escAttr(alt) + '"' + (title ? ' title="' + escAttr(title) + '"' : "") + ' loading="lazy">';
+    });
+    // links
+    text = text.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g, function (m, t, href, title) {
+      const ext = /^https?:/i.test(href);
+      return '<a href="' + escAttr(safeUrl(href)) + '"' + (title ? ' title="' + escAttr(title) + '"' : "") + (ext ? ' target="_blank" rel="noopener"' : "") + ">" + t + "</a>";
+    });
+    text = text.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    text = text.replace(/__([^_]+)__/g, "<strong>$1</strong>");
+    text = text.replace(/(^|[^*\w])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+    text = text.replace(/(^|[^_\w])_([^_\n]+)_/g, "$1<em>$2</em>");
+    text = text.replace(/~~([^~]+)~~/g, "<del>$1</del>");
+    text = text.replace(/\u0000(\d+)\u0000/g, function (m, i) { return "<code>" + escapeHtml(codes[+i]) + "</code>"; });
+    return text;
+  }
+
+  function isBlockStart(l) {
+    return /^```/.test(l) || /^:::/.test(l) || /^#{1,6}\s/.test(l) || /^>\s?/.test(l) ||
+      /^\s*([-*+]|\d+\.)\s+/.test(l) || /^(\s*[-*_]){3,}\s*$/.test(l);
+  }
+
+  function splitRow(r) {
+    return r.replace(/^\s*\|/, "").replace(/\|\s*$/, "").split("|").map(function (c) { return c.trim(); });
+  }
+
+  function renderTable(buf) {
+    const header = splitRow(buf[0]);
+    const seps = splitRow(buf[1]);
+    const aligns = seps.map(function (s) {
+      const l = /^:/.test(s), r = /:$/.test(s);
+      return l && r ? "center" : r ? "right" : l ? "left" : "";
+    });
+    let h = '<div class="table-wrap"><table><thead><tr>';
+    header.forEach(function (c, idx) { h += "<th" + (aligns[idx] ? ' style="text-align:' + aligns[idx] + '"' : "") + ">" + parseInline(c) + "</th>"; });
+    h += "</tr></thead><tbody>";
+    for (let k = 2; k < buf.length; k++) {
+      if (!buf[k].includes("|")) continue;
+      const cells = splitRow(buf[k]);
+      h += "<tr>";
+      cells.forEach(function (c, idx) { h += "<td" + (aligns[idx] ? ' style="text-align:' + aligns[idx] + '"' : "") + ">" + parseInline(c) + "</td>"; });
+      h += "</tr>";
+    }
+    h += "</tbody></table></div>";
+    return h;
+  }
+
+  function renderItems(items, ctx) {
+    if (!items.length) return "";
+    const isTask = items.every(function (it) { return /^\[[ xX]\]\s/.test(it.text); });
+    if (isTask) {
+      let h = '<ul class="checklist">';
+      items.forEach(function (it) {
+        const mm = it.text.match(/^\[([ xX])\]\s([\s\S]*)$/);
+        const checked = mm[1].toLowerCase() === "x";
+        const idx = ctx.checkIdx++;
+        const text = mm[2].replace(/\n/g, " ");
+        h += "<li><label class=\"check-item" + (checked ? " checked" : "") + "\" data-lesson=\"" + escAttr(ctx.lessonId || "") + "\" data-check=\"" + idx + "\">" +
+          '<input type="checkbox"' + (checked ? " checked" : "") + ">" +
+          '<span class="check-box">✓</span>' +
+          '<span class="check-text">' + parseInline(text) + "</span></label>";
+        if (it.children.length) h += renderItems(it.children, ctx);
+        h += "</li>";
+      });
+      return h + "</ul>";
+    }
+    const tag = items[0].ordered ? "ol" : "ul";
+    let h = "<" + tag + ">";
+    items.forEach(function (it) {
+      h += "<li>" + parseInline(it.text.replace(/\n/g, " "));
+      if (it.children.length) h += renderItems(it.children, ctx);
+      h += "</li>";
+    });
+    return h + "</" + tag + ">";
+  }
+
+  function renderList(buf, ctx) {
+    const items = [];
+    buf.forEach(function (ln) {
+      const m = ln.match(/^(\s*)([-*+]|\d+\.)\s+([\s\S]*)$/);
+      if (m) items.push({ indent: m[1].length, ordered: /\d+\./.test(m[2]), text: m[3], children: [] });
+      else if (items.length) items[items.length - 1].text += "\n" + ln.trim();
+    });
+    const root = [];
+    const stack = [{ indent: -1, children: root }];
+    items.forEach(function (it) {
+      while (stack.length > 1 && it.indent <= stack[stack.length - 1].indent) stack.pop();
+      stack[stack.length - 1].children.push(it);
+      stack.push(it);
+    });
+    return renderItems(root, ctx);
+  }
+
+  function renderQuiz(code) {
+    const blocks = [];
+    let cur = null;
+    code.split("\n").forEach(function (raw) {
+      const line = raw.trim();
+      if (!line) return;
+      let qm = line.match(/^Q:\s*(.*)$/i);
+      if (qm) { if (cur) blocks.push(cur); cur = { q: qm[1], opts: [], explain: "" }; return; }
+      let em = line.match(/^>\s*(.*)$/);
+      if (em && cur) { cur.explain += (cur.explain ? " " : "") + em[1]; return; }
+      let om = line.match(/^([-+])\s+(.*)$/);
+      if (om && cur) { cur.opts.push({ correct: om[1] === "+", text: om[2] }); return; }
+    });
+    if (cur) blocks.push(cur);
+    if (!blocks.length) return "";
+    const letters = ["A", "B", "C", "D", "E", "F"];
+    let h = '<div class="quiz" data-quiz><div class="quiz-head"><span class="quiz-emoji">🧩</span><span class="quiz-kicker">Knowledge check</span></div>';
+    blocks.forEach(function (b) {
+      h += '<div class="quiz-q" data-q><p class="quiz-q-text">' + parseInline(b.q) + '</p><div class="quiz-options">';
+      b.opts.forEach(function (o, idx) {
+        h += '<button class="quiz-opt" type="button" data-correct="' + (o.correct ? "1" : "0") + '"><span class="opt-marker">' + (letters[idx] || "•") + "</span><span>" + parseInline(o.text) + "</span></button>";
+      });
+      h += "</div>";
+      if (b.explain) h += '<div class="quiz-explain"><strong>Answer.</strong> ' + parseInline(b.explain) + "</div>";
+      h += "</div>";
+    });
+    return h + "</div>";
+  }
+
+  function renderPrompt(code) {
+    const txt = code.replace(/\s+$/, "").replace(/^\n+/, "");
+    return '<div class="prompt-card"><div class="prompt-head">' +
+      '<span class="prompt-icon" aria-hidden="true">💬</span><span class="prompt-label">Try this prompt</span>' +
+      '<button class="copy-btn" type="button" data-copy>Copy</button></div>' +
+      '<div class="prompt-body">' + escapeHtml(txt) + "</div></div>";
+  }
+
+  function renderFence(lang, code, ctx) {
+    lang = (lang || "").toLowerCase();
+    if (lang === "quiz") return renderQuiz(code);
+    if (lang === "prompt") return renderPrompt(code);
+    const label = lang || "text";
+    return '<div class="codeblock"><div class="codeblock-head"><span class="codeblock-lang">' + escapeHtml(label) +
+      '</span><button class="copy-btn" type="button" data-copy>Copy</button></div><pre><code>' +
+      escapeHtml(code.replace(/\n$/, "")) + "</code></pre></div>";
+  }
+
+  function renderContainer(type, title, body, ctx) {
+    type = (type || "note").toLowerCase();
+    if (type === "lab") {
+      return '<div class="lab-box"><div class="lab-head"><span class="lab-badge">Lab</span><span class="lab-name">' +
+        parseInline(title || "Hands-on lab") + '</span></div><div class="lab-body">' + render(body, ctx) + "</div></div>";
+    }
+    if (type === "details" || type === "faq") {
+      return '<details class="accordion"><summary>' + parseInline(title || "Details") + '</summary><div class="acc-body">' + render(body, ctx) + "</div></details>";
+    }
+    const known = { tip: 1, note: 1, warning: 1, concept: 1, try: 1 };
+    const cls = known[type] ? type : "note";
+    return '<div class="callout ' + cls + '">' + (title ? '<p class="callout-title">' + parseInline(title) + "</p>" : "") + render(body, ctx) + "</div>";
+  }
+
+  function render(src, ctx) {
+    ctx = ctx || {};
+    if (ctx.checkIdx === undefined) ctx.checkIdx = 0;
+    const lines = String(src).replace(/\r\n?/g, "\n").replace(/\t/g, "    ").split("\n");
+    let i = 0;
+    const out = [];
+    while (i < lines.length) {
+      const line = lines[i];
+      if (/^\s*$/.test(line)) { i++; continue; }
+
+      const fence = line.match(/^```(\s*[\w-]+)?\s*$/);
+      if (fence) {
+        const lang = (fence[1] || "").trim();
+        const buf = [];
+        i++;
+        while (i < lines.length && !/^```\s*$/.test(lines[i])) { buf.push(lines[i]); i++; }
+        i++;
+        out.push(renderFence(lang, buf.join("\n"), ctx));
+        continue;
+      }
+
+      const cont = line.match(/^:::\s*(\w+)\s*(.*)$/);
+      if (cont) {
+        const type = cont[1];
+        const title = cont[2].trim();
+        const buf = [];
+        let depth = 1;
+        i++;
+        while (i < lines.length) {
+          if (/^:::\s*\w+/.test(lines[i])) { depth++; buf.push(lines[i]); i++; continue; }
+          if (/^:::\s*$/.test(lines[i])) { depth--; if (depth === 0) { i++; break; } buf.push(lines[i]); i++; continue; }
+          buf.push(lines[i]); i++;
+        }
+        out.push(renderContainer(type, title, buf.join("\n"), ctx));
+        continue;
+      }
+
+      const h = line.match(/^(#{1,6})\s+(.*)$/);
+      if (h) { const lv = h[1].length; out.push("<h" + lv + ' id="' + slug(h[2]) + '">' + parseInline(h[2]) + "</h" + lv + ">"); i++; continue; }
+
+      if (/^(\s*[-*_]){3,}\s*$/.test(line) && !/^\s*[-*+]\s/.test(line)) { out.push("<hr>"); i++; continue; }
+
+      if (/^>\s?/.test(line)) {
+        const buf = [];
+        while (i < lines.length && /^>\s?/.test(lines[i])) { buf.push(lines[i].replace(/^>\s?/, "")); i++; }
+        out.push("<blockquote>" + render(buf.join("\n"), ctx) + "</blockquote>");
+        continue;
+      }
+
+      if (line.includes("|") && i + 1 < lines.length && /-/.test(lines[i + 1]) && /^\s*\|?[\s:|-]+\|?\s*$/.test(lines[i + 1])) {
+        const buf = [line];
+        i++;
+        buf.push(lines[i]); i++;
+        while (i < lines.length && lines[i].includes("|") && !/^\s*$/.test(lines[i])) { buf.push(lines[i]); i++; }
+        out.push(renderTable(buf));
+        continue;
+      }
+
+      if (/^\s*([-*+]|\d+\.)\s+/.test(line)) {
+        const buf = [];
+        while (i < lines.length && !/^\s*$/.test(lines[i]) && (/^\s*([-*+]|\d+\.)\s+/.test(lines[i]) || /^\s+\S/.test(lines[i]))) { buf.push(lines[i]); i++; }
+        out.push(renderList(buf, ctx));
+        continue;
+      }
+
+      const buf = [];
+      while (i < lines.length && !/^\s*$/.test(lines[i]) && !isBlockStart(lines[i])) { buf.push(lines[i]); i++; }
+      out.push("<p>" + parseInline(buf.join("\n").trim()).replace(/\n/g, " ") + "</p>");
+    }
+    return out.join("\n");
+  }
+
+  window.MD = { render: render, slug: slug, parseInline: parseInline };
+})();
