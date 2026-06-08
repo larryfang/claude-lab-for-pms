@@ -499,3 +499,69 @@ a { color: var(--link); text-underline-offset: 2px; }
   .pager { flex-direction: column; }
   .github-link { display: none; }
 }
+
+/* ============================================================
+   Multi-course: hub + sidebar course header
+   ============================================================ */
+.course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.course-card { display: flex; flex-direction: column; padding: 26px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: inherit; transition: transform .15s, box-shadow .18s, border-color .15s; position: relative; overflow: hidden; }
+.course-card::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--clay), var(--try)); opacity: .9; }
+.course-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--clay-soft); }
+.course-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.course-emoji { font-size: 2.4rem; }
+.course-ring { --p: 0; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--clay) calc(var(--p) * 1%), var(--surface-3) 0); position: relative; }
+.course-ring::after { content: ""; position: absolute; inset: 6px; background: var(--surface); border-radius: 50%; }
+.course-ring span { position: relative; z-index: 1; font-family: var(--font-display); font-weight: 700; font-size: .74rem; }
+.course-card h2 { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 4px; letter-spacing: -.01em; }
+.course-aud { font-size: .8rem; font-weight: 600; color: var(--clay-deep); margin: 0 0 12px; }
+[data-theme="dark"] .course-aud { color: var(--clay); }
+.course-tag { color: var(--muted); font-size: .92rem; margin: 0 0 18px; flex: 1; }
+.course-meta { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--muted); margin-bottom: 18px; flex-wrap: wrap; }
+.course-meta .dot { opacity: .5; }
+.course-btn { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-family: var(--font-display); font-weight: 600; font-size: .95rem; padding: 11px 18px; border-radius: 11px; background: linear-gradient(135deg, var(--clay), var(--clay-deep)); color: #fff; box-shadow: var(--shadow-sm); }
+.course-card:hover .course-btn { box-shadow: var(--shadow); }
+
+.nav-allcourses { display: block; padding: 8px 10px; margin-bottom: 6px; border-radius: 9px; font-size: .82rem; font-weight: 600; color: var(--muted); text-decoration: none; }
+.nav-allcourses:hover { background: var(--surface-2); color: var(--clay-deep); }
+.nav-course-head { display: flex; align-items: center; gap: 9px; padding: 8px 10px 12px; margin-bottom: 6px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.nav-course-head-link:hover { color: var(--clay-deep); }
+.nav-course-emoji { font-size: 1.2rem; }
+.nav-course-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; }
+.nav-courselink { display: flex; align-items: center; gap: 10px; padding: 11px 10px; margin: 3px 0; border-radius: 10px; text-decoration: none; color: var(--ink); border: 1px solid var(--line); transition: all .14s; }
+.nav-courselink:hover { background: var(--surface-2); border-color: var(--clay-soft); }
+
+/* ============================================================
+   Claude Code terminal simulator
+   ============================================================ */
+.ccsim { --term-bg: #0d1017; --term-fg: #d7dce5; --term-dim: #8b93a3; --term-green: #4ec9a3; --term-clay: #f0a888; margin: 1.6em 0; border-radius: var(--radius); overflow: hidden; border: 1px solid #1f2430; background: var(--term-bg); box-shadow: var(--shadow); }
+.ccsim-bar { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #161b25; border-bottom: 1px solid #232a37; }
+.ccsim-dots { display: inline-flex; gap: 6px; }
+.ccsim-dots i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; display: inline-block; }
+.ccsim-dots i:nth-child(2) { background: #febc2e; }
+.ccsim-dots i:nth-child(3) { background: #28c840; }
+.ccsim-title { font-family: var(--font-mono); font-size: .76rem; color: var(--term-dim); letter-spacing: .02em; }
+.ccsim-reset { margin-left: auto; font-family: var(--font-sans); font-size: .73rem; font-weight: 600; color: var(--term-dim); background: #232a37; border: 1px solid #2e3646; padding: 4px 10px; border-radius: 7px; cursor: pointer; }
+.ccsim-reset:hover { color: #fff; background: #2e3646; }
+.ccsim-screen { font-family: var(--font-mono); font-size: .84rem; line-height: 1.65; color: var(--term-fg); padding: 14px 16px; max-height: 360px; overflow-y: auto; min-height: 70px; }
+.ccsim-screen::-webkit-scrollbar { width: 9px; }
+.ccsim-screen::-webkit-scrollbar-thumb { background: #2a3140; border-radius: 99px; border: 2px solid var(--term-bg); }
+.ccsim-intro { color: var(--term-dim); white-space: pre-wrap; margin-bottom: 10px; }
+.ccsim-line { margin-top: 8px; }
+.ccsim-line .ccsim-prompt { color: var(--term-clay); font-weight: 700; margin-right: 8px; }
+.ccsim-cmd { color: #fff; }
+.ccsim-out { display: block; margin: 6px 0 4px; padding-left: 4px; border-left: 2px solid #232a37; white-space: pre-wrap; }
+.ccsim-out.shell { border-left-color: #28403a; }
+.ccsim-tag { display: inline-block; font-family: var(--font-sans); font-size: .64rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #1a1d24; background: var(--term-clay); padding: 1px 7px; border-radius: 99px; margin: 0 8px 4px 6px; vertical-align: middle; }
+.ccsim-respbody { color: var(--term-fg); }
+.ccsim-caret { color: var(--term-clay); animation: ccblink 1s steps(1) infinite; }
+.ccsim-done { margin-top: 10px; color: var(--term-green); font-weight: 600; }
+@keyframes ccblink { 50% { opacity: 0; } }
+.ccsim-inputline { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #0a0d13; border-top: 1px solid #1f2430; }
+.ccsim-inputline .ccsim-prompt { color: var(--term-clay); font-family: var(--font-mono); font-weight: 700; }
+.ccsim-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-family: var(--font-mono); font-size: .86rem; caret-color: var(--term-clay); }
+.ccsim-input::placeholder { color: #5b6373; }
+.ccsim-input:disabled { color: var(--term-dim); }
+.ccsim-run { font-family: var(--font-sans); font-size: .76rem; font-weight: 700; color: #0d1017; background: var(--term-clay); border: none; padding: 6px 13px; border-radius: 8px; cursor: pointer; transition: filter .15s; }
+.ccsim-run:hover { filter: brightness(1.08); }
+.ccsim-run:disabled { opacity: .5; cursor: default; }
+.ccsim-note { font-family: var(--font-sans); font-size: .72rem; color: var(--term-dim); padding: 8px 14px; background: #0a0d13; border-top: 1px solid #161b25; }

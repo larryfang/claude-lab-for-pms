@@ -1,0 +1,120 @@
+# Explore → Plan → Code → Commit
+
+This is the workflow Anthropic's own teams use, and the single biggest upgrade to your results. The headline: **don't let Claude jump straight to code.** Separate *figuring out what to do* from *doing it*.
+
+## The four phases
+
+```text
+  EXPLORE  →  PLAN  →  CODE  →  COMMIT
+ (read-only)  (write    (switch    (descriptive
+  understand   a plan)   out &      commit + PR)
+  the code)              build)
+```
+
+### 1. Explore (in plan mode)
+Enter **plan mode** (Shift+Tab) so Claude can read and reason but **not change anything**. Have it understand the relevant code first:
+
+```prompt
+Read src/auth and explain how we handle sessions and login. Also check how we manage env vars for secrets. Don't write code yet.
+```
+
+### 2. Plan
+Ask for a concrete implementation plan:
+
+```prompt
+I want to add Google OAuth. What files change, what's the session flow, and what are the edge cases? Write a step-by-step plan with a test for each step.
+```
+
+Press **`Ctrl+G`** to open the plan in your editor and tweak it before Claude proceeds. A plan you can read and edit is a plan you can trust.
+
+### 3. Code
+Switch **out** of plan mode and let Claude implement — **verifying against the plan**:
+
+```prompt
+Implement the OAuth flow from your plan. Write tests for the callback handler, run the suite, and fix any failures.
+```
+
+### 4. Commit
+```prompt
+Commit with a descriptive message and open a PR.
+```
+
+## Plan mode, deeper
+
+:::concept Why plan mode is the biggest unlock
+Plan mode is **enforced at the tool level** — Claude literally *cannot* edit files or run destructive commands in it. So you get fearless exploration of unfamiliar code and a reviewable plan *before* a single line changes. Claude Code's own creator reportedly runs most non-trivial work through plan mode.
+:::
+
+Pro tip: `/model opusplan` uses **Opus to plan** (better reasoning) and **Sonnet to execute** (fast, efficient) — the best of both without manual switching.
+
+## When to skip the plan
+
+Planning has overhead. **Skip it** when the scope is obvious and the fix is small — a typo, a log line, a rename. The test: *if you could describe the diff in one sentence, just ask Claude to do it.* Plan when you're **uncertain**, the change spans **multiple files**, or you're in **unfamiliar** code.
+
+## For big features: let Claude interview you
+
+For anything large, get the requirements straight first:
+
+```prompt
+I want to build [brief description]. Interview me in detail using the AskUserQuestion tool — technical approach, UI/UX, edge cases, and tradeoffs. Dig into the hard parts I haven't considered. When we're done, write a complete spec to SPEC.md.
+```
+
+Then start a **fresh session** to implement from `SPEC.md` — clean context, focused entirely on building, with a written spec to check against.
+
+## Watch it flow
+
+```claude-sim
+# You need to add OAuth. Start in plan mode (Shift+Tab → "plan").
+> [plan mode] read src/auth and summarize how login + sessions work. don't change anything.
+[plan mode — read only]
+  • Login: src/auth/login.ts issues a JWT, stored in an httpOnly cookie
+  • Sessions: middleware/session.ts verifies the JWT on each request
+  • Secrets: loaded from env via config/env.ts (JWT_SECRET)
+No OAuth provider wired up yet. Ready to plan when you are.
+> plan adding Google OAuth. list files to change, the flow, edge cases, and a test per step.
+Plan:
+  1. add googleStrategy in src/auth/oauth.ts        (test: redirect URL is built correctly)
+  2. add GET /auth/google + /auth/google/callback   (test: callback exchanges code → user)
+  3. reuse JWT issuance from login.ts                (test: session works post-OAuth)
+  4. handle edge cases: denied consent, email already exists, expired state
+Press Ctrl+G to edit this plan, or approve to implement.
+> approve — switch out of plan mode and implement step 1 with its test, then run it
+[normal mode] ✎ created src/auth/oauth.ts, __tests__/oauth.redirect.test.js
+  $ npm test -- oauth.redirect
+ PASS  __tests__/oauth.redirect.test.js ✓
+Step 1 done and verified. Continue with step 2?
+```
+
+```quiz
+Q: What's the main reason to explore and plan before coding?
++ Jumping straight to code often solves the wrong problem; planning separates understanding from doing
+- It uses more tokens, which is good
+- Plan mode is required for all edits
+- It's just ceremony
+> Explore→Plan→Code→Commit prevents wrong-problem solutions and gives you a reviewable plan before anything changes.
+
+Q: When should you SKIP planning?
++ When the scope is clear and the fix is tiny — if you could describe the diff in one sentence
+- Never skip it
+- Always skip it
+- Only on Fridays
+> Planning has overhead. Small, obvious changes (typo, log line, rename) don't need it. Plan for uncertainty/multi-file/unfamiliar code.
+
+Q: What does plan mode guarantee?
++ Claude can read and reason but is blocked at the tool level from editing files or running destructive commands
+- Claude works faster
+- Claude writes tests automatically
+- Nothing; it's advisory
+> Plan mode is enforced, not a suggestion — making it the safe way to explore unfamiliar code and produce a reviewable plan.
+
+Q: For a large, fuzzy feature, a great first step is to…
++ Have Claude interview you, then write a SPEC.md, then implement from it in a fresh session
+- Tell it "just build the whole thing" and walk away
+- Skip straight to a PR
+- Write all the code yourself first
+> Interview → SPEC.md → fresh implementation session gives precise requirements and clean context.
+```
+
+:::try Next
+A plan gets Claude building the right thing. Next: how to make sure it built it *correctly* — by giving Claude a way to verify its own work.
+:::

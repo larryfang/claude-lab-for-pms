@@ -162,10 +162,36 @@
       '<div class="prompt-body">' + escapeHtml(txt) + "</div></div>";
   }
 
+  function renderSim(code) {
+    var lines = String(code).replace(/\r\n?/g, "\n").split("\n");
+    var intro = [], steps = [], cur = null;
+    function pushCur() { if (cur) { cur.response = cur.response.replace(/\n+$/, "").replace(/^\n+/, ""); steps.push(cur); cur = null; } }
+    lines.forEach(function (line) {
+      var mShell = line.match(/^\$\s+(.*)$/);
+      var mClaude = line.match(/^>\s+(.*)$/);
+      var mIntro = line.match(/^#\s?(.*)$/);
+      if (mShell) { pushCur(); cur = { kind: "shell", cmd: mShell[1], response: "" }; return; }
+      if (mClaude) { pushCur(); cur = { kind: "claude", cmd: mClaude[1], response: "" }; return; }
+      if (mIntro && !cur) { intro.push(mIntro[1]); return; }
+      if (cur) { cur.response += (cur.response ? "\n" : "") + line; }
+      else if (line.trim()) { intro.push(line); }
+    });
+    pushCur();
+    var data = escAttr(JSON.stringify(steps));
+    var introTxt = escAttr(intro.join("\n"));
+    return '<div class="ccsim" data-ccsim data-steps="' + data + '" data-intro="' + introTxt + '">' +
+      '<div class="ccsim-bar"><span class="ccsim-dots"><i></i><i></i><i></i></span><span class="ccsim-title">claude — simulated session</span><button class="ccsim-reset" type="button">↻ Reset</button></div>' +
+      '<div class="ccsim-screen" data-screen></div>' +
+      '<div class="ccsim-inputline"><span class="ccsim-prompt" data-prompt>❯</span><input class="ccsim-input" data-input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder=""><button class="ccsim-run" data-run type="button">Run ▶</button></div>' +
+      '<div class="ccsim-note">Simulated for learning — type the suggested command (or your own) and press Enter. Always run real commands in your own terminal.</div>' +
+      "</div>";
+  }
+
   function renderFence(lang, code, ctx) {
     lang = (lang || "").toLowerCase();
     if (lang === "quiz") return renderQuiz(code);
     if (lang === "prompt") return renderPrompt(code);
+    if (lang === "claude-sim" || lang === "terminal") return renderSim(code);
     const label = lang || "text";
     return '<div class="codeblock"><div class="codeblock-head"><span class="codeblock-lang">' + escapeHtml(label) +
       '</span><button class="copy-btn" type="button" data-copy>Copy</button></div><pre><code>' +

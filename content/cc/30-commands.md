@@ -1,0 +1,118 @@
+# Custom Commands & Skills
+
+When you find yourself typing the *same* multi-step prompt over and over — "review this diff and...", "open a PR with...", "scaffold a new component like..." — that's the signal to **save it as a command**. Type it once; reuse it forever as `/yourcommand`.
+
+## The simplest version: a command file
+
+A custom slash command is just a Markdown file. Drop one in `.claude/commands/` and it becomes `/filename`:
+
+```markdown
+<!-- .claude/commands/pr.md  →  invoked as /pr -->
+Review the current git diff, then:
+1. Summarize what changed and why.
+2. Run the test suite and report results.
+3. Create a conventional-commit message.
+4. Open a PR with `gh pr create`, using the summary as the body.
+```
+
+Now `/pr` runs that whole workflow. Put commands in:
+- `.claude/commands/` — **project** (commit it; shared with your team)
+- `~/.claude/commands/` — **personal**, available in all your projects
+
+**Namespacing** comes from folders: `.claude/commands/git/commit.md` → `/git:commit`.
+
+## Pass arguments
+
+Use `$ARGUMENTS` to accept input:
+
+```markdown
+<!-- .claude/commands/fix-issue.md  →  /fix-issue 1234 -->
+Analyze and fix GitHub issue: $ARGUMENTS
+
+1. Run `gh issue view $ARGUMENTS` to read the issue.
+2. Find the relevant files and implement a fix.
+3. Write and run tests to verify.
+4. Commit with a descriptive message and open a PR.
+```
+
+Run `/fix-issue 1234` and Claude executes the workflow against issue 1234.
+
+## Commands have merged into Skills
+
+The newer, richer form is a **Skill** — a folder with a `SKILL.md`:
+
+```markdown
+<!-- .claude/skills/api-conventions/SKILL.md -->
+---
+name: api-conventions
+description: REST API design conventions for our services. Use when adding or changing endpoints.
+---
+# API Conventions
+- kebab-case URL paths, camelCase JSON properties
+- Always paginate list endpoints
+- Version in the path (/v1/, /v2/)
+```
+
+:::concept Command vs Skill — what's the difference?
+A file at `.claude/commands/deploy.md` and a skill at `.claude/skills/deploy/SKILL.md` **both** create `/deploy` and work the same way. Your existing `commands/` files keep working. Skills just add three superpowers:
+
+1. a **directory** for supporting files (references, scripts, assets)
+2. **frontmatter** to control *who* invokes it (you vs Claude)
+3. **auto-invocation** — Claude loads the skill itself when your request matches its `description`
+:::
+
+## Manual vs auto-invoke
+
+By default a skill is **user-invocable** (`/name`) *and* can be **auto-triggered** by Claude when relevant. For workflows with **side effects** you only want to run on purpose (deploys, mass edits), turn auto off:
+
+```markdown
+---
+name: deploy-prod
+description: Deploy to production
+disable-model-invocation: true
+---
+Run the production deploy checklist, then `./scripts/deploy.sh prod`.
+```
+
+Now it only runs when *you* type `/deploy-prod` — Claude won't trigger it on its own.
+
+## Try invoking one
+
+```claude-sim
+# You created .claude/commands/pr.md earlier. Use it.
+> /pr
+Running /pr…
+  • Diff: 3 files changed (rate limiter + tests + config)
+  $ npm test  →  12 passed ✓
+  • Commit message: "feat(api): add token-bucket rate limiting"
+  $ gh pr create --fill
+  ✓ Opened PR #42: feat(api): add token-bucket rate limiting
+Anything to adjust before I mark it ready for review?
+```
+
+```quiz
+Q: You keep pasting the same 4-step "open a PR" prompt. Best move?
++ Save it as .claude/commands/pr.md so you can run /pr
+- Memorize it
+- Put it in CLAUDE.md as always-on context
+- Nothing can be done
+> Repeated multi-step prompts become custom commands (now skills). Type once, reuse as /pr.
+
+Q: What does `disable-model-invocation: true` do on a skill?
++ Makes it manual-only (you must type /name); Claude won't auto-trigger it
+- Disables the skill entirely
+- Makes it run on every message
+- Hides it from the menu
+> Use it for side-effecting workflows (deploys, mass edits) you only want to fire deliberately.
+
+Q: How do you make `.claude/commands/git/commit.md` available to your whole team?
++ Commit the .claude/commands folder to the repo — it becomes /git:commit for everyone
+- Email the file around
+- Put it in ~/.claude only
+- It can't be shared
+> Project-level commands/skills live in the repo and are shared via git. Folders create namespacing (/git:commit).
+```
+
+:::try Next
+Commands package *prompts*. Next: **subagents** — package a whole specialist with its own context window and tools.
+:::

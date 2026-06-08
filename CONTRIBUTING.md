@@ -27,8 +27,10 @@ All lesson text lives in `content/*.md`. **Just edit the Markdown** — no other
 
 ## Adding a new lesson (2 steps)
 
-1. **Create the file** in `content/`, e.g. `content/15-my-lesson.md`.
-2. **Register it** in `assets/js/content.js` by adding an entry to the right module's `lessons` array:
+This repo hosts **multiple courses** in `window.COURSES` (in `assets/js/content.js`): the PM course (`PM_COURSE`, files in `content/`) and the Claude Code course (`CC_COURSE`, files in `content/cc/`).
+
+1. **Create the file** under the right course folder, e.g. `content/cc/15-my-lesson.md`.
+2. **Register it** in `assets/js/content.js` by adding an entry to the right course's module `lessons` array:
 
 ```js
 {
@@ -98,6 +100,27 @@ Q: What is MCP?
 > MCP is the "USB-C for AI" — the universal connection standard.
 ```
 ````
+
+### Terminal simulator (Claude Code course)
+
+Use a fenced block with the `claude-sim` (or `terminal`) language. It renders an in-browser terminal the learner types into.
+
+- `# text` → intro line(s) shown at the top (before the first step)
+- `> command` → a step the learner types at Claude's `❯` prompt
+- `$ command` → a step shown at a shell `$` prompt
+- Any line after a step (not starting with `>`/`$`/`#`) → that step's simulated **response** (preserves newlines)
+
+````text
+```claude-sim
+# A small project is open.
+> /init
+Created CLAUDE.md (commands, conventions, gotchas).
+$ npm test
+ PASS  all tests ✓
+```
+````
+
+> Author responses so they **don't start a line with `>` or `$`** (those would be parsed as new steps). Indent or reword if needed.
 
 > ⚠️ **Authoring gotcha:** the Markdown engine is intentionally tiny. Avoid nesting triple-backtick code fences *inside* another fence. To show example `SKILL.md` or config, use a single fenced block (the content inside can contain `---`, headings, etc., just not another set of ```` ``` ````).
 

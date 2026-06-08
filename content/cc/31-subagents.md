@@ -1,0 +1,115 @@
+# Subagents
+
+A **subagent** is a specialist Claude can delegate to — running in its **own context window**, with its **own tools and system prompt**, returning only a **summary** to your main session. They're the single best tool for protecting context (remember: context is everything).
+
+## Why they matter
+
+When Claude researches a codebase or reviews a big diff, it reads lots of files — all of which would normally pile into *your* context. A subagent does that work **in a separate window** and hands back a distilled result:
+
+```text
+   main session ──"investigate X"──▶  subagent (fresh context)
+        ▲                                  │ reads 20 files,
+        └────────  summary only  ◀─────────┘ returns 5 bullets
+```
+
+Your main conversation stays lean and focused on building.
+
+## Defining one
+
+A subagent is a Markdown file in `.claude/agents/` (project) or `~/.claude/agents/` (personal), with frontmatter + a system prompt:
+
+```markdown
+<!-- .claude/agents/code-reviewer.md -->
+---
+name: code-reviewer
+description: Reviews a diff for bugs, security, and convention violations. Use after implementing a change.
+tools: Read, Grep, Glob, Bash
+model: sonnet
+---
+You are a senior reviewer. Flag actual bugs, security issues, and convention
+violations — not style nitpicks. For each finding, give the file:line and a
+specific suggested fix. Report only issues that affect correctness or the stated
+requirements. If the diff is clean, say so.
+```
+
+Key frontmatter:
+- **`name`** / **`description`** — the description is how Claude decides when to delegate.
+- **`tools`** — restrict what it can do (a reviewer needs Read/Grep/Bash, not Write).
+- **`model`** — e.g. `haiku` for fast read-only research, `opus` for hard reasoning.
+
+Manage them interactively with **`/agents`**.
+
+## Invoke them — by name or on purpose
+
+Claude auto-delegates when relevant, or you can be explicit:
+
+```prompt
+Use a subagent to investigate how token refresh works and whether we have OAuth utilities to reuse. Summarize with file references.
+```
+```prompt
+Use the code-reviewer subagent on my current diff.
+```
+
+## The built-ins: Explore & Plan
+
+Claude Code ships with subagents it invokes automatically:
+
+| Built-in | Role |
+|---|---|
+| **Explore** | Fast, **read-only** codebase research (often on Haiku) — used to gather context for a plan |
+| **Plan** | Does the research during plan mode so your main agent stays focused on presenting the plan |
+
+:::warning Don't shadow the built-ins
+Don't name a custom subagent `Explore` or `Plan` — you'll override the built-ins and break plan mode in subtle ways. Also note: subagents **don't spawn other subagents** (no infinite nesting).
+:::
+
+## Two rules that make subagents great
+
+:::concept Specific beats general
+A **feature-specific** subagent (`payment-flow-reviewer`, `migration-explorer`) outperforms a vague one (`qa`, `backend-engineer`). Specificity buys better tool selection and tighter context.
+:::
+
+:::warning Subagents don't inherit CLAUDE.md
+A subagent starts with **only** its own system prompt (the built-in Explore/Plan deliberately skip CLAUDE.md and git status to stay lean). So if a subagent needs a project rule, **embed it in the subagent's prompt** — don't assume it read `CLAUDE.md`.
+:::
+
+## See it delegate
+
+```claude-sim
+# You just implemented a change and want a fresh-eyes review.
+> use the code-reviewer subagent on my current diff
+Delegating to code-reviewer (separate context, tools: Read/Grep/Bash)…
+code-reviewer report:
+  • src/auth/oauth.ts:41 — state param isn't validated on callback (CSRF risk). Fix: compare against the stored state before exchanging the code.
+  • src/auth/oauth.ts:58 — error path leaks the raw provider response in the 500 body. Fix: log it, return a generic message.
+  • Tests: callback happy-path covered; no test for denied consent.
+Two correctness issues + one test gap. Want me to fix all three?
+> fix the CSRF and error-leak issues, add the denied-consent test, then re-review
+```
+
+```quiz
+Q: What's the #1 reason to use a subagent?
++ It runs in a separate context window and returns only a summary, keeping your main context clean
+- It's a different AI model from a different company
+- It edits files twice as fast
+- It removes the need for tests
+> Investigation/review reads lots of files. Subagents quarantine that token cost and report back a distilled result.
+
+Q: Your reviewer subagent ignores a project rule that's in CLAUDE.md. Why?
++ Subagents don't inherit CLAUDE.md — embed needed rules directly in the subagent's prompt
+- CLAUDE.md is broken
+- Subagents can't read rules at all
+- You must restart Claude
+> Subagents start with only their own system prompt. Put any rule they must follow into that prompt.
+
+Q: Which subagent design is better?
++ A specific one like "payment-flow-reviewer" with a tight toolset
+- A vague catch-all "engineer" that does everything
+- Naming it "Plan" to reuse the built-in
+- One giant agent with all tools enabled
+> Specificity buys better tool selection and tighter context. And never shadow the built-in Explore/Plan names.
+```
+
+:::try Next
+Commands and subagents are *advisory* — Claude chooses when to use them. **Hooks** are different: they run automatically, every time, guaranteed.
+:::

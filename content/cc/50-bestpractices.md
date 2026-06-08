@@ -1,0 +1,81 @@
+# Habits & Failure Patterns
+
+You've learned the mechanics. This lesson is the *judgment* — the habits that separate people who get 10x from Claude Code from people who fight it, plus the five failure patterns to recognize early.
+
+## What effective users actually do
+
+The developers getting the most from Claude Code aren't typing the most prompts. They're **structuring the work**:
+
+- **Small sessions, clear scope.** One task per session; `/clear` between them.
+- **Externalize the plan.** For anything big, write `SPEC.md` / `PLAN.md` so it survives a context reset — then implement from it in a fresh session.
+- **Use subagents aggressively** to keep the main context clean (research, review).
+- **Always give a way to verify** (tests, build, screenshot) and demand evidence.
+- **Commit often.** Small, verified commits make rewinds and reviews painless.
+- **Course-correct early.** `Esc` the moment it drifts; after two failed corrections, `/clear` and rewrite the prompt.
+- **Right-size the model & mode.** `opusplan` for hard planning; plan mode for unfamiliar code; skip planning for one-line diffs.
+
+:::concept The meta-skill
+It all reduces to one thing: **manage context, and close the loop.** Feed Claude exactly what the task needs, give it a way to check its own work, and keep sessions tight. Master that and the tool feels telepathic.
+:::
+
+## The five failure patterns (and the fix)
+
+Recognize these early — each has a one-move fix.
+
+:::warning 1. The kitchen-sink session
+You start on task A, ask about unrelated B, drift to C… now context is full of noise and quality drops.
+**Fix:** `/clear` between unrelated tasks.
+:::
+
+:::warning 2. Correcting over and over
+Claude gets it wrong, you correct, still wrong, correct again. The context is now polluted with failed attempts.
+**Fix:** after **two** failed corrections, `/clear` and write a sharper prompt that bakes in what you learned.
+:::
+
+:::warning 3. The over-specified CLAUDE.md
+It's so long Claude ignores half of it; important rules are buried.
+**Fix:** prune ruthlessly. If Claude already does something right without the rule, delete it. Convert "must-happen" rules into **hooks**.
+:::
+
+:::warning 4. The trust-then-verify gap
+Claude produces plausible-looking code that doesn't handle edge cases — and you shipped it.
+**Fix:** always provide verification (tests/build/screenshot) and review the evidence. If you can't verify it, don't ship it.
+:::
+
+:::warning 5. The infinite exploration
+You say "investigate this" with no scope; Claude reads hundreds of files and fills the context.
+**Fix:** scope investigations narrowly, or hand them to a **subagent** so the exploration doesn't touch your main context.
+:::
+
+## Develop your own intuition
+
+These patterns are starting points, not laws. Sometimes you *should* let context accumulate (you're deep in one rich problem). Sometimes you *should* skip planning (it's exploratory). Sometimes a vague prompt is exactly right (you want to see how Claude frames it).
+
+> Pay attention to what works. When output is great, notice what you did — the prompt shape, the context, the mode. When Claude struggles, ask *why*: too-noisy context? too-vague prompt? too-big a task? Over time you'll build intuition no guide can capture.
+
+```quiz
+Q: Claude has been wrong twice on the same thing despite your corrections. The pro move is…
++ /clear and restart with a sharper prompt incorporating what you learned
+- Correct it a few more times
+- Switch to a bigger model and continue in the same session
+- File a bug report
+> Repeated corrections pollute context with dead ends. A clean session + better prompt beats a long, muddy one.
+
+Q: Which habit most reliably separates power users from strugglers?
++ Structuring work: small scoped sessions, externalized plans, subagents, and verification
+- Typing prompts as fast as possible
+- Never using plan mode
+- Keeping one giant session open all day
+> It's about deliberate structure and context management, not volume of prompts.
+
+Q: You ask Claude to "investigate the codebase" and it reads 200 files. Which failure pattern + fix?
++ Infinite exploration → scope it narrowly or delegate to a subagent
+- Kitchen sink → restart your computer
+- Trust-then-verify → add tests
+- None; that's ideal
+> Unscoped investigation floods context. Narrow the scope or quarantine it in a subagent that returns a summary.
+```
+
+:::try Next
+One challenge stands between you and "Claude Code power user": the capstone. Let's take a project from clone to PR using everything you've learned.
+:::
