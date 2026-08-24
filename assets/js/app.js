@@ -141,7 +141,7 @@
     currentCourseId = null;
     refreshTopProgress(null);
     buildHubNav();
-    document.title = SITE.title + " — interactive Claude courses";
+    document.title = SITE.title + " — Cowork for Sales, GTM & Product";
     var html = "";
     html += '<section class="hero">';
     html += '<span class="hero-eyebrow">✦ Hands-on · Interactive · Open source</span>';
