@@ -126,6 +126,21 @@ $ npm test
 
 > ⚠️ **Authoring gotcha:** the Markdown engine is intentionally tiny. Avoid nesting triple-backtick code fences *inside* another fence. To show example `SKILL.md` or config, use a single fenced block (the content inside can contain `---`, headings, etc., just not another set of ```` ``` ````).
 
+## Shipping a JS or CSS change
+
+`index.html` loads `styles.css` and the three JS files with a `?v=` query. Browsers cache
+those files hard, so **bump every `?v=` together** when you change any of them, or returning
+learners keep the old copy:
+
+```bash
+# from the repo root — replace the old date with today's
+sed -i '' 's/?v=2026-08-24/?v=2026-09-15/g' index.html
+```
+
+All four URLs deliberately carry the identical string, so one find-and-replace does it. Lesson
+Markdown needs no version — `app.js` fetches `content/` with `cache: "no-cache"`, so edits to
+a `.md` file go live on the next page load.
+
 ## Style guide
 
 - Audience for the Cowork course is **non-technical revenue and product people** — AEs, PMM/growth, PMs. Explain jargon the first time; use analogies.
