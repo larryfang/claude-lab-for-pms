@@ -2,7 +2,7 @@
 
 # ✦ Claude Lab
 
-### Hands-on, interactive, open-source courses for getting genuinely good at Claude — for **product managers** *and* **developers**.
+### Hands-on, interactive, open-source courses for getting genuinely good at Claude — for **Sales, GTM & Product** *and* **developers**.
 
 Learn by *doing*: auto-saving checklists, instant-feedback quizzes, copy-paste prompts, and an **in-browser Claude Code terminal you can actually type into**.
 
@@ -22,14 +22,15 @@ It's built to be **forked**: swap in your company's examples, project keys, and 
 
 | Course | For | What you'll do |
 |---|---|---|
-| 🧭 **Claude for Product Managers** | Non-technical PMs & knowledge workers | Desktop & Cowork, Projects, prompting, **MCP/Connectors/Skills/Plugins**, connect **Jira & Confluence**, build a Skill, a capstone — *no code required* |
+| 🤝 **Claude Cowork for Sales, GTM & Product** | AEs, PMM/growth, product managers | Write **briefs** that work first time, connect **CRM/Jira/mail/docs**, ship real **deliverables** (decks, live-formula spreadsheets, docs), three **role lanes** of labs, build a **Skill**, put it on a **schedule**, verify before you send — *no code required* |
 | ⌨️ **Claude Code for Developers** | Engineers, new to Claude Code | Agentic mental model, **context engineering & CLAUDE.md**, Explore→Plan→Code→Commit, TDD, **subagents, hooks, MCP**, headless/CI, worktrees — with a **terminal simulator** |
 
-~50 lessons across both tracks, grounded in current Anthropic docs and community best practices.
+~60 lessons across both tracks, grounded in current Anthropic docs and community best practices.
 
 ## ✨ Features
 
 - **Multi-course hub** with per-course progress, badges, and a course switcher
+- **Three role lanes** in the Cowork course — Sales, GTM and Product — so learners practise on the work they actually do
 - **Interactive terminal simulator** — a guided, in-browser Claude Code session learners type into (with copy-paste commands for their real terminal too)
 - **Hands-on labs** in every module, with auto-saving checklists
 - **Instant-feedback quizzes** and **copy-to-clipboard prompt/command cards**
@@ -64,7 +65,7 @@ A GitHub Actions workflow is included at `.github/workflows/pages.yml` if you pr
 
 Everything is driven by `assets/js/content.js`.
 
-- **Add a lesson:** drop a Markdown file in `content/` (PM) or `content/cc/` (Claude Code), then register it in the right module's `lessons` array.
+- **Add a lesson:** drop a Markdown file in `content/` (Cowork) or `content/cc/` (Claude Code), then register it in the right module's `lessons` array.
 - **Add a course:** push a new course object to `window.COURSES` (give it an `id`, `emoji`, `title`, `tagline`, `modules`, `badges`) and create its lesson files. The hub, routing, progress, and badges all wire up automatically.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the Markdown + custom-block cheat-sheet (callouts, labs, quizzes, prompt cards, and the **terminal simulator** block).
@@ -80,7 +81,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the Markdown + custom-block cheat-she
 │       ├── markdown.js     # Tiny Markdown engine + custom blocks (incl. terminal sim)
 │       ├── content.js      # Multi-course manifest: COURSES, modules, badges  ← edit here
 │       └── app.js          # Hub + routing, per-course progress, quizzes, search, confetti, sim
-├── content/                # PM course lessons (*.md)
+├── content/                # Cowork course lessons (*.md)
 │   └── cc/                 # Claude Code course lessons (*.md)
 ├── start.command           # macOS: double-click to preview locally
 ├── .nojekyll · .github/workflows/pages.yml

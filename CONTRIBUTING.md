@@ -27,7 +27,7 @@ All lesson text lives in `content/*.md`. **Just edit the Markdown** — no other
 
 ## Adding a new lesson (2 steps)
 
-This repo hosts **multiple courses** in `window.COURSES` (in `assets/js/content.js`): the PM course (`PM_COURSE`, files in `content/`) and the Claude Code course (`CC_COURSE`, files in `content/cc/`).
+This repo hosts **multiple courses** in `window.COURSES` (in `assets/js/content.js`): the Cowork course (`COWORK_COURSE`, files in `content/`) and the Claude Code course (`CC_COURSE`, files in `content/cc/`).
 
 1. **Create the file** under the right course folder, e.g. `content/cc/15-my-lesson.md`.
 2. **Register it** in `assets/js/content.js` by adding an entry to the right course's module `lessons` array:
@@ -126,8 +126,10 @@ $ npm test
 
 ## Style guide
 
-- Audience is **non-technical PMs**. Explain jargon the first time; use analogies.
+- Audience for the Cowork course is **non-technical revenue and product people** — AEs, PMM/growth, PMs. Explain jargon the first time; use analogies.
 - Keep lessons **short and active**. Every concept lesson should end with a quiz; every "lab" lesson should have real, do-it-now steps with checklists.
+- Cowork labs come in **three role lanes** (Sales / GTM / Product). Where a lab differs by lane, put each variant in its own `:::details` block so learners only open theirs.
+- Every Cowork brief in a lab should follow **B.R.I.E.F.** (Background, Result, Inputs, Edges, Flag) and ask for **two artefacts** — a data file and a narrative file — so the output is verifiable.
 - Use `[BRACKETS]` for things learners replace (project keys, names).
 - Frame UI steps **resiliently** ("In Settings → Connectors; the exact label may vary") since the product evolves.
 

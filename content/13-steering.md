@@ -1,0 +1,123 @@
+# Plans, Steering & When to Stop
+
+A Cowork run is not a vending machine. It is closer to briefing a capable new hire who will not ask you a follow-up question unless you told them they could.
+
+This lesson is about the twenty minutes in the middle.
+
+## Reading a plan properly
+
+When Cowork shows you its steps, you are looking for four things — in this order, because they cost different amounts to fix later.
+
+:::concept The four-point plan review
+1. **Wrong source.** Is it about to read something it should not — an archive folder, a different product's data, a connector you did not intend? *Cost of missing it: the whole run is invalid.*
+2. **Wrong write.** Is any step writing outside the folder you nominated, or modifying a source file? *Cost of missing it: real damage.*
+3. **Missing step.** You asked for a cross-reference, a flag list, a consistency check. Is it in the plan? Silent omission is the most common failure. *Cost of missing it: a deliverable that looks complete and is not.*
+4. **Wrong shape.** Does the plan produce the artefacts you named, in the formats you named? *Cost of missing it: one re-run.*
+:::
+
+Then say so, specifically:
+
+```prompt
+Two changes before you start. Step 3 is reading `archive/` — skip that folder entirely, it is a different product. And you have dropped the requirement to flag rows you exclude from totals; add that as an explicit step and write those rows into the Issues tab. Otherwise the plan looks right — go ahead.
+```
+
+## Steering a run in flight
+
+You do not have to wait for the end. Three interventions, in increasing order of cost:
+
+**Nudge** — it is doing the right thing slightly wrong.
+
+> "Keep going, but from here on attribute every quote to the customer name as well as the file."
+
+**Redirect** — the approach is wrong, the goal is right.
+
+> "Stop what you are doing on the per-channel breakdown. The channel names are inconsistent in the source — normalise them first, then redo the aggregation."
+
+**Stop and re-brief** — the brief was wrong.
+
+> Hit stop. Do not try to patch it. Rewrite the brief with the missing B.R.I.E.F. element and start again. A run steered five times produces a worse document than a run briefed once properly, and you will not be able to reconstruct why it said what it said.
+
+:::tip The 60-second rule
+If you have been steering for more than a minute, you are debugging your brief, not the run. Stop, fix the brief, restart. This feels wasteful and is always faster.
+:::
+
+## The four ways a run goes wrong
+
+Learn to name these and you will diagnose problems in seconds rather than sessions.
+
+### 1. The Confident Gap
+It needed a number that was not there and produced a plausible one anyway. Totals that do not reconcile, a "typical industry benchmark", a date that was inferred.
+
+**Prevention:** *"Never estimate a missing value — write 'not recorded'."*
+**Detection:** trace three numbers from the deliverable back to a source row. Always three, always at random.
+
+### 2. The Silent Exclusion
+Four rows had blank fields, so it dropped them. The total is now wrong and nothing says so.
+
+**Prevention:** *"Flag every row you excluded from any calculation, and why."*
+**Detection:** does the row count in the output match the row count in the input?
+
+### 3. The Drift
+Long run, many files. By file thirty it is applying subtly different criteria than at file three, or scoring inconsistently across parallel subagents.
+
+**Prevention:** *"After processing all items, review them together and make the criteria and scoring consistent."*
+**Detection:** compare the first and last items it produced. They should feel like the same author.
+
+### 4. The Eager Rewrite
+You asked it to organise a folder. It also renamed your files, "improved" a document, and deleted two things it judged redundant.
+
+**Prevention:** *"Write only to `output/`. Do not modify, rename, or delete anything in the source folders."* Plus: work on copies.
+**Detection:** you cannot detect this after the fact. Prevent it.
+
+:::warning The Eager Rewrite is the only one that is not recoverable
+The other three cost you a re-run. This one costs you data. Copies, narrow scope, explicit write boundaries — every time, even when you are in a hurry. Especially when you are in a hurry.
+:::
+
+## When to let it run and when to watch
+
+**Let it run** — read-only analysis, writing to a scratch folder, work you will review carefully anyway, a job you have run successfully several times before.
+
+**Watch it** — the first run of any new brief, anything touching a real system through a connector, anything that writes outside `output/`, anything on a deadline where a failed run costs you the deadline.
+
+## Practise the interventions
+
+Next time you run a lab in this course:
+
+- [ ] Read the plan and find at least one thing to change — even a small one
+- [ ] Interrupt a run once, deliberately, just to feel the control
+- [ ] After it finishes, trace three numbers back to their source
+- [ ] Check the output row count against the input row count
+
+```quiz
+Q: You have been correcting a run for three minutes and it is still not on track. What should you do?
+- Keep steering; you are nearly there
++ Stop, fix the brief, restart — you are debugging the brief, not the run
+- Switch models
+- Split it into smaller tasks
+> Beyond about a minute of steering, restarting from a corrected brief is both faster and produces a better artefact.
+
+Q: A report's totals do not reconcile with the source data, and nothing in the report mentions why. Which failure mode is this most likely to be?
+- The Eager Rewrite
++ The Silent Exclusion — rows with missing values were dropped from the calculation without being reported
+- The Drift
+- A connector failure
+> Check row counts in against row counts out. It is the fastest test there is.
+
+Q: Which failure mode cannot be fixed after the fact?
+- The Confident Gap
+- The Silent Exclusion
++ The Eager Rewrite — it has already modified or deleted your source files
+- The Drift
+> The other three cost a re-run. This one costs data. Prevent it with copies, narrow scope, and explicit write boundaries.
+
+Q: When reviewing a plan, which problem is most expensive to miss?
+- A step in a slightly odd order
++ A step reading a source it should not, which invalidates the entire run
+- A file named differently from what you asked
+- A missing length limit
+> Wrong source first, wrong write second, missing step third, wrong shape last — that is the order of cost.
+```
+
+:::try Next
+Time to feel all of this. The lab runs a deliberately lazy brief, then the same job done properly.
+:::

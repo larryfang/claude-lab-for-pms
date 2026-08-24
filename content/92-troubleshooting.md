@@ -1,115 +1,207 @@
 # Troubleshooting & FAQ
 
-When something misbehaves, start here. Expand the section that matches your problem.
+Start here when something does not work.
 
-## Quality & answers
+## Access and setup
 
-:::details "Claude gave me a wrong or generic answer"
-Almost always a **context** problem, not a Claude problem. Fixes, in order:
-1. **Add context** — paste/attach the relevant doc instead of describing it.
-2. **Be specific** — use the C.R.A.F.T. recipe (Module 2): context, role, ask, format, tone.
-3. **Iterate** — the first answer is a draft; steer it ("more specific", "add sources", "shorter").
-4. **Ask it to ask you** — end with "ask me up to 3 questions first" to catch wrong assumptions.
+:::details I cannot see Cowork in the sidebar
+Check in order:
+
+1. **Plan** — Cowork needs Pro, Max, Team or Enterprise. Not available on Free.
+2. **App** — it is a desktop app feature. Quit fully and reopen, or reinstall from `claude.ai/download`.
+3. **Admin policy** — on Team or Enterprise a seat admin may not have enabled it. That is a one-line ask.
+4. **Rollout** — availability has expanded in waves; it is a research preview.
+
+You can read every lesson and write every brief without access.
 :::
 
-:::details "It made up facts about my project / data"
-Claude can't know your Jira, docs, or company unless you give it access. Either **connect** the relevant tool (Module 5) or **paste** the data into the chat. With no context, it may guess — that's a hallucination. Connect or paste, and it gets real.
+:::details Cowork says it cannot see my folder
+Confirm you granted **that** folder and not its parent or a sibling. Then run the read-only probe: *"Describe the folders and files you can see. Change nothing."*
+
+If the probe comes back empty or wrong, re-grant. If the folder is in iCloud, OneDrive or Dropbox and files are not downloaded locally, the sync client may be showing placeholders rather than real files — download them first.
 :::
 
-:::details "The output isn't in my team's format"
-Two options: (1) **show an example** of the format you want in your prompt, or (2) better, capture it once as a **Skill** (Module 6) so Claude applies it automatically every time.
+:::details A connector is connected but returns nothing
+Four causes, in likelihood order:
+
+1. **Wrong instance** — production versus sandbox, or the wrong workspace.
+2. **Your own permissions** — a connector sees only what your account sees.
+3. **The query** — the filter or date range excludes everything. Ask: *"State the exact query you ran."* Half the time the query is wrong, not the connection.
+4. **Pagination** — it retrieved the first page only. Ask: *"How many records matched in total, and how many did you retrieve?"* For large pulls, a CSV export is often more reliable.
 :::
 
-## Cowork
-
-:::details "I don't see Cowork in the sidebar"
-Cowork needs a **paid plan** and the **Claude Desktop app**. Check: are you signed in on a paid plan? Is the desktop app **up to date**? If your plan/region is still rolling it out, you may need to wait or join a waitlist. You can still do Modules 1–3 and 6 meanwhile.
+:::details It says it cannot access a connector mid-run
+The auth token expired — commonly every 30 to 90 days. Reconnect in Settings. If a scheduled task started producing nothing, this is usually why, which is the argument for the status-line pattern in Module 7.
 :::
 
-:::details "Cowork changed a file I didn't want changed"
-Cowork makes **real changes** in the folder you grant it. Prevention: always work on a **copy** / a dedicated practice folder, and **read the plan** it proposes before approving. If you use version control or your OS file history, you may be able to recover prior versions.
+## Output quality
+
+:::details The output is generic and unhelpful
+Almost always the brief. Ask yourself which B.R.I.E.F. element is missing — usually **Result** (you never said what artefact you wanted) and **Flag** (you never asked it to surface anything).
+
+Fastest fix: in ordinary chat, paste your brief and ask *"Rewrite this as a proper brief using Background / Result / Inputs / Edges / Flag, and ask me any question you need answered first."* The questions it asks are the vague parts of your own thinking.
 :::
 
-:::details "A scheduled task didn't run"
-Scheduled tasks run through the **desktop app**, so behavior can depend on your machine being on. Check the task is enabled, your machine wasn't asleep at the scheduled time, and the app is current.
+:::details It invented a number
+The Confident Gap. Prevention is the instruction *"Never estimate a missing value — write 'not recorded'."* Add it to every brief that touches data.
+
+Detection: trace three random numbers to source, and compare row count in against row count out.
+
+When you find one, ask it to show the working: *"Walk me through that calculation row by row from the source file, and tell me which rows you included and excluded."* Notice whether it corrects itself or defends the number.
 :::
 
-## Connectors (Atlassian & others)
+:::details The totals do not reconcile
+Usually the Silent Exclusion: rows with missing values were dropped without being reported.
 
-:::details "403 Forbidden / 'not enabled' when using Atlassian"
-Your Atlassian **admin needs to enable Rovo/MCP access** for your org or account. This is an organization policy gate, not a bug — send your admin the connector details and ask them to enable it.
+Ask: *"How many records did you include in each total, how many did you exclude, and what is the total value of the excluded records?"*
+
+Prevent it next time with *"Flag every record you excluded from any calculation and why"* plus *"state row count in and row count out"*.
 :::
 
-:::details "The OAuth login window never opened"
-- Allow **pop-ups** for Claude.
-- **Fully quit and reopen** Claude Desktop, then trigger an action again.
-- (Advanced/config path) check the app logs for an auth URL you can open manually.
+:::details A quote does not match the source
+The most serious error in a research document. Re-brief:
+
+> "Re-verify every quotation against its source file, character by character. Where the wording differs at all, either correct it to the exact source text or convert it to a clearly-marked paraphrase. List every one you changed."
+
+Then verify three yourself. Never take the re-verification on trust — that is the same source it misread the first time.
 :::
 
-:::details "Claude says it has no Atlassian tools"
-1. Confirm the connector shows **connected** in **Customize → Connectors**.
-2. Make sure you completed the **OAuth login**.
-3. If you used the config-file path, you must **fully restart** the app (a reload isn't enough).
+:::details The output was inconsistent across many files
+The Drift, from parallel subagents that do not share context mid-run. Add:
+
+> "After completing all items, review them together as a set and make the depth, structure, scoring and terminology consistent. Then tell me which ones you changed and why."
+
+And next time, run **two** items first and check the structure before committing to forty.
 :::
 
-:::details "'could not determine executable to run' (config-file path)"
-That's an `npx` cache hiccup. Clear the npx cache (remove the `~/.npm/_npx` folder) and reopen Claude Desktop.
+:::details It softened a limitation into a positive framing
+Smoothing. Common in launch and enablement material.
+
+> "You softened [N] limitations from the source into positive framings. List each with the original and the softened version, then rewrite them to state the limitation plainly."
+
+Then check specifically: find every limitation in your source document and read how each downstream artefact expresses it.
 :::
 
-## Skills
+:::details A spreadsheet has no live formulas
+Say so explicitly next time: *"Use live formulas reading from the Data tab, never pasted values. Put assumptions in labelled editable cells. Do not hard-code any total a formula could produce."*
 
-:::details "My skill never triggers automatically"
-The **description** is the trigger. Make it say *what it does and when to use it*, including the exact phrases you'd type (e.g. "weekly update", "sprint summary"). Vague descriptions = skills that never fire. You can also invoke it explicitly by typing `/` and selecting it.
+To fix the existing one: *"Rebuild the Model tab so every figure is a formula referencing the Data tab and the assumption cells."*
 :::
 
-:::details "My skill ZIP won't upload / isn't recognized"
-- The **folder name must match** the `name` in your frontmatter (kebab-case).
-- The file must be named exactly **`SKILL.md`**.
-- Zip the **folder** (so the archive contains `your-skill/SKILL.md`), not just the loose file.
-- `name` rules: lowercase letters, numbers, hyphens; ≤ 64 chars; no "anthropic"/"claude".
+## Runs and control
+
+:::details It modified files I did not want it to touch
+The Eager Rewrite — the one failure mode that is not recoverable.
+
+Right now: check whether your file system, backup, or sync service has version history. Many do.
+
+From now on: work on copies, grant the narrowest folder, and put *"Write only to `output/`. Do not modify, rename or delete anything in the source folders"* in every brief.
 :::
 
-## Claude Code
-
-:::details "command not found: claude"
-- **Close and reopen** your terminal (a new command needs a fresh session), then retry `claude`.
-- If still missing, your PATH may not include npm's global bin folder — using the **native installer** avoids this entirely.
+:::details The run is going wrong and I have been correcting it for minutes
+Stop. You are debugging the brief, not the run. Beyond about a minute of steering, restarting from a corrected brief is faster and produces a better artefact — and a run steered five times produces a document whose reasoning you cannot reconstruct.
 :::
 
-:::details "node: command not found / version too old"
-Claude Code (via npm) needs **Node.js 18+**. Install the **LTS** from nodejs.org, reopen your terminal, and check with `node --version`.
+:::details It ignored an instruction in my brief
+Three common causes:
+
+1. **Buried in prose.** Rules and flags belong in their own labelled section, not in the middle of a paragraph.
+2. **Contradicted elsewhere.** "Be exhaustive" plus "two pages maximum" — one has to lose. Say which.
+3. **Genuinely long brief.** Put the non-negotiables in a short EDGES section at the end, where they are last read.
+
+Ask it directly: *"Restate every rule and constraint I gave you, in your own words, before you start."* Anything missing from that list was not received.
 :::
 
-:::details "npm install failed with a permission error (EACCES)"
-Don't reflexively use `sudo`. Either use the **native installer** (no npm permissions needed) or follow the official "fix npm global permissions" guide (it points npm at a folder you own).
+:::details The run stalled or is taking far too long
+Check the activity feed. Two common patterns: it is reading the same file repeatedly, which means your brief is ambiguous about which source is authoritative; or it is working through far more records than you expected, which means your scope is wider than you thought.
+
+Interrupt, and add scope: *"Only the files in `X/`. Only records from [DATE] onwards. If there are more than [N] records, tell me before proceeding."*
 :::
 
-## This lab site itself
+## Skills and schedules
 
-:::details "Lessons won't load / I see a load error"
-If you opened the files directly from disk (a `file://` address), browsers block loading the lesson files. Fixes:
-- **Best:** view it where it's hosted (e.g. GitHub Pages) — just visit the URL.
-- **Local preview:** run a tiny server from the project folder: `python3 -m http.server 8080`, then open `http://localhost:8080`. (See the README.)
+:::details My Skill does not fire
+The description, in almost every case. Ask:
+
+> "I have a Skill called [name]. I asked '[your phrasing]' and it did not activate. Here is the description: [paste]. Why did it not match, and rewrite it to include every phrasing someone might use for this job."
+
+Then test with three *different* natural phrasings. A description matching only one exact sentence is not usable by a team.
 :::
 
-:::details "Copy buttons don't work"
-Clipboard access can be restricted on some setups (e.g. insecure pages). Serving over **https** (or localhost) fixes it; otherwise the lab falls back to an older copy method. You can always select the text manually.
+:::details The Skill fires but the output is generic
+The Skill is missing its definitions section, or you are running it outside the Project that holds your context. Skills describe *how*; Project instructions supply *your specifics*. Both are needed.
 :::
 
-:::details "My progress/badges disappeared"
-Progress is saved in your **browser's local storage**. It resets if you: use a **private/incognito** window, clear site data, switch browsers/devices, or hit **Reset progress**. It's local to one browser by design (no account needed).
+:::details A colleague ran my Skill and got something wrong
+You handed over the Skill and not the Project instructions. That is the most common handover failure.
+
+Run the colleague test on the Skill: *"Read this as a new colleague who does not know our company. List every place you would not know what to do, and every term I have assumed you know."*
 :::
 
-## Privacy & safety
+:::details My scheduled task produces nothing
+Usually an expired connector token. Reconnect.
 
-:::details "Is it safe to connect Claude to my work tools?"
-Connectors act **as you**, **within your existing permissions**, via a **login you approve**, and you can **revoke** access anytime. That said: follow your **company's policy** for work data, prefer **verified** connectors/plugins, and review what each connection requests — especially **write** actions. When unsure, ask your IT/security team.
+Then fix the design so it cannot fail silently again: add a status line, and *"If any source is unreachable or returns zero records, still write the file, put PROBLEM in the status line, and state exactly what failed. Never write a normal-looking report from missing data."*
 :::
 
-:::details "Can Claude see my whole computer in Cowork?"
-No — Cowork works in the **folder(s) you grant**, not your entire machine. Grant a specific working folder, and keep practice work in a dedicated/copy folder while you learn.
+:::details My scheduled task did not run at the scheduled time
+Scheduled runs go through the desktop app, so they generally need your machine awake and signed in. A job set for 8am Monday may run when you open your laptop. Also check the time zone the schedule is set relative to.
 :::
 
-:::tip Still stuck?
-The official **Help Center** (support.claude.com) and **docs** (claude.com/docs) have the latest step-by-step guides, and the product updates often. If a screen looks different from this lab, trust the official docs for current specifics — the concepts here still apply.
+:::details Output from a Project is subtly and consistently wrong
+Stale memory. Ask: *"List everything you currently take as established context for this project — definitions, numbers, decisions, assumptions about my company and preferences."*
+
+Read it, then correct explicitly: *"Update your context: [X] changed from [old] to [new]. Ignore the previous value."*
+
+This is the quietest failure in the whole course, which is why the quarterly review exists.
+:::
+
+## Judgement and risk
+
+:::details How do I know when to trust the output?
+You do not trust the output. You verify it — the four checks in Module 8, every time something leaves your hands. Trace three random numbers, compare row counts, check three quotes or external claims, read the flag section.
+
+The test that matters: can you explain every conclusion in your own words without re-reading the document? If not, you are forwarding someone else's reasoning with your name on it.
+:::
+
+:::details Is it safe to let it read a document from outside my company?
+Reading, generally yes. **Reading plus a privileged action in the same unattended run, no.** External content can carry instructions aimed at an agent (prompt injection), so keep untrusted input away from anything that writes, sends, or updates.
+
+Research, review, then act — as separate steps.
+:::
+
+:::details Our security team said no
+Ask again with specifics: this job, this data, this access level, these controls, this reviewer, and this log. Bring your `ACCESS-LOG.md`.
+
+Security teams say yes to specific proposals with controls far more often than to enthusiastic general ones. And do not route around a no — a personal account or a manual export of company data is what gets a tool banned org-wide.
+:::
+
+:::details Can I use this with customer PII?
+That is your company's policy question, not a tool question. Get the answer in writing before you connect anything containing it.
+
+Where the policy is restrictive, ask Cowork to anonymise on the way in — it can replace names with stable identifiers and still do the analysis. Note that anonymisation is not perfect for small datasets, where a role plus a company size can identify someone.
+:::
+
+:::details It disagreed with my judgement. Who is right?
+Sometimes it is. Ask it to show the evidence, then decide yourself. What you must not do is accept a ranking, a forecast, or a prioritisation because it appeared in a well-formatted document.
+
+The ownership test: if you cannot explain the decision without re-reading the document, you have not made it.
+:::
+
+## Getting more out of it
+
+:::details How do I make output sound like me?
+Project instructions with your tone rules, a reference file of three or four samples of your actual writing, and explicit negatives ("no exclamation marks", "no em-dashes", "Australian English", "never open with a rhetorical question").
+
+For anything where voice genuinely matters, use Cowork for the structure and evidence and write the prose yourself. That is a legitimate split, not a failure.
+:::
+
+:::details What should I automate first?
+The recurring task you most reliably skip when busy. Not the hardest one, and not the most interesting one. The weekly report nobody enjoys, done reliably, changes more about your week than an ambitious automation that works twice.
+:::
+
+:::details Something in this course does not match what I see on screen
+Expected. Cowork is a research preview and ships fast. The concepts, the briefs and the verification discipline hold; a menu label may not.
+
+For current specifics, `claude.com/docs` is the source of truth.
 :::

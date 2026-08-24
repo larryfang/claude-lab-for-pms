@@ -10,185 +10,212 @@ window.SITE = {
   repo: "https://github.com/larryfang/claude-lab-for-pms"
 };
 
-var PM_COURSE = {
-  id: "pm",
-  slug: "claude-for-pms",
-  emoji: "🧭",
-  title: "Claude for Product Managers",
-  tagline: "From your first chat to building your own AI workflows — a hands-on, no-code-required lab for product managers & curious beginners.",
-  audience: "Non-technical · PMs & knowledge workers",
+var COWORK_COURSE = {
+  id: "cowork",
+  slug: "cowork-for-gtm",
+  emoji: "🤝",
+  title: "Claude Cowork for Sales, GTM & Product",
+  tagline: "Stop prompting. Start delegating. A hands-on lab that turns Cowork into a teammate who does your account research, launch kits, and PRDs — no code required.",
+  audience: "AEs · GTM & PMM · Product managers",
   level: "No code required",
   modules: [
     {
       id: "start-here",
       emoji: "🚀",
       title: "Start Here",
-      desc: "Get oriented, learn the mental model, and send your very first message to Claude.",
+      desc: "Pick your lane, learn the one mindset shift that matters, and hand Cowork its first real job today.",
       lessons: [
-        { id: "welcome", file: "00-welcome.md", title: "Welcome to the Lab", minutes: 5, level: "Beginner",
-          summary: "How this lab works, what you'll build, and the one rule for getting the most out of it.",
-          keywords: ["intro", "start", "how to use", "overview", "syllabus"] },
-        { id: "what-is-claude", file: "01-what-is-claude.md", title: "Meet Claude (No Jargon)", minutes: 8, level: "Beginner",
-          summary: "What an AI assistant actually is, what 'vibe coding' means, and why this matters for PMs.",
-          keywords: ["llm", "what is claude", "vibe coding", "ai assistant", "model", "opus"] },
-        { id: "which-tool", file: "02-which-tool.md", title: "Chat vs Desktop vs Cowork vs Code", minutes: 7, level: "Beginner",
-          summary: "The four ways to use Claude and a simple rule for picking the right one every time.",
-          keywords: ["claude.ai", "desktop", "cowork", "claude code", "which tool", "compare"] },
-        { id: "first-chat", file: "03-first-chat.md", title: "Lab: Your First Real Chat", minutes: 10, level: "Beginner",
-          summary: "Hands-on. Open Claude Desktop and run three guided prompts that show what it can do.",
-          keywords: ["first chat", "hands on", "prompt", "practice", "exercise"] }
+        { id: "welcome", file: "00-welcome.md", title: "Welcome: Hire Your AI Teammate", minutes: 6, level: "Beginner",
+          summary: "How the lab works, the three role lanes, and the one rule for getting value out of it.",
+          keywords: ["intro", "start", "overview", "syllabus", "sales", "gtm", "product", "lanes"] },
+        { id: "what-is-cowork", file: "01-what-is-cowork.md", title: "Cowork in Eight Minutes", minutes: 8, level: "Beginner",
+          summary: "Outcome instead of prompt: what Cowork is, what it is not, and when to reach for it.",
+          keywords: ["cowork", "what is", "agentic", "agent", "outcome", "chat vs cowork", "claude code"] },
+        { id: "lab-setup", file: "02-lab-setup.md", title: "Lab: Setup & Your Safe Sandbox", minutes: 12, level: "Beginner",
+          summary: "Hands-on. Get Cowork open, build a throwaway workspace, and set the guardrails before you touch real data.",
+          keywords: ["setup", "install", "sandbox", "folder", "permissions", "safety", "desktop", "plan"] },
+        { id: "lab-first-run", file: "03-lab-first-run.md", title: "Lab: Your First Cowork Job", minutes: 18, level: "Beginner",
+          summary: "Hands-on. One brief, three role variants, one finished deliverable on your disk.",
+          keywords: ["lab", "first task", "hands on", "deliverable", "brief", "practice"] }
       ]
     },
     {
-      id: "desktop",
-      emoji: "🖥️",
-      title: "Claude Desktop Basics",
-      desc: "Tour the app, learn Projects and files, and write prompts that actually get results.",
+      id: "fundamentals",
+      emoji: "🧠",
+      title: "Cowork Fundamentals",
+      desc: "The craft: how to write a brief, what deliverables to ask for, and how to steer a running agent.",
       lessons: [
-        { id: "desktop-tour", file: "10-desktop-tour.md", title: "The Desktop Tour", minutes: 8, level: "Beginner",
-          summary: "Every button that matters in Claude Desktop, explained in plain language.",
-          keywords: ["interface", "tour", "sidebar", "settings", "ui"] },
-        { id: "projects-files", file: "11-projects-files.md", title: "Projects, Files & Artifacts", minutes: 9, level: "Beginner",
-          summary: "Keep context in one place, drop in files, and get living documents back.",
-          keywords: ["projects", "files", "artifacts", "upload", "context", "memory"] },
-        { id: "prompting", file: "12-prompting.md", title: "Prompting That Gets Results", minutes: 10, level: "Beginner",
-          summary: "The C.R.A.F.T. pattern and PM-ready prompt recipes you'll reuse forever.",
-          keywords: ["prompting", "prompt engineering", "craft", "context", "role", "examples"] },
-        { id: "lab-prd", file: "13-lab-prd.md", title: "Lab: Brain-dump → PRD", minutes: 15, level: "Beginner",
-          summary: "Hands-on. Turn a messy voice-note of ideas into a structured product requirements doc.",
-          keywords: ["prd", "lab", "requirements", "document", "writing"] }
-      ]
-    },
-    {
-      id: "concepts",
-      emoji: "🧩",
-      title: "Core Concepts: The Power-Ups",
-      desc: "The vocabulary that unlocks everything: MCP, Connectors, Skills, Plugins, and Subagents.",
-      lessons: [
-        { id: "big-picture", file: "20-big-picture.md", title: "The Big Picture", minutes: 7, level: "Core",
-          summary: "One diagram that ties together every Claude concept you'll meet.",
-          keywords: ["overview", "architecture", "big picture", "ecosystem"] },
-        { id: "what-is-mcp", file: "21-what-is-mcp.md", title: "What Is MCP?", minutes: 9, level: "Core",
-          summary: "The 'USB-C for AI' standard — why it exists and why it changed everything.",
-          keywords: ["mcp", "model context protocol", "server", "client", "standard", "usb-c"] },
-        { id: "four-power-ups", file: "22-four-power-ups.md", title: "Connectors · Skills · Plugins · Subagents", minutes: 10, level: "Core",
-          summary: "Four words people constantly mix up — untangled with a memorable analogy each.",
-          keywords: ["connectors", "skills", "plugins", "subagents", "difference", "compare"] },
-        { id: "the-directory", file: "23-the-directory.md", title: "The Directory & Marketplaces", minutes: 6, level: "Core",
-          summary: "Where to find, install, and trust pre-built capabilities for your role.",
-          keywords: ["directory", "marketplace", "install", "verified", "catalog"] }
-      ]
-    },
-    {
-      id: "cowork",
-      emoji: "🤝",
-      title: "Cowork: Your AI Teammate",
-      desc: "Hand Claude a whole task — not just a question — and come back to finished work.",
-      lessons: [
-        { id: "cowork-intro", file: "30-cowork-intro.md", title: "What Is Cowork?", minutes: 8, level: "Core",
-          summary: "Outcome-oriented AI: how Cowork differs from chat, and when to reach for it.",
-          keywords: ["cowork", "agent", "agentic", "autonomous", "outcome"] },
-        { id: "cowork-tour", file: "31-cowork-tour.md", title: "Cowork Tour: Folders, Sub-agents & Schedules", minutes: 9, level: "Core",
-          summary: "Local file access, the sandbox, parallel sub-agents, scheduled tasks, and projects.",
-          keywords: ["sandbox", "folders", "sub-agents", "scheduled tasks", "projects", "chrome"] },
-        { id: "lab-cowork", file: "32-lab-cowork.md", title: "Lab: Give Cowork a Real Job", minutes: 20, level: "Core",
-          summary: "Hands-on. Point Cowork at a messy folder and get back an organized, summarized report.",
-          keywords: ["lab", "cowork", "task", "folder", "report", "deliverable"] }
+        { id: "workspace-tour", file: "10-workspace-tour.md", title: "The Cowork Workspace", minutes: 8, level: "Core",
+          summary: "Folders, the task box, the plan, the activity feed, subagents, schedules and projects — what each one is for.",
+          keywords: ["tour", "workspace", "folders", "sandbox", "subagents", "schedule", "projects", "ui"] },
+        { id: "the-brief", file: "11-the-brief.md", title: "The B.R.I.E.F. Framework", minutes: 11, level: "Core",
+          summary: "Five parts every good Cowork brief has. Skip one and you get confident, useless work.",
+          keywords: ["brief", "prompting", "framework", "outcome", "constraints", "sources", "format"] },
+        { id: "deliverables", file: "12-deliverables.md", title: "Ask for Real Deliverables", minutes: 9, level: "Core",
+          summary: "Decks, spreadsheets with live formulas, formatted docs, CSVs — and how to specify them so they land right.",
+          keywords: ["deliverables", "excel", "powerpoint", "word", "csv", "artifacts", "output", "format"] },
+        { id: "steering", file: "13-steering.md", title: "Plans, Steering & When to Stop", minutes: 9, level: "Core",
+          summary: "Read the plan, interrupt early, redirect cheaply, and recognise the four ways a run goes wrong.",
+          keywords: ["plan", "steering", "interrupt", "redirect", "stop", "failure", "review", "control"] },
+        { id: "lab-brief", file: "14-lab-brief.md", title: "Lab: Fix a Bad Brief", minutes: 15, level: "Core",
+          summary: "Hands-on. Run a lazy brief, feel the mediocre output, then rewrite it with B.R.I.E.F. and compare.",
+          keywords: ["lab", "brief", "rewrite", "compare", "quality", "practice"] }
       ]
     },
     {
       id: "connect",
       emoji: "🔌",
-      title: "Connect Your Tools (Atlassian)",
-      desc: "Plug Claude into Jira & Confluence and run the PM workflows you do every day.",
+      title: "Connect Your Revenue Stack",
+      desc: "Cowork is only as good as what it can see. Plug in CRM, mail, chat, docs, tickets — safely.",
       lessons: [
-        { id: "connectors-how", file: "40-connectors-how.md", title: "How Connectors Work (Safely)", minutes: 8, level: "Core",
-          summary: "OAuth, permissions, and the trust model — what Claude can and can't see.",
-          keywords: ["connectors", "oauth", "permissions", "security", "remote mcp", "safety"] },
-        { id: "lab-atlassian", file: "41-lab-atlassian.md", title: "Lab: Connect Jira & Confluence", minutes: 15, level: "Core",
-          summary: "Hands-on. Add the Atlassian connector two ways — the easy way and the power way.",
-          keywords: ["atlassian", "jira", "confluence", "rovo", "lab", "connect", "setup"] },
-        { id: "lab-atlassian-workflows", file: "42-lab-atlassian-workflows.md", title: "Lab: Real PM Workflows", minutes: 18, level: "Core",
-          summary: "Hands-on. Sprint summaries, epic health, stakeholder updates — straight from your data.",
-          keywords: ["jira", "workflows", "sprint", "epic", "standup", "lab", "report"] }
+        { id: "connectors-trust", file: "20-connectors-trust.md", title: "Connectors & the Trust Model", minutes: 10, level: "Core",
+          summary: "What MCP and connectors actually are, what Claude can and cannot see, and the data rules to agree before you start.",
+          keywords: ["connectors", "mcp", "oauth", "permissions", "security", "pii", "trust", "data"] },
+        { id: "lab-connect", file: "21-lab-connect.md", title: "Lab: Wire Up CRM, Mail & Docs", minutes: 16, level: "Core",
+          summary: "Hands-on. Add your connectors, prove each one works with a read-only smoke test, and log what you granted.",
+          keywords: ["lab", "connect", "salesforce", "hubspot", "gmail", "slack", "drive", "jira", "setup"] },
+        { id: "chrome-research", file: "22-chrome-research.md", title: "Claude in Chrome: Live Research", minutes: 9, level: "Core",
+          summary: "When local files and CRM are not enough — let Cowork read the live web, with the fences you need.",
+          keywords: ["chrome", "browser", "web", "research", "extension", "computer use", "scraping"] }
       ]
     },
     {
-      id: "skills",
+      id: "sales",
+      emoji: "💼",
+      title: "Lane 1 — Sales",
+      desc: "For AEs and sales engineers: pre-call briefs, pipeline hygiene, outreach, and RFP responses.",
+      lessons: [
+        { id: "sales-plays", file: "30-sales-plays.md", title: "The Six Sales Plays", minutes: 10, level: "Core",
+          summary: "The Cowork jobs that pay for themselves in week one, ranked by hours saved per rep.",
+          keywords: ["sales", "plays", "ae", "pipeline", "prospecting", "mutual action plan", "roi"] },
+        { id: "lab-account-brief", file: "31-lab-account-brief.md", title: "Lab: Account Research → Pre-Call Brief", minutes: 20, level: "Core",
+          summary: "Hands-on. Company, people, news, CRM history and open questions on one page, before the call.",
+          keywords: ["lab", "account research", "pre-call", "brief", "discovery", "prospect", "meeting prep"] },
+        { id: "lab-pipeline", file: "32-lab-pipeline.md", title: "Lab: Pipeline Hygiene & Deal Review Pack", minutes: 20, level: "Core",
+          summary: "Hands-on. Turn a messy opportunity export into a risk-ranked deal review your manager will actually read.",
+          keywords: ["lab", "pipeline", "forecast", "deal review", "hygiene", "risk", "spreadsheet", "meddicc"] },
+        { id: "lab-outreach", file: "33-lab-outreach.md", title: "Lab: Outreach & RFP Answers at Scale", minutes: 20, level: "Core",
+          summary: "Hands-on. Personalised sequences for a target list, plus a first-pass answer to a security questionnaire.",
+          keywords: ["lab", "outreach", "sequence", "email", "personalisation", "rfp", "questionnaire", "security review"] }
+      ]
+    },
+    {
+      id: "gtm",
+      emoji: "📣",
+      title: "Lane 2 — GTM & Product Marketing",
+      desc: "For PMM and growth: launch kits, battlecards, campaign readouts, and voice-of-customer evidence.",
+      lessons: [
+        { id: "gtm-plays", file: "40-gtm-plays.md", title: "The GTM Plays", minutes: 10, level: "Core",
+          summary: "Where Cowork changes the economics of GTM work — and the two places it must not be trusted.",
+          keywords: ["gtm", "pmm", "plays", "launch", "positioning", "messaging", "enablement", "growth"] },
+        { id: "lab-launch-kit", file: "41-lab-launch-kit.md", title: "Lab: A Whole Launch Kit in One Run", minutes: 22, level: "Core",
+          summary: "Hands-on. Messaging house, one-pager, FAQ, sales script and enablement deck from a single brief.",
+          keywords: ["lab", "launch", "kit", "messaging", "one-pager", "faq", "enablement", "deck", "gtm"] },
+        { id: "lab-battlecard", file: "42-lab-battlecard.md", title: "Lab: Battlecard from Live Sources", minutes: 20, level: "Core",
+          summary: "Hands-on. Build a competitor battlecard with citations, then stress-test every claim for made-up facts.",
+          keywords: ["lab", "battlecard", "competitive", "competitor", "research", "citations", "objection handling"] },
+        { id: "lab-campaign-readout", file: "43-lab-campaign-readout.md", title: "Lab: Campaign Readout & Funnel Story", minutes: 20, level: "Core",
+          summary: "Hands-on. Raw campaign CSVs in, an honest exec readout with a spreadsheet model out.",
+          keywords: ["lab", "campaign", "readout", "funnel", "metrics", "analytics", "spreadsheet", "attribution"] }
+      ]
+    },
+    {
+      id: "product",
+      emoji: "🧭",
+      title: "Lane 3 — Product Management",
+      desc: "For PMs: discovery synthesis, evidence-backed PRDs, and stakeholder updates straight from the tracker.",
+      lessons: [
+        { id: "product-plays", file: "50-product-plays.md", title: "The Product Plays", minutes: 10, level: "Core",
+          summary: "The PM work Cowork is genuinely good at, and the judgement calls it must never make for you.",
+          keywords: ["product", "pm", "plays", "discovery", "prd", "roadmap", "prioritisation", "stakeholder"] },
+        { id: "lab-discovery", file: "51-lab-discovery.md", title: "Lab: Transcripts → Insight Report", minutes: 22, level: "Core",
+          summary: "Hands-on. Eight interviews into a themed, quote-backed insight report you can defend in a review.",
+          keywords: ["lab", "discovery", "interviews", "transcripts", "synthesis", "themes", "research", "quotes"] },
+        { id: "lab-prd", file: "52-lab-prd.md", title: "Lab: The Evidence-Backed PRD", minutes: 22, level: "Core",
+          summary: "Hands-on. Turn a brain-dump plus real evidence into a PRD, then have Cowork attack its own weak points.",
+          keywords: ["lab", "prd", "requirements", "spec", "evidence", "red team", "writing", "document"] },
+        { id: "lab-roadmap-update", file: "53-lab-roadmap-update.md", title: "Lab: Stakeholder Update from the Tracker", minutes: 20, level: "Core",
+          summary: "Hands-on. Jira in, three audience-specific updates out — exec, team, and customer-facing.",
+          keywords: ["lab", "roadmap", "jira", "status update", "stakeholder", "exec", "release notes", "reporting"] }
+      ]
+    },
+    {
+      id: "repeatable",
       emoji: "🛠️",
-      title: "Build Your First Skill",
-      desc: "Teach Claude to do a repeatable task your way — then bundle it for your whole team.",
+      title: "Make It Repeatable",
+      desc: "Do it once by hand, then never again: Skills, schedules, projects, and parallel subagents.",
       lessons: [
-        { id: "skills-anatomy", file: "50-skills-anatomy.md", title: "Anatomy of a Skill", minutes: 10, level: "Core",
-          summary: "Inside SKILL.md: frontmatter, the body, and the magic of progressive disclosure.",
-          keywords: ["skills", "skill.md", "frontmatter", "yaml", "anatomy", "structure"] },
-        { id: "lab-skill", file: "51-lab-skill.md", title: "Lab: Build a 'Status Update' Skill", minutes: 22, level: "Core",
-          summary: "Hands-on. Create, test, and refine a real Skill — using Claude to help you write it.",
-          keywords: ["lab", "build skill", "create", "status update", "skill.md", "test"] },
-        { id: "plugins-bundle", file: "52-plugins-bundle.md", title: "Bundle It Into a Plugin", minutes: 12, level: "Core",
-          summary: "Package skills + connectors + commands so your team gets it all in one click.",
-          keywords: ["plugins", "bundle", "package", "marketplace", "share", "team"] }
+        { id: "skills", file: "60-skills.md", title: "Teach Cowork Your Way: Skills", minutes: 11, level: "Core",
+          summary: "A Skill is your team's playbook in a file. Anatomy, frontmatter, and when a Skill beats a long brief.",
+          keywords: ["skills", "skill.md", "frontmatter", "playbook", "template", "reuse", "progressive disclosure"] },
+        { id: "lab-skill", file: "61-lab-skill.md", title: "Lab: Build Your Role's Skill", minutes: 22, level: "Core",
+          summary: "Hands-on. Package your best lab from this course into a Skill, test it cold, and refine it twice.",
+          keywords: ["lab", "build skill", "create", "test", "refine", "playbook", "reuse"] },
+        { id: "schedules", file: "62-schedules.md", title: "Schedules & Parallel Subagents", minutes: 10, level: "Core",
+          summary: "Your Monday-morning robot, plus how Cowork splits big jobs across workers and where that breaks.",
+          keywords: ["schedule", "scheduled tasks", "cron", "recurring", "subagents", "parallel", "automation"] },
+        { id: "projects-teams", file: "63-projects-teams.md", title: "Projects, Memory & Team Handoff", minutes: 10, level: "Core",
+          summary: "Persistent workspaces for recurring work, and how to hand a working setup to a colleague.",
+          keywords: ["projects", "memory", "context", "handoff", "team", "share", "onboarding", "plugin"] }
       ]
     },
     {
-      id: "code",
-      emoji: "⌨️",
-      title: "Claude Code 101 (Advanced)",
-      desc: "Optional power-user track. Meet the terminal-based agent — and lose your fear of it.",
+      id: "trust",
+      emoji: "🛡️",
+      title: "Trust, Review & Rollout",
+      desc: "The part that keeps you employed: verifying output before it leaves the building, and rolling this out to a team.",
       lessons: [
-        { id: "code-what", file: "60-code-what.md", title: "What Is Claude Code?", minutes: 8, level: "Advanced",
-          summary: "Why a PM might care about the developer tool that started it all.",
-          keywords: ["claude code", "terminal", "cli", "agent", "developer"] },
-        { id: "code-setup", file: "61-code-setup.md", title: "Setup & The Terminal Fear-Buster", minutes: 12, level: "Advanced",
-          summary: "Hands-on. Install Claude Code and run your first three commands. Nothing will explode.",
-          keywords: ["install", "setup", "terminal", "npm", "command line", "fear"] },
-        { id: "lab-code", file: "62-lab-code.md", title: "Lab: Your First Code Task", minutes: 20, level: "Advanced",
-          summary: "Hands-on. Build a tiny working web page by describing it — no code knowledge needed.",
-          keywords: ["lab", "claude code", "build", "website", "first task", "vibe coding"] }
+        { id: "verify", file: "70-verify.md", title: "Verify Before You Send", minutes: 11, level: "Core",
+          summary: "The four-check review pass, how to force citations, and the claims you must never take on trust.",
+          keywords: ["verify", "review", "hallucination", "citations", "accuracy", "quality", "checklist", "risk"] },
+        { id: "rollout", file: "71-rollout.md", title: "Rolling It Out to Your Team", minutes: 10, level: "Core",
+          summary: "A 30-60-90 plan, the objections you will hear, and how to measure whether it actually saved time.",
+          keywords: ["rollout", "adoption", "change management", "team", "enablement", "measurement", "objections"] }
       ]
     },
     {
       id: "capstone",
       emoji: "🏁",
       title: "Capstone & Beyond",
-      desc: "Combine everything into one realistic workflow, then plan your next 30 days.",
+      desc: "One end-to-end run that uses every piece — connectors, a Skill, subagents, a schedule, and a review pass.",
       lessons: [
-        { id: "capstone", file: "70-capstone.md", title: "Capstone: Backlog → Board Update", minutes: 30, level: "Core",
-          summary: "Hands-on. Use a connector + a skill + Cowork to ship a stakeholder update end-to-end.",
-          keywords: ["capstone", "project", "end to end", "workflow", "final"] },
-        { id: "next-steps", file: "71-next-steps.md", title: "Where to Go Next", minutes: 6, level: "Beginner",
-          summary: "Habits, communities, and a 30-day plan to make Claude part of how you work.",
-          keywords: ["next steps", "habits", "resources", "community", "30 day plan"] }
+        { id: "capstone", file: "80-capstone.md", title: "Capstone: The Revenue Review Machine", minutes: 40, level: "Core",
+          summary: "Hands-on. Build a repeatable, scheduled review pack for your lane and prove it runs cold.",
+          keywords: ["capstone", "end to end", "project", "final", "qbr", "review", "automation"] },
+        { id: "next-30-days", file: "81-next-30-days.md", title: "Your Next 30 Days", minutes: 6, level: "Beginner",
+          summary: "A week-by-week plan to turn this into a habit, plus where to keep learning.",
+          keywords: ["next steps", "30 day plan", "habits", "resources", "community", "practice"] }
       ]
     },
     {
       id: "reference",
       emoji: "📚",
       title: "Reference",
-      desc: "Keep these open in a tab: a glossary, a prompt library, and a troubleshooting guide.",
+      desc: "Keep these in a tab: a glossary, a copy-paste brief library for all three lanes, and a fix-it guide.",
       lessons: [
         { id: "glossary", file: "90-glossary.md", title: "Glossary", minutes: null, level: "Reference",
-          summary: "Every term in this lab, defined in one sentence.",
-          keywords: ["glossary", "definitions", "terms", "dictionary"] },
-        { id: "prompt-library", file: "91-prompt-library.md", title: "PM Prompt Library", minutes: null, level: "Reference",
-          summary: "Copy-paste prompts for the PM tasks you do every week.",
-          keywords: ["prompts", "library", "templates", "recipes", "copy"] },
+          summary: "Every term in this lab, defined in one sentence, in plain language.",
+          keywords: ["glossary", "definitions", "terms", "jargon", "dictionary"] },
+        { id: "brief-library", file: "91-brief-library.md", title: "Brief Library — Sales · GTM · Product", minutes: null, level: "Reference",
+          summary: "Copy-paste Cowork briefs for the jobs each role does every week.",
+          keywords: ["prompts", "briefs", "library", "templates", "recipes", "copy", "sales", "gtm", "product"] },
         { id: "troubleshooting", file: "92-troubleshooting.md", title: "Troubleshooting & FAQ", minutes: null, level: "Reference",
-          summary: "When something doesn't work, start here.",
-          keywords: ["troubleshooting", "faq", "errors", "help", "problems", "fix"] }
+          summary: "It stalled, it invented a number, it cannot see the folder — start here.",
+          keywords: ["troubleshooting", "faq", "errors", "help", "problems", "fix", "stuck"] }
       ]
     }
   ],
 
   // Badges are earned automatically. `module` = earned when that module is 100% complete.
   badges: [
-    { id: "first-steps", emoji: "🐣", label: "First Steps", when: { lesson: "welcome" } },
-    { id: "desktop-driver", emoji: "🖥️", label: "Desktop Driver", when: { module: "desktop" } },
-    { id: "concept-master", emoji: "🧠", label: "Concept Master", when: { module: "concepts" } },
-    { id: "cowork-captain", emoji: "🤝", label: "Cowork Captain", when: { module: "cowork" } },
-    { id: "connected", emoji: "🔌", label: "Connected", when: { module: "connect" } },
-    { id: "skill-smith", emoji: "🛠️", label: "Skill Smith", when: { module: "skills" } },
-    { id: "code-curious", emoji: "⌨️", label: "Code Curious", when: { module: "code" } },
+    { id: "first-steps", emoji: "🐣", label: "Day One", when: { lesson: "welcome" } },
+    { id: "brief-writer", emoji: "🧠", label: "Brief Writer", when: { module: "fundamentals" } },
+    { id: "connected", emoji: "🔌", label: "Fully Connected", when: { module: "connect" } },
+    { id: "closer", emoji: "💼", label: "The Closer", when: { module: "sales" } },
+    { id: "gtm-operator", emoji: "📣", label: "GTM Operator", when: { module: "gtm" } },
+    { id: "product-sense", emoji: "🧭", label: "Product Sense", when: { module: "product" } },
+    { id: "automator", emoji: "🛠️", label: "Automator", when: { module: "repeatable" } },
+    { id: "trusted", emoji: "🛡️", label: "Trusted Operator", when: { module: "trust" } },
     { id: "champion", emoji: "🏆", label: "Capstone Champion", when: { lesson: "capstone" } },
     { id: "completionist", emoji: "💯", label: "Completionist", when: { all: true } }
   ]
@@ -344,4 +371,4 @@ var CC_COURSE = {
   ]
 };
 
-window.COURSES = [PM_COURSE, CC_COURSE];
+window.COURSES = [COWORK_COURSE, CC_COURSE];

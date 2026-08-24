@@ -1,63 +1,70 @@
-# Welcome to the Lab 👋
+# Welcome: Hire Your AI Teammate 👋
 
-You're about to go from *"I've heard of Claude"* to *"I just built an AI workflow that saves me an hour a week"* — without writing a single line of code (until the optional bonus track, where you'll write a little, and love it).
+You already know Claude can write an email. This lab is about something else entirely.
 
-This lab is built for **product managers and other curious knowledge workers**. If you can write a clear Slack message, you have every skill you need to succeed here.
+By the end you will hand Claude a job like *"research these twelve accounts, cross-reference our CRM, and give me a pre-call brief for each one"* — then go make a coffee and come back to twelve finished briefs on your disk.
 
-:::tip What makes this different
-Most tutorials are *read-only*. This one is a **lab**. Every module has hands-on activities you run in your own Claude Desktop. You learn by *doing the thing*, not watching someone else do it.
+That is **Cowork**: Claude that stops answering and starts **delivering**.
+
+:::tip This is a lab, not an article
+Every module has something you actually run in your own Claude Desktop. Reading about Cowork is like reading about swimming. The value is in the doing.
 :::
 
-## What you'll be able to do by the end
+## Who this is for
 
-- Hold a productive conversation with Claude and get genuinely useful output
-- Use **Claude Desktop**, **Projects**, and **artifacts** like a pro
-- Explain — to your team, in plain English — what **MCP, Connectors, Skills, and Plugins** actually are
-- Hand a whole multi-step task to **Cowork** and come back to finished work
-- Connect Claude to **Jira & Confluence** and run real PM workflows
-- **Build your own Skill** and bundle it into a plugin for your team
-- Try **Claude Code 101** — and never be intimidated by a terminal again
+Three roles, one tool, three different sets of pain. Pick your lane — you will spend most of your time in it, but the fundamentals and the capstone are shared.
 
-## How this lab works
+| Lane | You are | The pain Cowork removes |
+|---|---|---|
+| 💼 **Sales** | AE, SE, sales manager | Pre-call research, pipeline hygiene, RFP answers, follow-up you never send |
+| 📣 **GTM** | PMM, growth, campaign lead | Launch kits, battlecards, campaign readouts, enablement nobody has time to write |
+| 🧭 **Product** | PM, product ops | Discovery synthesis, PRDs, stakeholder updates, the backlog nobody grooms |
 
-Think of the interface as your lab bench. A few things to know:
+:::note Do the other lanes too — later
+The three lanes are deliberately different jobs, not the same lab in three costumes. If you sell, do Sales first. But an AE who works through the GTM lane understands why marketing writes what it writes, and a PM who works through the Sales lane writes better release notes. Come back for them.
+:::
 
-- ✅ **Checklists save automatically.** Tick boxes as you go — they'll be here when you come back.
-- 💬 **Prompt cards have a "Copy" button.** Grab them, paste them into Claude, tweak to taste.
-- 🧩 **Knowledge checks** appear at the end of concept lessons. Instant feedback, no grades.
-- 🏆 **Badges & progress** track your journey. Finish a module, earn a badge (yes, there's confetti).
-- ⌨️ **Keyboard shortcuts:** press `/` to search, `←` / `→` to move between lessons.
+## What you will be able to do
+
+- Write a **brief** that gets you usable work on the first run, not the fourth
+- Point Cowork at your **CRM, mail, chat, docs and tickets** — and know exactly what it can see
+- Ship real **deliverables**: spreadsheets with working formulas, decks, formatted docs
+- Build a **Skill** that packages your best play so your whole team can run it
+- Put a job **on a schedule** so it happens without you
+- **Verify** the output properly, so you never forward a made-up number to a customer
+
+## How the interface works
+
+- ✅ **Checklists save automatically.** Tick as you go; they persist.
+- 💬 **Brief cards have a Copy button.** Grab, paste, adapt.
+- 🧩 **Knowledge checks** end each concept lesson. Instant feedback, no grades.
+- 🏆 **Badges** unlock as you finish modules. There is confetti.
+- ⌨️ Press `/` to search, `←` / `→` to move between lessons.
+
+## Setup check — 60 seconds
+
+Tick each box that is true:
+
+- [ ] I have **Claude Desktop** installed (macOS or Windows) and I am signed in
+- [ ] I am on a **paid plan** — Pro, Max, Team or Enterprise
+- [ ] I can see a **Cowork** entry in the sidebar (if not, the next lessons cover it)
+- [ ] I have access to *at least one* real work system — CRM, Jira, Drive, Gmail or Slack
+- [ ] I know which **lane** I am doing first
 
 :::warning The one rule
-**Do the labs.** Reading about Claude is like reading about swimming. You'll get *maybe* 20% of the value from reading and 100% from doing. When you hit a lab, actually open Claude and run it.
+**Never send Cowork's output to a customer, an exec, or a board without reading it.** Cowork is fast, tireless, and occasionally confidently wrong. Module 8 makes this a habit rather than a hope. Until then, treat everything it produces as a strong first draft by a smart new hire.
 :::
 
-## Before you start: a 60-second setup check
+## The map
 
-This lab assumes you already have Claude Desktop installed and signed in. Let's confirm you're ready. Tick each box that's true:
-
-- [ ] I have **Claude Desktop** installed (macOS or Windows) and I'm signed in
-- [ ] I can open it and see a chat box where I can type a message
-- [ ] I'm on a **paid plan** (Pro, Max, Team, or Enterprise) — needed for **Cowork**, Connectors, and Claude Code
-- [ ] I have *something* to practice on (access to Jira/Confluence is a bonus, not required)
-
-:::note Don't have everything yet?
-No problem. You can do **Modules 1–3 and 6** with any plan. **Cowork**, **Connectors**, and **Claude Code** (Modules 4, 5, 7, and the Capstone) need a paid plan — and Cowork needs the desktop app. If you're missing the app, grab it from **claude.ai/download** and come back.
-:::
-
-## A quick map of the journey
-
-You'll move through eight short modules. They build on each other, but you can jump around — the lab remembers where you are.
-
-| Stage | Modules | Vibe |
+| Stage | Modules | What changes |
 |---|---|---|
-| **Foundations** | Start Here · Desktop Basics | "Oh, I get it now." |
-| **The concepts** | Core Concepts | "So *that's* what MCP means." |
-| **The superpowers** | Cowork · Connectors · Skills | "I just automated that?!" |
-| **Bonus + finish** | Claude Code 101 · Capstone | "I'm dangerous now." |
+| **Foundations** | Start Here · Fundamentals | "Oh — I have been using this wrong." |
+| **Access** | Connect Your Revenue Stack | "It can see my actual pipeline." |
+| **Your lane** | Sales · GTM · Product | "That was four hours of work." |
+| **Leverage** | Make It Repeatable | "It runs itself on Mondays now." |
+| **Grown-up mode** | Trust & Rollout · Capstone | "My team uses this." |
 
 :::try Your first action
-Ready? Tick the boxes above, then hit **Next →** (bottom right, or press the `→` key) to meet Claude properly.
+Tick the boxes above, then press **Next →**. In eight minutes you will understand what Cowork actually is — and in twenty you will have run your first job.
 :::
-
-Let's build. 🚀
