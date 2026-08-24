@@ -122,6 +122,8 @@ $ npm test
 
 > Author responses so they **don't start a line with `>` or `$`** (those would be parsed as new steps). Indent or reword if needed.
 
+> 💡 **Line-length gotcha:** `prompt` blocks render with `white-space: pre-wrap`, so long lines wrap and you can write briefs as normal paragraphs. Plain fences (no language, or `text`) use `overflow-x: auto` instead — keep those lines under ~88 characters or the learner has to scroll sideways. Quiz options are rendered as HTML and wrap too.
+
 > ⚠️ **Authoring gotcha:** the Markdown engine is intentionally tiny. Avoid nesting triple-backtick code fences *inside* another fence. To show example `SKILL.md` or config, use a single fenced block (the content inside can contain `---`, headings, etc., just not another set of ```` ``` ````).
 
 ## Style guide
