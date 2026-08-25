@@ -4,6 +4,8 @@ Twenty-two minutes. Six or eight interviews become a themed, quote-backed report
 
 :::note Data
 Use real transcripts if you have them — anonymise first if that is your policy. Otherwise use the practice `product/` transcripts from Module 1, which include two customers who deliberately contradict each other.
+
+Want real-world scale instead? All 320 transcripts of Lenny's Podcast are open-sourced ([github.com/ChatPRD/lennys-podcast-transcripts](https://github.com/ChatPRD/lennys-podcast-transcripts)) — Lenny Rachitsky himself ran this exact synthesis over the full set with Cowork in about 15 minutes ([his account](https://x.com/lennysan/status/2010840092865413254)). Download a dozen into `product/` for a bigger practice run.
 :::
 
 ## Part 1 — Inventory before synthesis (5 min)
@@ -74,7 +76,7 @@ FLAG: any theme driven mainly by one loud customer; any theme where the quotes a
 :::warning Verify three quotes, right now
 Pick three quotes from the report and find them in the source transcripts. Word for word.
 
-This is the single most important check in the whole lane. A **paraphrase presented as a quotation** is the most damaging error in a research document, because you will read it out in a review with quotation marks in your voice — and if the customer ever sees it, you have misrepresented them.
+This is the single most important check in the whole lane. A **paraphrase presented as a quotation** is the most damaging error in a research document, because you will read it out in a review with quotation marks in your voice — and if the customer ever sees it, you have misrepresented them. Working PMs bake the rule into their skills verbatim — *"Never paraphrase a quote and present it as a direct quote"* ([Stuart Miller's PM guide](https://haverin.substack.com/p/claude-cowork-for-product-managers)).
 
 If any quote does not match exactly, re-brief:
 

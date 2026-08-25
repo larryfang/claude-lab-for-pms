@@ -15,6 +15,11 @@ Four reliable causes:
 
 Notice that none of these is about the tool.
 
+:::concept The adoption ladder
+Anthropic's own deployment guide frames maturity as five levels: **L0** chat Q&A → **L1** a real deliverable from your files → **L2** the job encoded as a Skill → **L3** skills bundled and scheduled → **L4** an admin-provisioned plugin for the whole department. The goal it sets is the right one for your rollout too: *"get every user one level higher than they are now."* And its cold-start rule explains why plugins matter on day one: a new user who types `/morning-briefing` and gets something useful in ninety seconds comes back tomorrow; one who faces a blank prompt closes the app.
+([Deploying Claude across your organization](https://claude.com/blog/new-guide-deploying-claude-across-the-enterprise-with-claude-cowork))
+:::
+
 ## The 30-60-90
 
 ### Days 1–30: one person, one play, one artefact
@@ -96,6 +101,8 @@ Vanity metrics will get you a budget and lose you the argument later. Measure th
 | **Quality, judged by the recipient** | Ask the manager who reads the reports, not the person who writes them |
 | **Errors caught in verification** | Count them. A rising count means people are checking; zero means they are not |
 | **Skill usage** | Who actually runs them. Unused Skills are a signal about the Skill, not the person |
+
+Two more field-tested rules from Anthropic's deployment guide: pilot with **two or three champion teams rather than one** ("a single team gives you one data point"), and define success in measurable terms before you start — *"'Hours saved per week' is measurable. 'Transformation' is not."* The signal a pilot is working is not just the hours: it is champions starting to write their own skills.
 
 :::tip The metric that convinces sceptics
 Not hours saved — that always sounds inflated and nobody believes it.

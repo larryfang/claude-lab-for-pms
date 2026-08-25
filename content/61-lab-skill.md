@@ -53,6 +53,10 @@ Then, separately, tell me: which parts of my brief did you leave out and why, an
 - [ ] The description lists real phrases I would actually say
 :::
 
+:::tip The flywheel alternative
+If you just finished running the job in a Cowork session, there is a shortcut practitioners swear by: before closing that session, say *"Write a SKILL.md recording exactly how you did this task — the steps, my corrections, and the rules you learned."* The session that did the work documents the work, and your next run starts from its own experience. ([firsthand CPA account, r/ClaudeAI](https://www.reddit.com/r/ClaudeAI/comments/1rd7b9i/am_i_using_claude_cowork_wrong/))
+:::
+
 :::lab Step 3 — Install it
 - [ ] Create a folder named after the Skill (kebab-case, e.g. `deal-review`)
 - [ ] Save `SKILL.md` inside it

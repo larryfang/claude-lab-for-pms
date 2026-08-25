@@ -107,6 +107,10 @@ Genuinely the fastest way to get good at this. In ordinary chat:
 The questions it asks are the parts of your own thinking that were vague.
 :::
 
+:::tip The gap-analysis opener
+For anything built from scattered sources, one sentence at the top of the brief pays for itself: *"Before producing anything, list the information you found and any gaps that would weaken the result. Wait for my response."* It surfaces the missing input — or the two stakeholders pointing in different directions — before it gets baked into a fluent document ([practitioner pattern](https://thecreatorsai.com/p/claude-cowork-for-marketing-a-playbook)).
+:::
+
 ## Three habits that compound
 
 1. **Save your good briefs.** A brief that worked is an asset. Keep a note file. Module 8 turns the best of them into Skills.

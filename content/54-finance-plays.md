@@ -58,6 +58,11 @@ The close, the variance commentary, the reconciliations, the chase emails, the b
 
 **Why it compounds:** the close happens every month forever. Anthropic ships a **Month-end closer** agent template you can start from, and Module 8 turns your version into a Skill on a schedule. The proofreading pass is the first Skill worth building in this lane — build it before you automate anything else.
 
+:::concept In the field: 150 skills, written by accountants
+Anthropic's own finance team runs roughly **150 shared skills from a version-controlled GitHub repo** — written by accountants and FP&A analysts, not IT. Their design rules are worth copying verbatim: every skill must **flag exceptions explicitly**; any skill producing journal entries needs a **checking tab confirming debits equal credits**; and human review is mandatory before anything touches the ledger. Their own honesty about limits: full auditability is *"still a work in progress."*
+([webinar](https://www.anthropic.com/webinars/how-finance-teams-use-claude-cowork) · [CFO Connect recap](https://www.cfoconnect.eu/resources/finance-insights/anthropic-finance-team-claude-skills/))
+:::
+
 ## The official shortcuts
 
 :::tip Plugin first, custom second

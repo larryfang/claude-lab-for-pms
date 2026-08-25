@@ -48,7 +48,7 @@ RESULT. Produce two files in `output/`:
    - A FLAGS section: every row you excluded, every blank you found, every place the detail file and the summary file disagree
    - "What I cannot tell you from this data" — stated plainly
 
-EDGES. Use only the files in `finance/`. Never estimate a missing value — write "not recorded". Label every driver call as evidence-based or hypothesis. State row counts in and out for every total. Read-only on the source files; write only to `output/`.
+EDGES. Use only the files in `finance/`. Never estimate a missing value — write "not recorded". Use exact dollar amounts in the commentary — do not round. Label every driver call as evidence-based or hypothesis. State row counts in and out for every total. Read-only on the source files; write only to `output/`.
 
 Show me your plan before you start.
 ```
@@ -86,7 +86,7 @@ Read the commentary once more, looking only for softened language: a miss descri
 
 ## Make it permanent
 
-- [ ] Save the working brief — it is your close-week template now
+- [ ] Save the working brief — it is your close-week template now. One finance leader who published his full close-day prompt trail got the package from **4 hours to under 1 hour**, and put the division of labour exactly right: *"Cowork did most of the building. I did the thinking about what to do with what it built."* ([F9 Finance](https://www.f9finance.com/claude-cowork-month-end-close/))
 - [ ] Note the corrections you made; they become the rules section of your Skill in Module 8
 - [ ] If you have the Finance plugin, run `/variance-analysis` on the same data and compare — now you know what it is doing under the hood, and where your version is stricter
 

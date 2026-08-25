@@ -90,6 +90,8 @@ The defence is simple and you must actually do it: **make the evidence traceable
 
 :::tip Plugin first, custom second
 Anthropic ships an official **Product Management plugin** (availability varies by plan — look under **Customize → Plugins**): `/write-spec` for PRDs, `/roadmap-update` in Now/Next/Later, quarterly or OKR formats, `/stakeholder-update`, `/synthesize-research`, `/competitive-brief` and `/metrics-review`. Install it and run the commands on your own material — then use the labs here to understand what a good version does, and customise where the ready-made one misses your evidence standards.
+
+Anthropic's own PMs go one step further: they **stack plugins** — productivity (calendar and personal context) + data (live analytics) + sales (customer calls and tickets) + product (PRD structure) in one session — so *"PRDs get written from real data and customer context… The PM's job shifts from gathering to deciding"* ([deployment guide](https://claude.com/blog/new-guide-deploying-claude-across-the-enterprise-with-claude-cowork)).
 :::
 
 ## Pick your play

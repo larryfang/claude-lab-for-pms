@@ -34,7 +34,7 @@ BACKGROUND. I need to reconcile invoices, payments and the bank statement for th
 
 RESULT. Produce `output/reconciliation.xlsx` with three tabs:
 1. Matched — every three-way match: invoice_id, payment_id, bank reference, amounts at each stage, and the fee explaining any gross-to-net difference
-2. Exceptions — every item that does not tie, one row each, with columns: type (duplicate payment / missing settlement / amount mismatch / unmatched bank line / suspected misapplication), the row ids involved from each file, the financial impact in USD, and what a human should check first
+2. Exceptions — a three-tier report: (a) exact matches confirmed, (b) timing differences likely to resolve within days, (c) unexplained variances requiring investigation. Within the investigation tier, one row per item with columns: type (duplicate payment / missing settlement / amount mismatch / unmatched bank line / suspected misapplication), the row ids involved from each file, the financial impact in USD, and what a human should check first
 3. Control — the totals: sum of invoices, payments and bank lines, counts of matched and unmatched from each file, and a single line stating whether Matched + Exceptions accounts for every row in all three files
 
 Also produce `output/reconciliation-summary.md`: five lines maximum — items matched, exceptions found by type, total financial impact of exceptions, and the single most urgent item.
@@ -51,6 +51,10 @@ Show me your plan before you start.
 
 :::warning Score it against the seed
 This is the rare lab where you know the right answer: five seeded problems. Did it find all five? Did it invent a sixth that is not real? A reconciliation that **misses** an exception is dangerous; one that **invents** exceptions wastes the reviewer's trust. Both failure modes matter, and you have just measured your setup against each.
+:::
+
+:::note Why "three-tier"?
+The tiered wording comes from Anthropic's own finance team, whose AR-to-GL reconciliation skill uses exactly this structure — their observation: *"Specifying 'three-tier' forces Claude to categorise rather than summarise."* The same skill surfaced a **$33k discrepancy live during a webinar demo**. ([CFO Connect recap](https://www.cfoconnect.eu/resources/finance-insights/finance-workflows-anthropic-automates-claude-prompts/))
 :::
 
 :::concept Why "never force a match" is the whole lab

@@ -23,7 +23,7 @@ A saved job that runs on a cadence. Every Monday at 8am, every weekday at 6pm, e
 :::concept Rules for unattended work
 **1. Read-only, or writes to a scratch folder.** A scheduled job runs with nobody reading the plan. Nothing that modifies a source system, sends an email, updates a CRM record, or transitions a ticket. It writes a draft; you decide.
 
-**2. Run it manually three times first.** A brief with a small flaw produces one flawed output when you run it by hand, and a flawed output every week forever when you schedule it — while you gradually stop reading them.
+**2. Run it manually three times first.** A brief with a small flaw produces one flawed output when you run it by hand, and a flawed output every week forever when you schedule it — while you gradually stop reading them. This is how Anthropic's own reps graduate a job: keep a human validation step on every run until repeated checks confirm it is right, and only then remove the check and schedule it ([Anthropic's deployment guide](https://claude.com/blog/new-guide-deploying-claude-across-the-enterprise-with-claude-cowork)).
 
 **3. It must report its own failures.** The worst scheduled-task failure is silence. A connector token expires, and the job produces nothing, and you notice five weeks later that you stopped receiving something you had come to rely on.
 :::

@@ -51,6 +51,7 @@ FLAG on a final hidden slide: every number you were tempted to round or simplify
 - [ ] The deck opens and the numbers match the workbooks — spot-check slide 2 against the waterfall
 - [ ] Slide 4 states the exceptions plainly rather than burying them
 - [ ] The flag slide exists and is honest
+- [ ] Check the **story order**: Cowork ranks by magnitude by default, and the biggest number is not always the most strategically important one — reorder if the story demands it (a caveat straight from a finance leader's real close run: [F9 Finance](https://www.f9finance.com/claude-cowork-month-end-close/))
 :::
 
 ## Part 3 — The proofreading pass (6 min)

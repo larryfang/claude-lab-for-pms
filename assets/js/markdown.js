@@ -26,25 +26,35 @@
     return String(s).toLowerCase().replace(/<[^>]+>/g, "").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-").slice(0, 60);
   }
 
-  function parseInline(text) {
-    if (text == null) return "";
-    const codes = [];
-    text = text.replace(/`([^`]+)`/g, function (m, c) { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
-    text = escapeHtml(text);
-    // images
-    text = text.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g, function (m, alt, src, title) {
-      return '<img src="' + escAttr(safeUrl(src)) + '" alt="' + escAttr(alt) + '"' + (title ? ' title="' + escAttr(title) + '"' : "") + ' loading="lazy">';
-    });
-    // links
-    text = text.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g, function (m, t, href, title) {
-      const ext = /^https?:/i.test(href);
-      return '<a href="' + escAttr(safeUrl(href)) + '"' + (title ? ' title="' + escAttr(title) + '"' : "") + (ext ? ' target="_blank" rel="noopener"' : "") + ">" + t + "</a>";
-    });
+  function emphasize(text) {
     text = text.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     text = text.replace(/__([^_]+)__/g, "<strong>$1</strong>");
     text = text.replace(/(^|[^*\w])\*([^*\n]+)\*/g, "$1<em>$2</em>");
     text = text.replace(/(^|[^_\w])_([^_\n]+)_/g, "$1<em>$2</em>");
     text = text.replace(/~~([^~]+)~~/g, "<del>$1</del>");
+    return text;
+  }
+
+  function parseInline(text) {
+    if (text == null) return "";
+    const codes = [];
+    text = text.replace(/`([^`]+)`/g, function (m, c) { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
+    text = escapeHtml(text);
+    // image/link tags are frozen as placeholders so the emphasis pass cannot
+    // pair underscores inside hrefs or the target="_blank" attribute
+    const frozen = [];
+    function freeze(html) { frozen.push(html); return "\u0001" + (frozen.length - 1) + "\u0001"; }
+    // images
+    text = text.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g, function (m, alt, src, title) {
+      return freeze('<img src="' + escAttr(safeUrl(src)) + '" alt="' + escAttr(alt) + '"' + (title ? ' title="' + escAttr(title) + '"' : "") + ' loading="lazy">');
+    });
+    // links
+    text = text.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g, function (m, t, href, title) {
+      const ext = /^https?:/i.test(href);
+      return freeze('<a href="' + escAttr(safeUrl(href)) + '"' + (title ? ' title="' + escAttr(title) + '"' : "") + (ext ? ' target="_blank" rel="noopener"' : "") + ">" + emphasize(t) + "</a>");
+    });
+    text = emphasize(text);
+    text = text.replace(/\u0001(\d+)\u0001/g, function (m, i) { return frozen[+i]; });
     text = text.replace(/\u0000(\d+)\u0000/g, function (m, i) { return "<code>" + escapeHtml(codes[+i]) + "</code>"; });
     return text;
   }

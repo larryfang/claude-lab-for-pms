@@ -104,7 +104,7 @@ List the phrases people actually say. Include the synonyms. Say what it produces
 | It needs to run on a schedule | A Skill plus a schedule |
 
 :::warning Do not skill it too early
-Write the brief. Run it three or four times. Notice what you correct every time — *those corrections are the Skill*.
+Write the brief. Run it three or four times. Notice what you correct every time — *those corrections are the Skill*. Anthropic's marketing ops team states the trigger exactly: *"When you find yourself correcting Claude on the same thing more than once, that feedback belongs in a skill"* — the discipline behind their weekly report going from 1–2 days to about 2 hours ([claude.com](https://claude.com/blog/how-anthropics-marketing-operations-team-uses-claude-cowork-to-automate-reporting-and-campaign-builds)).
 
 A Skill written before you know what good output looks like just freezes your first guess, and it is harder to notice a Skill is wrong than a brief is wrong, because the Skill is invisible while it runs.
 :::

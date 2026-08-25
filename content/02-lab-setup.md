@@ -34,6 +34,8 @@ You are going to create a folder that contains nothing you care about, and do al
 
 :::warning Why "copies, never originals"
 Cowork can create, edit, move and rename files in the folder you grant. That is the whole value. It also means a badly-worded brief can genuinely reorganise or overwrite your work — and unlike deletions, which always trigger a permission prompt before anything is permanently removed, an edit or a rename does not. Grant the narrowest folder that lets the job get done — never your home directory, never `Documents`, never a synced Drive root you have not thought about.
+
+Cloud-synced folders deserve extra suspicion: iCloud, OneDrive and Dropbox often keep only **placeholder stubs** locally, so a "copy" of a not-downloaded file copies an empty stub — one user lost real documents exactly this way when a reorganisation copied stubs and removed originals ([firsthand account](https://www.reddit.com/r/ClaudeAI/comments/1rwxnxe/claude_cowork_nuked_my_icloud_drive_documents/)). Sync is not backup. Anything irreplaceable needs a real backup before Cowork touches its folder.
 :::
 
 ## Part 3 — Set your guardrails (3 min)

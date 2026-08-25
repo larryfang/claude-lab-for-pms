@@ -41,6 +41,10 @@ FLAG: anything that suggests the tracker is being used inconsistently across the
 "In Progress, no update in 18 days" is either work that has quietly stopped or work that is happening and not being logged. Either way, telling an exec that item is on track is how you lose credibility — and you would have done exactly that if you had gone straight to writing the update.
 :::
 
+:::tip Paste your sequencing principles, or it will invent some
+If your update explains *why* work is ordered the way it is, state your actual sequencing principles in the brief (dependencies, capacity, strategic bets). A working PM's field finding: without them, the agent *"invents a reasonable-sounding but wrong rationale"* — fluent, plausible, and not your reasoning ([Stuart Miller](https://haverin.substack.com/p/claude-cowork-for-product-managers)). The same guide fixes tonal drift in recurring updates by storing three or four past updates as a tone reference.
+:::
+
 ## Part 2 — Three updates, three audiences (10 min)
 
 :::lab Step 2 — The fan-out that matters

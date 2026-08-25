@@ -70,6 +70,11 @@ From the call notes in `calls/acme-2026-08-20.txt`, produce `output/acme-map.md`
 Using our CRM data for my territory plus the account notes in `sales/` (or your `accounts/` folder if you keep one), produce `output/territory-plan.md`: (1) my book segmented by ARR and expansion potential with the evidence for each judgement, (2) the ten accounts with the strongest expansion signal and what the signal is, (3) the five most likely churn risks and why, (4) whitespace — products they do not have that similar accounts do buy, (5) a ranked list of where I should spend my time next quarter. Every judgement needs a data point behind it. Flag any account where the CRM data is too thin to assess.
 ```
 
+:::concept In the field: scoring 4,000 accounts overnight
+Anthropic's own head of US mid-market GTM runs Play 6 at scale: he gave Cowork two five-dimension scoring rubrics, had it score a **test territory**, spot-checked the output, adjusted the weights ("D4 is a little heavy; bring it down a bit") — then let it score all 4,000 accounts overnight, each with a written per-dimension rationale. His words: *"None of the prompts were technical"* and *"Claude builds the what; I do the why."* The pattern to copy is **calibrate small, then scale**: criteria → a handful of examples → human keeps/rejects with reasons → the full run.
+([claude.com](https://claude.com/blog/how-an-anthropic-sales-leader-uses-claude-cowork-to-run-a-4-000-account-book))
+:::
+
 ## What Cowork must not do in sales
 
 Being clear about this protects you.
