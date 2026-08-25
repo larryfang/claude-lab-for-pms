@@ -21,6 +21,7 @@ Common choices:
 | 💼 Sales | `deal-review` or `account-brief` |
 | 📣 GTM | `launch-kit` or `competitor-research` |
 | 🧭 Product | `discovery-synthesis` or `stakeholder-update` |
+| 🧾 Finance | `proofread-pack` (build this one first) or `variance-pack` |
 
 ## Part 2 — Have Claude draft it (6 min)
 

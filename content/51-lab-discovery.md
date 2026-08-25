@@ -128,7 +128,7 @@ The report is evidence. The recommendation is yours. Write it in your own words 
 - [ ] Save the inventory and synthesis briefs as a two-step sequence
 - [ ] Note your actual segment taxonomy so it does not get re-derived each time
 - [ ] Note the sections you always want and the ones you always delete
-- [ ] Module 7 makes this one Skill: "synthesise the transcripts in this folder"
+- [ ] Module 8 makes this one Skill: "synthesise the transcripts in this folder"
 
 ```quiz
 Q: Why run an evidence inventory before theming?

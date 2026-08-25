@@ -36,6 +36,14 @@ Not a one-off deliverable. A thing that keeps producing.
 **Cadence:** Monday 8am, into a draft folder.
 :::
 
+:::details 🧾 Finance — the weekly numbers machine
+**Produces:** a debtors and cash delta report, a refreshed variance summary, an exception list from the latest reconciliation, and a proofread report on all of it.
+
+**Sources:** your accounting/AR exports (Drive or M365), email, last week's files.
+
+**Cadence:** Monday 8am, into a draft folder.
+:::
+
 ## Stage 1 — Foundation (8 min)
 
 :::lab Build the Project
@@ -141,7 +149,7 @@ One file per item that needs individual attention — per at-risk deal, per comp
 :::
 
 :::warning You have run this by hand once
-The rule from Module 7 says three times before you trust a schedule. Keep it scheduled, but read the next three outputs properly — trace numbers, check counts, read the flags. After three clean runs it has earned your inattention.
+The rule from Module 8 says three times before you trust a schedule. Keep it scheduled, but read the next three outputs properly — trace numbers, check counts, read the flags. After three clean runs it has earned your inattention.
 :::
 
 ## Stage 8 — Verify and hand over (final)

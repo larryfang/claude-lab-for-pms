@@ -78,6 +78,7 @@ On managed plans your admin controls which connectors exist and whether Cowork i
 | 💼 **Sales** | CRM (Salesforce / HubSpot) → email → calendar → Slack → docs |
 | 📣 **GTM** | Analytics or warehouse → CRM → docs/wiki → Slack → the web (Chrome) |
 | 🧭 **Product** | Jira / Linear → Confluence or Notion → support desk → CRM → Slack |
+| 🧾 **Finance** | Drive / M365 (where the exports live) → email → CRM (for RevOps) → Slack |
 
 Start with **one**. The one whose data you retype most often.
 

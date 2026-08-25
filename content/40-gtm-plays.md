@@ -64,7 +64,7 @@ That final instruction turns an enablement exercise into a messaging audit. The 
 
 **The job:** knowing when a competitor changed their pricing, positioning or packaging, without checking manually.
 
-**Why it works:** it is repetitive, low-judgement, and perfectly suited to a schedule. Module 7.
+**Why it works:** it is repetitive, low-judgement, and perfectly suited to a schedule. Module 8.
 
 ```prompt
 Every Monday at 8am: visit the pricing and product pages of [COMPETITOR LIST], compare each against the saved snapshot in `snapshots/`, and write `output/competitive-watch-YYYY-MM-DD.md` listing only what changed, with before-and-after quotes and the URLs. Save fresh snapshots. If nothing changed, say so in one line. Never infer a change you cannot show with quoted text from both versions.

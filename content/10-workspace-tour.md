@@ -44,7 +44,7 @@ For bigger jobs Cowork splits work across parallel workers — one researching e
 
 Save a job, have it run on a cadence — every Monday 8am, every weekday at 6pm. Chat cannot do this. Scheduled tasks run remotely, so they run on time even when your computer is asleep or the app is closed.
 
-**Where it matters to you:** a scheduled job runs with **no one reading the plan**. Only schedule jobs that are read-only or write to a scratch folder, and that you have run by hand successfully at least three times. Module 7.
+**Where it matters to you:** a scheduled job runs with **no one reading the plan**. Only schedule jobs that are read-only or write to a scratch folder, and that you have run by hand successfully at least three times. Module 8.
 
 ## 7 — Projects
 

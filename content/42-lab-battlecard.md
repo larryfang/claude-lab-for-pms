@@ -45,7 +45,7 @@ Show me your plan and the exact list of URLs you intend to visit before you star
 :::
 
 :::tip Save the sources
-Have Cowork save the page text it read into `snapshots/[competitor]/[date]/`. In six weeks the pages will have changed and you will need to know what they actually said. This is also what makes the monitoring play in Module 7 possible — you cannot diff against a snapshot you did not keep.
+Have Cowork save the page text it read into `snapshots/[competitor]/[date]/`. In six weeks the pages will have changed and you will need to know what they actually said. This is also what makes the monitoring play in Module 8 possible — you cannot diff against a snapshot you did not keep.
 :::
 
 ## Part 2 — The battlecard (6 min)
@@ -132,7 +132,7 @@ A battlecard's real failure mode is going stale silently. Someone reads a six-mo
 - [ ] Every claim carries its source date
 - [ ] The document has a review-by date on it
 - [ ] Snapshots of the source pages are saved
-- [ ] Module 7 puts the monitoring on a schedule so you learn when their pricing page changes
+- [ ] Module 8 puts the monitoring on a schedule so you learn when their pricing page changes
 
 ```quiz
 Q: Why separate the research pass from the battlecard pass?

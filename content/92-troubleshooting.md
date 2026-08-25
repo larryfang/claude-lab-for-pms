@@ -30,7 +30,7 @@ Four causes, in likelihood order:
 :::
 
 :::details It says it cannot access a connector mid-run
-The auth token expired — commonly every 30 to 90 days. Reconnect under Customize → Connectors. If a scheduled task started producing nothing, this is usually why, which is the argument for the status-line pattern in Module 7.
+The auth token expired — commonly every 30 to 90 days. Reconnect under Customize → Connectors. If a scheduled task started producing nothing, this is usually why, which is the argument for the status-line pattern in Module 8.
 :::
 
 ## Output quality
@@ -158,7 +158,7 @@ This is the quietest failure in the whole course, which is why the quarterly rev
 ## Judgement and risk
 
 :::details How do I know when to trust the output?
-You do not trust the output. You verify it — the four checks in Module 8, every time something leaves your hands. Trace three random numbers, compare row counts, check three quotes or external claims, read the flag section.
+You do not trust the output. You verify it — the four checks in Module 9, every time something leaves your hands. Trace three random numbers, compare row counts, check three quotes or external claims, read the flag section.
 
 The test that matters: can you explain every conclusion in your own words without re-reading the document? If not, you are forwarding someone else's reasoning with your name on it.
 :::

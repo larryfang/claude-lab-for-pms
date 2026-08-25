@@ -55,6 +55,11 @@ Using the connector only, list the five most recent records available to me in [
 Using the Jira connector only, list all issues in project [YOUR-KEY] that changed status in the last 14 days. For each: key, summary, status, assignee, and the date of the change. Present as a table. Do not modify any issue. Do not use any other source.
 ```
 
+**🧾 Finance**
+```prompt
+Using the [Drive / M365] connector only, find the most recent [expense / AR / budget] export in [FOLDER], and give me its row count, date range, column names, and the grand total of the amount column. Tell me explicitly which file and version you read. Do not modify anything. Do not use any other source.
+```
+
 - [ ] The results came back
 - [ ] I **checked them against the real system** and they match
 - [ ] Nothing was modified
@@ -88,13 +93,18 @@ Cross-reference our campaign performance data with the CRM opportunity records. 
 Cross-reference the Jira issues in [YOUR-KEY] against our support tickets or customer feedback. Produce `output/backlog-evidence.md` with a table: Jira key, summary, current priority, number of linked customer complaints, and the ARR of the accounts affected — plus a column flagging every issue where the priority in Jira looks inconsistent with the customer evidence. List anything you could not match. Read-only.
 ```
 
+**🧾 Finance**
+```prompt
+Cross-reference our open invoices export against my email. For every invoice more than 14 days overdue, check whether there has been any email from that customer's domain since the due date — a payment promise, a dispute, a query. Produce `output/ar-context.md` with a table: customer, invoice id, amount, days overdue, last email date, and a one-line note on what the email actually says. List every customer where you found nothing. Read-only — draft nothing, send nothing.
+```
+
 - [ ] It produced the cross-referenced deliverable
 - [ ] It told me what it **could not** match
 - [ ] I spot-checked three rows against both systems
 :::
 
 :::tip This is the moment it clicks for most people
-The single-source query was a nicer search box. The cross-reference is a job you were doing manually, in a spreadsheet, on a Friday afternoon — and it now takes ninety seconds. Note which cross-reference in your own work would be most valuable, because that is your first Skill in Module 7.
+The single-source query was a nicer search box. The cross-reference is a job you were doing manually, in a spreadsheet, on a Friday afternoon — and it now takes ninety seconds. Note which cross-reference in your own work would be most valuable, because that is your first Skill in Module 8.
 :::
 
 ## Part 4 — Write it down (2 min)

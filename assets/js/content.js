@@ -14,9 +14,9 @@ var COWORK_COURSE = {
   id: "cowork",
   slug: "cowork-for-gtm",
   emoji: "🤝",
-  title: "Claude Cowork for Sales, GTM & Product",
-  tagline: "Stop prompting. Start delegating. A hands-on lab that turns Cowork into a teammate who does your account research, launch kits, and PRDs — no code required.",
-  audience: "AEs · GTM & PMM · Product managers",
+  title: "Claude Cowork for Sales, GTM, Product & Finance",
+  tagline: "Stop prompting. Start delegating. A hands-on lab that turns Cowork into a teammate who does your account research, launch kits, PRDs, and variance packs — no code required.",
+  audience: "AEs · GTM & PMM · Product managers · Finance",
   level: "No code required",
   modules: [
     {
@@ -26,8 +26,8 @@ var COWORK_COURSE = {
       desc: "Pick your lane, learn the one mindset shift that matters, and hand Cowork its first real job today.",
       lessons: [
         { id: "welcome", file: "00-welcome.md", title: "Welcome: Hire Your AI Teammate", minutes: 6, level: "Beginner",
-          summary: "How the lab works, the three role lanes, and the one rule for getting value out of it.",
-          keywords: ["intro", "start", "overview", "syllabus", "sales", "gtm", "product", "lanes"] },
+          summary: "How the lab works, the four role lanes, and the one rule for getting value out of it.",
+          keywords: ["intro", "start", "overview", "syllabus", "sales", "gtm", "product", "finance", "lanes"] },
         { id: "what-is-cowork", file: "01-what-is-cowork.md", title: "Cowork in Eight Minutes", minutes: 8, level: "Beginner",
           summary: "Outcome instead of prompt: what Cowork is, what it is not, and when to reach for it.",
           keywords: ["cowork", "what is", "agentic", "agent", "outcome", "chat vs cowork", "claude code"] },
@@ -35,7 +35,7 @@ var COWORK_COURSE = {
           summary: "Hands-on. Get Cowork open, build a throwaway workspace, and set the guardrails before you touch real data.",
           keywords: ["setup", "install", "sandbox", "folder", "permissions", "safety", "desktop", "plan"] },
         { id: "lab-first-run", file: "03-lab-first-run.md", title: "Lab: Your First Cowork Job", minutes: 18, level: "Beginner",
-          summary: "Hands-on. One brief, three role variants, one finished deliverable on your disk.",
+          summary: "Hands-on. One brief, four role variants, one finished deliverable on your disk.",
           keywords: ["lab", "first task", "hands on", "deliverable", "brief", "practice"] }
       ]
     },
@@ -140,6 +140,26 @@ var COWORK_COURSE = {
       ]
     },
     {
+      id: "finance",
+      emoji: "🧾",
+      title: "Lane 4 — Finance",
+      desc: "For finance and RevOps: variance packs, reconciliations, chase drafts, forecasts, and a board pack that survives a proofread.",
+      lessons: [
+        { id: "finance-plays", file: "54-finance-plays.md", title: "The Six Finance Plays", minutes: 10, level: "Core",
+          summary: "The close-week jobs Cowork is built for, the official finance plugin and templates, and the lines it must never cross.",
+          keywords: ["finance", "plays", "cfo", "close", "variance", "reconciliation", "forecast", "plugin", "excel"] },
+        { id: "lab-variance", file: "55-lab-variance.md", title: "Lab: Month-End Variance Pack", minutes: 22, level: "Core",
+          summary: "Hands-on. Budget vs actuals into a live-formula workbook, a waterfall that ties, and a CFO-ready commentary.",
+          keywords: ["lab", "variance", "budget", "actuals", "waterfall", "month-end", "close", "spreadsheet", "formulas"] },
+        { id: "lab-reconciliation", file: "56-lab-reconciliation.md", title: "Lab: Three-Way Reconciliation & the Chase", minutes: 20, level: "Core",
+          summary: "Hands-on. Invoices, payments and the bank statement matched against seeded errors, plus tone-graded chase drafts.",
+          keywords: ["lab", "reconciliation", "bank", "exceptions", "ageing", "debtors", "dunning", "chase", "drafts"] },
+        { id: "lab-board-pack", file: "57-lab-board-pack.md", title: "Lab: Forecast, Board Pack & the Proofreading Pass", minutes: 20, level: "Core",
+          summary: "Hands-on. A driver-based forecast, a six-slide board pack, and a fresh-eyes audit that traces every number.",
+          keywords: ["lab", "forecast", "board pack", "deck", "assumptions", "sensitivity", "proofread", "audit", "verification"] }
+      ]
+    },
+    {
       id: "repeatable",
       emoji: "🛠️",
       title: "Make It Repeatable",
@@ -191,7 +211,7 @@ var COWORK_COURSE = {
       id: "reference",
       emoji: "📚",
       title: "Reference",
-      desc: "Keep these in a tab: a glossary, a copy-paste brief library for all three lanes, and a fix-it guide.",
+      desc: "Keep these in a tab: a glossary, a copy-paste brief library for every lane, and a fix-it guide.",
       lessons: [
         { id: "glossary", file: "90-glossary.md", title: "Glossary", minutes: null, level: "Reference",
           summary: "Every term in this lab, defined in one sentence, in plain language.",
@@ -214,6 +234,7 @@ var COWORK_COURSE = {
     { id: "closer", emoji: "💼", label: "The Closer", when: { module: "sales" } },
     { id: "gtm-operator", emoji: "📣", label: "GTM Operator", when: { module: "gtm" } },
     { id: "product-sense", emoji: "🧭", label: "Product Sense", when: { module: "product" } },
+    { id: "controller", emoji: "🧾", label: "The Controller", when: { module: "finance" } },
     { id: "automator", emoji: "🛠️", label: "Automator", when: { module: "repeatable" } },
     { id: "trusted", emoji: "🛡️", label: "Trusted Operator", when: { module: "trust" } },
     { id: "champion", emoji: "🏆", label: "Capstone Champion", when: { lesson: "capstone" } },

@@ -15,7 +15,8 @@ A saved job that runs on a cadence. Every Monday at 8am, every weekday at 6pm, e
 | 💼 **Sales** | Pipeline hygiene report: what went stale, what has no next step, what has a passed close date |
 | 📣 **GTM** | Competitive watch: what changed on competitors' pricing and product pages since last week |
 | 🧭 **Product** | Tracker reality check plus a draft stakeholder update, ready for you to edit |
-| **All three** | A digest of what changed in your systems since Friday |
+| 🧾 **Finance** | Debtors and cash watch: what moved in the ageing, which promised payments arrived, which did not |
+| **Every lane** | A digest of what changed in your systems since Friday |
 
 ### The three rules of scheduling
 

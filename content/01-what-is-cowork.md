@@ -84,7 +84,7 @@ Cowork needs more trust than chat because it can act. You keep control in four w
 1. **You choose the folders** it can reach. It works there, not across your whole machine.
 2. **You see the plan** before it acts, and you can interrupt mid-run.
 3. **Code and shell commands run isolated.** But **computer use** — driving your browser or desktop apps — is **not** sandboxed, and either way it can genuinely change the files you shared.
-4. **You review the output.** Non-negotiable. Module 8.
+4. **You review the output.** Non-negotiable. Module 9.
 
 :::warning Requirements and expectations
 Cowork needs a **paid plan** (Pro, Max, Team or Enterprise). It runs on desktop, web and mobile — this course uses the **Claude Desktop app**, because the local-folder labs only work there. Cowork **ships fast and evolves quickly**, so screens and features shift. If your interface differs slightly from these lessons, that is expected — the concepts and the briefs still hold. Frame every UI instruction in this course as "look for something that does this", not "click exactly here".
@@ -117,7 +117,7 @@ Q: You run the same brief twice and get two slightly different reports. This mea
 + Nothing is broken — Cowork is not deterministic, which is fine for drafts and wrong for a system of record
 - You need to restart the app
 - Your connector failed
-> Expect variation. Where you need repeatability, encode the format in a Skill (Module 7) and still review the output.
+> Expect variation. Where you need repeatability, encode the format in a Skill (Module 8) and still review the output.
 ```
 
 :::try Next

@@ -94,7 +94,7 @@ The defence is simple and you must actually do it: **make the evidence traceable
 - [ ] Which do I do at all, but a week later than I should?
 - [ ] Which one, if it happened automatically every Monday, would change my stakeholders' opinion of me?
 
-That last one goes on a schedule in Module 7.
+That last one goes on a schedule in Module 8.
 
 ```quiz
 Q: What is the correct division of labour between you and Cowork in PM work?

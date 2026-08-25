@@ -1,6 +1,6 @@
 # Claude in Chrome: Live Research
 
-Some of the most valuable inputs for all three lanes are not in a folder or a CRM. They are on the open web: a competitor's pricing page, a prospect's careers page, a funding announcement, a G2 review, a regulatory filing.
+Some of the most valuable inputs for every lane are not in a folder or a CRM. They are on the open web: a competitor's pricing page, a prospect's careers page, a funding announcement, a G2 review, a regulatory filing.
 
 **Claude in Chrome** is a browser extension that lets Claude read and act on web pages in your own browser session — logged in as you, seeing what you see.
 
@@ -22,6 +22,7 @@ This lesson covers the **extension** (availability varies by plan). There is als
 | 💼 **Sales** | Prospect research: careers pages for hiring signals, news, leadership changes, the tech listed on their own site, review sites for what customers complain about |
 | 📣 **GTM** | Competitive intelligence: pricing pages, positioning changes, launch announcements, review-site themes, comparison pages naming you |
 | 🧭 **Product** | Competitor feature depth, public roadmaps and changelogs, community forums, app-store reviews, standards documentation |
+| 🧾 **Finance** | Supplier price lists and rate cards, customer credit signals in the news, FX and rate pages, competitor pricing for revenue modelling |
 
 ## Setup
 
@@ -128,5 +129,5 @@ Q: A connector exists for the system you want to research. Should you use Chrome
 ```
 
 :::try Module complete
-That is your **🔌 Fully Connected** badge. Now pick your lane — Sales, GTM or Product — and go do the work you were hired for.
+That is your **🔌 Fully Connected** badge. Now pick your lane — Sales, GTM, Product or Finance — and go do the work you were hired for.
 :::

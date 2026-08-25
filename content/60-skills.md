@@ -132,7 +132,7 @@ Reference them from `SKILL.md` and Claude reads them when needed. This is how yo
 
 A **plugin** bundles Skills, connectors, and sub-agents into one installable package (Customize → Plugins). It is how "here is my Skill" becomes "install this and you have the whole team's playbook".
 
-For now: build one good Skill. Bundling matters when you have three or four that belong together — covered in Module 7's last lesson.
+For now: build one good Skill. Bundling matters when you have three or four that belong together — covered in Module 8's last lesson.
 
 ```quiz
 Q: What is the single most important line in a SKILL.md?

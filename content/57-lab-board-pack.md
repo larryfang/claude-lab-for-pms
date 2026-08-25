@@ -1,0 +1,116 @@
+# Lab: Forecast, Board Pack & the Proofreading Pass
+
+Twenty minutes. A small driver-based forecast with every assumption in an editable cell, a board deck where every number traces to the model — and the proofreading pass that checks it all before anyone else sees it.
+
+This lab uses the `finance/` data and the variance pack from Lab 1. If you skipped it, do Part 1 of Lab 1 first — four minutes.
+
+## Part 1 — The driver-based mini-forecast (7 min)
+
+The discipline here is **chaining**: decompose first, agree the drivers, then build. One mega-prompt for a finished forecast is where numeric errors breed.
+
+:::lab Step 1 — Decompose first
+```prompt
+Read `output/variance-pack.xlsx` and `finance/budget-vs-actuals.csv`. Before building anything: propose the driver tree for a 12-month forecast of this P&L — which lines are driven by volume, which by rate, which are fixed, which are seasonal. List every assumption you would need from me, with the value you would default to and where that default comes from. Do not build the model yet.
+```
+
+- [ ] Read the driver tree and correct at least one assumption — there is always one
+:::
+
+:::lab Step 2 — Then build
+```prompt
+Good — with those corrections, build `output/forecast.xlsx`:
+- Assumptions tab: every driver in a labelled, editable cell, with a one-line note on its source
+- Forecast tab: 12 months, every line a LIVE FORMULA reading from the Assumptions tab and the actuals — no pasted values anywhere a formula could be
+- Sensitivity tab: the two assumptions the outcome is most sensitive to, shown at low / base / high
+
+Add a status line on the Assumptions tab: rows of actuals read, months forecast, and any line you could not model with the data available — stated, not smoothed over.
+```
+
+- [ ] Change one assumption cell and watch the forecast move — if it does not, the model is dead; re-brief with the live-formula instruction
+:::
+
+## Part 2 — The board pack (7 min)
+
+:::lab Step 3 — The deck
+```prompt
+BACKGROUND. I present to the leadership team next week. Sources: `output/variance-pack.xlsx`, `output/reconciliation-summary.md`, `output/forecast.xlsx`.
+
+RESULT. Produce `output/board-pack.pptx`, six slides:
+1. The headline and the single number that matters
+2. The month in numbers — budget vs actual with the waterfall
+3. The five variances that matter and their drivers
+4. Balance-sheet hygiene — reconciliation status, exceptions and their impact, plainly stated
+5. The forecast — base case with the two sensitivities
+6. What I want from the room: decisions, not information
+
+EDGES. Every number on every slide must come from the three source files — if a number is not in them, the slide does not get it. State every limitation plainly: no softening a miss into "broadly in line", no reframing a one-off as strategy. Speaker notes: three bullets a slide, maximum. Do not invent a trend the data does not show.
+
+FLAG on a final hidden slide: every number you were tempted to round or simplify, and what the exact figure is.
+```
+
+- [ ] The deck opens and the numbers match the workbooks — spot-check slide 2 against the waterfall
+- [ ] Slide 4 states the exceptions plainly rather than burying them
+- [ ] The flag slide exists and is honest
+:::
+
+## Part 3 — The proofreading pass (6 min)
+
+This is the pattern Anthropic's own teams use before anything ships: a **separate pass, fresh eyes, that traces every number to a verified source**. Run it as its own task so it is not marking its own homework.
+
+:::lab Step 4 — Fresh-eyes audit
+Start a **new** Cowork session (or task) so it has no memory of building the deck, and run:
+
+```prompt
+You are a proofreader with no stake in this deck being right. In `output/` you will find `board-pack.pptx` and its three sources: `variance-pack.xlsx`, `reconciliation-summary.md`, `forecast.xlsx`.
+
+For EVERY number in the deck: state the number, the slide, the exact source cell or line it comes from, and MATCH or MISMATCH. For every claim that is not a number — "driven by", "one-off", "on track" — state the evidence for it or mark it UNSUPPORTED.
+
+Produce `output/proofread-report.md`: the mismatches and unsupported claims first, then the full trace table. If everything checks out, say so — but only after actually tracing every number.
+```
+
+- [ ] The report traced every number, not a sample
+- [ ] Fix anything it caught, then re-run it once — clean second pass or it does not go out
+:::
+
+:::concept Why a fresh session
+The session that built the deck will defend the deck — it re-reads its own reasoning as confirmation. A fresh instance has no such loyalty; all it can see is the deliverable and the sources, which is exactly what your CFO's eye will see. This two-agent pattern — builder plus independent auditor — is the strongest verification habit in this course, and it costs one extra prompt.
+:::
+
+## Make it permanent
+
+- [ ] Save the proofreading brief — in Module 8 it becomes your **first finance Skill**, and it should be built before any automation
+- [ ] The whole chain — variance pack, reconciliation, pack, proofread — is your capstone candidate, and Module 8 puts the read-only parts on a schedule (writing to a Project, as scheduled tasks cannot reach local folders)
+
+```quiz
+Q: Why decompose the driver tree before building the forecast?
+- It is faster
++ Multi-step numeric work is where errors breed — agreeing the drivers first catches the wrong assumption before it is buried under twelve months of formulas
+- The xlsx format requires it
+- To produce more files
+> Chain the steps: decompose, agree, then build. Never one mega-prompt for a finished model.
+
+Q: What is the test that the forecast model is actually alive?
+- It has three tabs
++ Change one assumption cell and the forecast moves — if it does not, values were pasted and the model is dead
+- The file opens without errors
+- The sensitivity tab exists
+> An editable assumption that changes nothing is the tell for hard-coded values.
+
+Q: Why must the proofreading pass run in a fresh session?
+- To save context space
++ The session that built the deck defends the deck — an instance with no memory of building it traces numbers the way an outside reviewer would
+- Fresh sessions are faster
+- The pptx cannot be read twice in one session
+> Builder and auditor should never be the same pair of eyes. That is as true for AI as for people.
+
+Q: Slide 4 must state the reconciliation exceptions "plainly". What failure mode is that guarding against?
+- Overly long slides
++ Smoothing — a limitation softened into a positive framing, which in a board pack is a misrepresentation, not a style choice
+- Duplicate numbers
+- Missing speaker notes
+> The brief forbids it and the proofread checks for it. Both layers exist because the model does it by default.
+```
+
+:::try Next
+Your lane is done. Module 8 makes it repeatable: Skills, schedules, and handing the whole machine to a colleague.
+:::

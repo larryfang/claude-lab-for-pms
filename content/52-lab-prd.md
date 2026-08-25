@@ -116,7 +116,7 @@ The adversarial pass is not optional politeness towards the process. It is the o
 - [ ] Save the PRD brief with your team's actual PRD section names
 - [ ] Save the three-reviewer attack brief — it works on any document, not just PRDs
 - [ ] Note which section your engineers always ask about, and expand it in the template
-- [ ] Module 7 makes this a Skill: "PRD this brain-dump against this evidence"
+- [ ] Module 8 makes this a Skill: "PRD this brain-dump against this evidence"
 
 ```quiz
 Q: Why must you write the problem statement yourself?

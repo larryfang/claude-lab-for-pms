@@ -67,7 +67,7 @@ Describe the outcome, not the steps. Name the sources, set the rules, and ask to
 Everything else — Skills, schedules, Projects, connectors — is machinery for doing that repeatedly and at scale.
 
 :::try You are done
-That is the **💯 Completionist** badge if you have worked through everything — all three lanes, the fundamentals, and the capstone.
+That is the **💯 Completionist** badge if you have worked through everything — all four lanes, the fundamentals, and the capstone.
 
 Now go and give something a job.
 :::

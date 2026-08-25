@@ -128,7 +128,7 @@ You now have a three-step chain — hygiene, model, review — that you will wan
 - [ ] Save all three briefs together as one sequence
 - [ ] Note the stage weightings your company actually uses, and hard-code them into your saved version
 - [ ] Note your CRM's field names, so the next run does not need to guess
-- [ ] Module 7 turns this into one Skill and one scheduled Friday job
+- [ ] Module 8 turns this into one Skill and one scheduled Friday job
 
 ```quiz
 Q: Why run the hygiene pass before any analysis?

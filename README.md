@@ -2,7 +2,7 @@
 
 # ✦ Claude Lab
 
-### Hands-on, interactive, open-source courses for getting genuinely good at Claude — for **Sales, GTM & Product** *and* **developers**.
+### Hands-on, interactive, open-source courses for getting genuinely good at Claude — for **Sales, GTM, Product & Finance** *and* **developers**.
 
 Learn by *doing*: auto-saving checklists, instant-feedback quizzes, copy-paste prompts, and an **in-browser Claude Code terminal you can actually type into**.
 
@@ -22,7 +22,7 @@ It's built to be **forked**: swap in your company's examples, project keys, and 
 
 | Course | For | What you'll do |
 |---|---|---|
-| 🤝 **Claude Cowork for Sales, GTM & Product** | AEs, PMM/growth, product managers | Write **briefs** that work first time, connect **CRM/Jira/mail/docs**, ship real **deliverables** (decks, live-formula spreadsheets, docs), three **role lanes** of labs, build a **Skill**, put it on a **schedule**, verify before you send — *no code required* |
+| 🤝 **Claude Cowork for Sales, GTM, Product & Finance** | AEs, PMM/growth, product managers, finance & RevOps | Write **briefs** that work first time, connect **CRM/Jira/mail/docs**, ship real **deliverables** (decks, live-formula spreadsheets, docs), four **role lanes** of labs, build a **Skill**, put it on a **schedule**, verify before you send — *no code required* |
 | ⌨️ **Claude Code for Developers** | Engineers, new to Claude Code | Agentic mental model, **context engineering & CLAUDE.md**, Explore→Plan→Code→Commit, TDD, **subagents, hooks, MCP**, headless/CI, worktrees — with a **terminal simulator** |
 
 ~60 lessons across both tracks, grounded in current Anthropic docs and community best practices.
@@ -30,7 +30,7 @@ It's built to be **forked**: swap in your company's examples, project keys, and 
 ## ✨ Features
 
 - **Multi-course hub** with per-course progress, badges, and a course switcher
-- **Three role lanes** in the Cowork course — Sales, GTM and Product — so learners practise on the work they actually do
+- **Four role lanes** in the Cowork course — Sales, GTM, Product and Finance — so learners practise on the work they actually do
 - **Interactive terminal simulator** — a guided, in-browser Claude Code session learners type into (with copy-paste commands for their real terminal too)
 - **Hands-on labs** in every module, with auto-saving checklists
 - **Instant-feedback quizzes** and **copy-to-clipboard prompt/command cards**

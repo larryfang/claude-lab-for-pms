@@ -102,7 +102,7 @@ Two instructions in there do a lot of work.
 - [ ] Save your working brief into a note — this is your template now
 - [ ] Note which sections you always delete, and cut them from the template
 - [ ] Note which section you always wish were longer, and expand it
-- [ ] In Module 7, this becomes a Skill you invoke with a single line
+- [ ] In Module 8, this becomes a Skill you invoke with a single line
 
 ```quiz
 Q: What is the sharpest test of whether an account brief is genuinely researched?

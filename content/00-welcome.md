@@ -12,16 +12,17 @@ Every module has something you actually run in your own Claude Desktop. Reading 
 
 ## Who this is for
 
-Three roles, one tool, three different sets of pain. Pick your lane — you will spend most of your time in it, but the fundamentals and the capstone are shared.
+Four roles, one tool, four different sets of pain. Pick your lane — you will spend most of your time in it, but the fundamentals and the capstone are shared.
 
 | Lane | You are | The pain Cowork removes |
 |---|---|---|
 | 💼 **Sales** | AE, SE, sales manager | Pre-call research, pipeline hygiene, RFP answers, follow-up you never send |
 | 📣 **GTM** | PMM, growth, campaign lead | Launch kits, battlecards, campaign readouts, enablement nobody has time to write |
 | 🧭 **Product** | PM, product ops | Discovery synthesis, PRDs, stakeholder updates, the backlog nobody grooms |
+| 🧾 **Finance** | FP&A, controller, RevOps | Variance packs, reconciliations, chase emails, the board pack assembled at midnight |
 
 :::note Do the other lanes too — later
-The three lanes are deliberately different jobs, not the same lab in three costumes. If you sell, do Sales first. But an AE who works through the GTM lane understands why marketing writes what it writes, and a PM who works through the Sales lane writes better release notes. Come back for them.
+The lanes are deliberately different jobs, not the same lab in four costumes. If you sell, do Sales first. But an AE who works through the GTM lane understands why marketing writes what it writes, and a PM who works through the Finance lane never argues with a controller about a number again. Come back for them.
 :::
 
 ## What you will be able to do
@@ -52,7 +53,7 @@ Tick each box that is true:
 - [ ] I know which **lane** I am doing first
 
 :::warning The one rule
-**Never send Cowork's output to a customer, an exec, or a board without reading it.** Cowork is fast, tireless, and occasionally confidently wrong. Module 8 makes this a habit rather than a hope. Until then, treat everything it produces as a strong first draft by a smart new hire.
+**Never send Cowork's output to a customer, an exec, or a board without reading it.** Cowork is fast, tireless, and occasionally confidently wrong. Module 9 makes this a habit rather than a hope. Until then, treat everything it produces as a strong first draft by a smart new hire.
 :::
 
 ## The map

@@ -1,9 +1,9 @@
-# Brief Library — Sales · GTM · Product
+# Brief Library — Sales · GTM · Product · Finance
 
 Copy, paste, replace the `[BRACKETS]`. Every brief follows B.R.I.E.F. and asks for two artefacts.
 
 :::tip Before you use these
-Put your company's definitions in a Cowork **Project** (Module 7) and these get shorter, because the definitions stop needing repetition. Everything below assumes no Project, so it is self-contained.
+Put your company's definitions in a Cowork **Project** (Module 8) and these get shorter, because the definitions stop needing repetition. Everything below assumes no Project, so it is self-contained.
 :::
 
 ## Universal — works in any lane
@@ -263,6 +263,44 @@ For everything moved to Done in [PROJECT] in the last [N] days, produce: `output
 Use only the tracker and our linked feedback records. Never claim we shipped something not marked Done. Never claim a customer requested something without a record of it. Leave the note empty and flag the row if you cannot find their original wording.
 
 Then tell me how many resolved items had a linked customer request and how many did not.
+```
+
+---
+
+## 🧾 Finance
+
+### Month-end variance pack
+
+```prompt
+BACKGROUND. Month-end variance pack for leadership, from [BUDGET-VS-ACTUALS FILE] with line detail in [DETAIL FILE].
+
+RESULT. `output/variance-pack.xlsx` — Data tab (cleaned source rows, variance_usd and variance_pct as live formulas), Summary tab (totals by category and cost centre, formulas only), Waterfall tab (budget to actual: five largest favourable, five largest unfavourable, an "all other" line so the bridge ties exactly). And `output/variance-commentary.md`, two pages: status line (rows in/used/excluded, OK or PROBLEM); the headline; the five variances that matter, each decomposed into volume, rate, timing or one-off with line-level evidence cited; a FLAGS section; "what I cannot tell you from this data".
+
+EDGES. Never estimate a missing value — write "not recorded". Label every driver call evidence-based or hypothesis. State row counts on every total. No pasted values where a formula could be. Read-only on sources.
+
+Show me your plan first.
+```
+
+### Three-way reconciliation
+
+```prompt
+Reconcile [INVOICES], [PAYMENTS] and [BANK STATEMENT]. Produce `output/reconciliation.xlsx`: Matched tab (three-way matches with the fee explaining any gross-to-net gap); Exceptions tab (one row per item that does not tie: type, the row ids from each file, financial impact, what a human should check first); Control tab (totals and counts proving Matched + Exceptions accounts for every row in all three files).
+
+NEVER force a match. Plausible but not certain goes to Exceptions as suspected, with reasoning. Never estimate a missing value. Read-only on sources.
+```
+
+### Debtors chase drafts
+
+```prompt
+From [INVOICES FILE], find every open invoice past due and group: 1–30, 31–60, 61–90, 90+ days. Draft one chase email per customer in `output/chase-drafts/` — friendly, firm, escalation, final notice by bucket. Every draft states the exact invoice ids and amounts. Top of each draft: a DO NOT SEND line listing anything to verify first, including any customer appearing in the latest reconciliation exceptions.
+
+Do not send anything. Do not connect to email. Drafts on disk only.
+```
+
+### The proofreading pass
+
+```prompt
+You are a proofreader with no stake in this being right. Sources: [THE DELIVERABLE] and [ITS SOURCE FILES]. For EVERY number: the number, where it appears, the exact source cell or line, MATCH or MISMATCH. For every non-numeric claim ("driven by", "one-off", "on track"): the evidence, or UNSUPPORTED. Produce `output/proofread-report.md` — mismatches and unsupported claims first, then the full trace table. Run this in a fresh session that did not build the deliverable.
 ```
 
 ---

@@ -55,6 +55,20 @@ Leave everything loose in `product/`. Do not organise it.
 ```
 :::
 
+:::details 🧾 Finance — generate a fake spend ledger
+```prompt
+In the `finance/` subfolder, create realistic but entirely FICTIONAL practice data so I can learn on it. Invent all vendor names and numbers — do not use any real company.
+
+Create:
+- `expenses.csv` with 30 rows and columns: date, vendor, category, amount_usd, cost_centre, receipt_attached (y/n)
+  Make it deliberately messy: categories spelled inconsistently ("Software" / "software" / "SaaS"), three rows with a blank category, two amounts stored with commas (e.g. "1,250"), one exact duplicate row, and four rows with receipt_attached = n.
+- `budget.csv` with 8 rows: category, monthly_budget_usd — using the tidy category names.
+- `card-statement.txt` — a 12-line corporate-card statement excerpt that includes two charges not present in expenses.csv.
+
+Leave everything loose in `finance/`. Do not organise it.
+```
+:::
+
 - [ ] Cowork created the files
 - [ ] I opened the folder in Finder/Explorer and confirmed they are **really there**
 
@@ -124,6 +138,24 @@ Rules: every claim needs a quote or a ticket ID. If you infer something, label i
 ```
 :::
 
+:::details 🧾 Finance — the spend review
+```prompt
+Act as my FP&A analyst.
+
+Using everything in `finance/`, produce two files in `output/`:
+
+1. `expenses-clean.csv` — the expense data cleaned: consistent category names, amounts as plain numbers, the duplicate row removed and noted, plus a `data_quality_flag` column (blank category, missing receipt, or anything else suspicious about that row).
+
+2. `spend-review.md` — a spend review containing:
+   - A table of spend by category against `budget.csv`, with the variance and a flag on anything over budget
+   - The two charges on the card statement that never made it into the expense file, called out explicitly
+   - A "needs a human" section: every row with a missing receipt or blank category, listed with enough detail to fix
+   - A 4-sentence summary I could paste into Slack
+
+Rules: use only the data in `finance/`. Where a value is missing, say "not recorded" — never estimate. Show me your plan before you start.
+```
+:::
+
 - [ ] Cowork showed me a **plan** before acting
 - [ ] Both output files appeared in `output/`
 - [ ] I opened them and read them properly
@@ -170,7 +202,7 @@ Q: Why did the lab have Cowork generate its own fake data first?
 - To test your typing
 > Self-contained, zero-risk, and it demonstrates real file creation immediately.
 
-Q: All three lane briefs shared four features. Which set?
+Q: All the lane briefs shared four features. Which set?
 - Role, length, tone, deadline
 + A named outcome, named sources, a specified output format, and a request for the plan first
 - A greeting, a role, a threat, and a thank-you

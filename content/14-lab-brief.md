@@ -30,6 +30,12 @@ Read the customer interviews and tell me what we should build.
 ```
 :::
 
+:::details 🧾 Finance
+```prompt
+Look at the expense data and tell me how our spend is tracking.
+```
+:::
+
 - [ ] I ran it and read the output
 
 Now score what came back. Be honest:
@@ -122,6 +128,31 @@ INPUTS. Only the files in `product/`. Do not use the web.
 EDGES. Every claim needs a verbatim quote or a ticket ID. Label anything you inferred as "inference". Never estimate ARR or counts — write "not recorded". Write only to `output/`.
 
 FLAG separately rather than deciding: tickets with a blank category and how you handled them; any theme where the evidence is thinner than the ranking implies; anywhere a single loud customer drove a theme.
+
+Show me your plan before you start.
+```
+:::
+
+:::details 🧾 Finance — the real brief
+```prompt
+BACKGROUND. I own spend reporting. Our CFO asks two questions at month end: where are we over budget, and can I trust these numbers. I need answers that survive both.
+
+RESULT. Two files in `output/`:
+
+`expenses-clean.csv` — the expense data cleaned: consistent category names, amounts as plain numbers, the duplicate row removed and noted, plus a data_quality_flag column (blank category, missing receipt, duplicate, or other).
+
+`spend-review.md`, in this order:
+1. Headline — the state of spend in one sentence
+2. Table: spend by category vs budget from `budget.csv`, variance in USD and %, flagged where over
+3. The card-statement charges that never made it into the expense file, called out with dates and amounts
+4. Data hygiene — every row needing a human fix, with enough detail to fix it
+5. A four-sentence Slack summary I can paste
+
+INPUTS. Only the files in `finance/`. Do not use the web.
+
+EDGES. Never estimate a missing value — write "not recorded". State row counts in and out for every total. Write only to `output/`; do not modify anything in `finance/`.
+
+FLAG separately rather than deciding: how you normalised each inconsistent category; every row excluded from any total and why; anything on the card statement you could not explain.
 
 Show me your plan before you start.
 ```

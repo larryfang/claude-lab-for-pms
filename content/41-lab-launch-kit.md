@@ -105,7 +105,7 @@ Check specifically for this: find every limitation in your messaging house and r
 - [ ] Save the messaging-house brief — it is the reusable half
 - [ ] Note which of the eight artefacts your team actually uses, and cut the rest from your saved version
 - [ ] Note the artefacts you needed that were not in the list, and add them
-- [ ] Module 7 makes this a Skill you run per launch in one line
+- [ ] Module 8 makes this a Skill you run per launch in one line
 
 ```quiz
 Q: Why must the messaging house be reviewed by a human before generating the rest of the kit?

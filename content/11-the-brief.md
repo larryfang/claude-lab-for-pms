@@ -109,7 +109,7 @@ The questions it asks are the parts of your own thinking that were vague.
 
 ## Three habits that compound
 
-1. **Save your good briefs.** A brief that worked is an asset. Keep a note file. Module 7 turns the best of them into Skills.
+1. **Save your good briefs.** A brief that worked is an asset. Keep a note file. Module 8 turns the best of them into Skills.
 2. **Iterate on the brief, not the output.** When a run disappoints, resist fixing the document by hand. Ask "which letter was missing?" and fix that. The next hundred runs get better.
 3. **Ask for the thing you actually want.** People ask for a summary when they want a decision, a report when they want a list of what is broken. Say the real thing.
 

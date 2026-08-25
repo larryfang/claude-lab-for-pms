@@ -155,5 +155,5 @@ Q: Why ask Cowork to flag "questions where a truthful answer is likely to lose u
 ```
 
 :::try Module complete
-That is your **💼 The Closer** badge. Now either carry on to the GTM lane, or jump to Module 7 to make these plays repeatable.
+That is your **💼 The Closer** badge. Now either carry on to the GTM lane, or jump to Module 8 to make these plays repeatable.
 :::

@@ -133,7 +133,7 @@ This chain — integrity, model, readout — is a perfect scheduled task, becaus
 - [ ] Save all three briefs as a sequence
 - [ ] Note your actual channel taxonomy and hard-code it, so it does not get re-derived each run
 - [ ] Note your funnel stage definitions
-- [ ] Module 7 puts this on a schedule and has it report its own failures
+- [ ] Module 8 puts this on a schedule and has it report its own failures
 
 ```quiz
 Q: Why does every ranking claim need its sample size stated next to it?
@@ -166,5 +166,5 @@ Q: Marketing reports 40 opportunities; the CRM says 27. What is the right move b
 ```
 
 :::try Module complete
-That is your **📣 GTM Operator** badge. Next: the Product lane, or jump to Module 7 to make these repeatable.
+That is your **📣 GTM Operator** badge. Next: the Product lane, or jump to Module 8 to make these repeatable.
 :::

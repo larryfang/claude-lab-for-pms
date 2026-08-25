@@ -20,6 +20,7 @@ The difference from a one-off session: open the Project next month and Claude al
 | 💼 **Sales** | One per major account or pursuit · your territory · the RFP answer bank |
 | 📣 **GTM** | One per launch · competitive intelligence · the messaging system of record |
 | 🧭 **Product** | One per initiative or epic · the discovery evidence base · the quarterly planning cycle |
+| 🧾 **Finance** | The month-end close · budget season · the audit evidence pack |
 
 The test: **would you have to re-explain the same context if you started fresh?** If yes, it is a Project.
 

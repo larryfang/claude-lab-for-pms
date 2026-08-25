@@ -83,7 +83,7 @@ Being clear about this protects you.
 :::warning The credibility risk
 The fastest way to lose a deal with AI-assisted selling is a confidently wrong detail in a customer-facing document — a competitor's price that is out of date, a compliance claim your product does not support, a "we understand your team of 400" when they have 90.
 
-One wrong fact in a customer-facing doc costs more than the ten hours the tool saved you that week. Module 8 is the discipline that prevents it, and it is not optional in this lane.
+One wrong fact in a customer-facing doc costs more than the ten hours the tool saved you that week. Module 9 is the discipline that prevents it, and it is not optional in this lane.
 :::
 
 ## Pick your first play
@@ -94,7 +94,7 @@ You are about to do three labs. Before that, decide which of the six is worth mo
 - [ ] Which do I most often skip because there is no time?
 - [ ] Which one, if it were reliably good, would change my week?
 
-That third answer is your first Skill in Module 7.
+That third answer is your first Skill in Module 8.
 
 ```quiz
 Q: Why is "flag the data quality problems" the crucial addition to a pipeline analysis brief?

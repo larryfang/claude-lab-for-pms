@@ -27,7 +27,7 @@ You are going to create a folder that contains nothing you care about, and do al
 
 :::lab Step 2 — Make a practice workspace
 - [ ] Create a folder on your Desktop called `Cowork-Lab`
-- [ ] Inside it, create four subfolders: `sales`, `gtm`, `product`, `output`
+- [ ] Inside it, create five subfolders: `sales`, `gtm`, `product`, `finance`, `output`
 - [ ] Drop in **copies** — never originals — of two or three real work files you would not mind losing (an old export, a stale deck, some meeting notes)
 - [ ] In Cowork, **grant access to `Cowork-Lab`** and nothing above it
 :::
