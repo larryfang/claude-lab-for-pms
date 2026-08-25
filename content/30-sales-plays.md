@@ -86,6 +86,10 @@ The fastest way to lose a deal with AI-assisted selling is a confidently wrong d
 One wrong fact in a customer-facing doc costs more than the ten hours the tool saved you that week. Module 9 is the discipline that prevents it, and it is not optional in this lane.
 :::
 
+:::tip Plugin first, custom second
+Anthropic ships an official **Sales plugin** (availability varies by plan — look under **Customize → Plugins**): `/pipeline-review` flags stale deals and drafts a weekly action plan, `/forecast` produces a weighted best/likely/worst view, `/call-summary` turns a transcript into actions and a follow-up draft. Install it and run the commands on your own data — then use the labs here to understand what a good version does, and customise where the ready-made one misses your definitions.
+:::
+
 ## Pick your first play
 
 You are about to do three labs. Before that, decide which of the six is worth most **to you**:

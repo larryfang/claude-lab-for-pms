@@ -187,6 +187,20 @@ Sometimes it is. Ask it to show the evidence, then decide yourself. What you mus
 The ownership test: if you cannot explain the decision without re-reading the document, you have not made it.
 :::
 
+## Limits worth knowing
+
+:::details Connectors can return less data than exists
+Connector queries are often paginated or capped — the first page, the first few hundred rows — and a run can build a confident analysis on a partial pull. For any dataset where completeness matters, prefer an **exported file** dropped into the workspace, and always ask: *"How many records matched in total, and how many did you retrieve?"* If those two numbers differ, the analysis is partial and must say so.
+:::
+
+:::details Usage limits are shared, and big runs spend them
+Your plan's usage is shared across Chat, Cowork and Claude Code, on a rolling session window plus a weekly cap (the exact numbers depend on plan and change — check your plan's usage page). A forty-account fan-out or a long unattended run spends real budget. Practical consequences: test fan-outs on two items before forty, schedule heavy jobs thoughtfully, and if a "limit reached" message appears and never clears when it should, that is a support conversation, not something to engineer around.
+:::
+
+:::details It does not remember your last session
+Outside a Project, each Cowork session starts fresh — it does not recall what you built together last week. Durable reuse comes from the things designed for it: saved **files**, **Skills** for the how, and **Project** instructions and memory for the context. If you are re-explaining the same thing in every session, that is the signal to move it into one of those three.
+:::
+
 ## Getting more out of it
 
 :::details How do I make output sound like me?

@@ -91,6 +91,7 @@ Two things to notice. **"Same structure in every file"** makes fourteen document
 - If the deliverable is going into Confluence, Notion or a wiki, ask for **Markdown**. It pastes cleanly; a `.docx` does not.
 - If it feeds a system, ask for **CSV** and specify the exact column headers that system expects.
 - If a person will edit it collaboratively, ask for a format your team actually uses. There is no prize for a beautiful file nobody can open.
+- If you live in a workbook all day, there is also the **Claude for Excel add-in**: it works on the open workbook directly, reads the live formulas, and edits without breaking cell dependencies. For heavy spreadsheet work — finance and RevOps especially — editing the real file often beats generating a new one.
 
 :::warning Charts, and being honest about them
 Cowork can produce charts in spreadsheets and decks. Check the axes, the units, and whether the chart type matches the data — a line chart across unordered categories looks fine and means nothing. A chart is an argument in visual form, and a wrong one is more persuasive than a wrong sentence.

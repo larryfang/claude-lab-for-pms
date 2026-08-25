@@ -79,6 +79,12 @@ A self-audit will find real problems — genuinely, it is worth running. It cann
 Your three-number trace catches that. Nothing else does.
 :::
 
+## The fresh-eyes upgrade
+
+The strongest version of the self-audit is not to let the same session mark its own homework. Start a **new** Cowork session — one with no memory of building the deliverable — point it at the output and the sources, and run the same audit brief. The builder session re-reads its own reasoning as confirmation; a fresh instance can only see what an outside reviewer sees.
+
+This builder-plus-independent-auditor pattern is how Anthropic's own teams check reports before they ship, and it costs one extra prompt. The finance lane's board-pack lab walks through it end to end — and in Module 8, that audit brief is worth turning into your first Skill, so the proofread happens by name, every time, before anything goes out.
+
 ## The red-team pass, for high-stakes work
 
 For anything going to a board, a customer, or a decision you cannot reverse:

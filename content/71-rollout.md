@@ -35,6 +35,7 @@ That last item is the most persuasive thing you will have. "It got this wrong, h
 - [ ] Have them run it **without you in the room** — this is the whole test
 - [ ] Fix whatever confused them, in the Skill, not in a conversation
 - [ ] Then three more people, same package
+- [ ] A standing 20-minute weekly check-in with them while it beds in: what worked, what confused, what to fix in the Skill
 - [ ] Establish the shared standard: the format, the definitions, the verification checklist
 
 :::warning The unsupervised run is the only real test

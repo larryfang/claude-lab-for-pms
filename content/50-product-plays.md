@@ -88,6 +88,10 @@ A generated roadmap looks exactly like a considered roadmap. Same headings, same
 The defence is simple and you must actually do it: **make the evidence traceable and then form your own view.** If you cannot explain a ranking without re-reading the document that produced it, it is not your ranking.
 :::
 
+:::tip Plugin first, custom second
+Anthropic ships an official **Product Management plugin** (availability varies by plan — look under **Customize → Plugins**): `/write-spec` for PRDs, `/roadmap-update` in Now/Next/Later, quarterly or OKR formats, `/stakeholder-update`, `/synthesize-research`, `/competitive-brief` and `/metrics-review`. Install it and run the commands on your own material — then use the labs here to understand what a good version does, and customise where the ready-made one misses your evidence standards.
+:::
+
 ## Pick your play
 
 - [ ] Which of these six do I do worst because there is never time?

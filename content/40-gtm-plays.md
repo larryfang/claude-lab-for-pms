@@ -82,6 +82,10 @@ Cowork's greatest strength in GTM is that it makes all eight launch artefacts sa
 Get one human to argue with the messaging house **before** generating anything from it. That review is the highest-leverage thirty minutes in the whole launch.
 :::
 
+:::tip Plugin first, custom second
+Anthropic ships an official **Marketing plugin** (availability varies by plan — look under **Customize → Plugins**): `/campaign-plan`, `/draft-content`, `/brand-review` against your uploaded style guide, `/competitive-brief`, `/performance-report`, `/email-sequence` and `/seo-audit`. Install it and run the commands on your own material — then use the labs here to understand what a good version does, and customise where the ready-made one misses your voice and definitions.
+:::
+
 ```quiz
 Q: What is Cowork's structural advantage in producing a launch kit?
 - It writes faster

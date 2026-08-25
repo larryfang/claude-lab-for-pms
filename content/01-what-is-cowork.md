@@ -53,8 +53,8 @@ You read the plan, approve, walk away, come back to a finished document.
 | **Cowork** | You want a **finished multi-step job** with real output files | "Build me a deal review pack for all 14 open opps" |
 | **Claude Code** | The job is a **codebase** | "Add rate limiting to this service" |
 
-:::tip The Cowork test
-Reach for Cowork when the job is **multi-step**, **touches files or systems**, produces a **deliverable**, and you would happily walk away and check the result later.
+:::tip The Cowork test — five ingredients
+Anthropic's own checklist for a good Cowork task: it draws on **multiple inputs**, it produces a **file deliverable**, it **recurs**, you have a **clear quality bar** (you already know what good looks like, so you can verify fast), and the middle steps are **boring** — extracting, compiling, reconciling. Three or more of these and Cowork is the right surface.
 
 ✅ Good fits
 - "Research these 12 accounts and give me a pre-call brief each."
