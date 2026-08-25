@@ -18,7 +18,13 @@ Two things make this more than a sidebar gimmick:
 - **Your Skills work there.** Type **`/`** in the add-in sidebar and your installed skills appear — `/deck-check` before a QBR, `/variance-pack` in the live workbook — and skills also fire automatically when relevant ([office docs](https://claude.com/docs/office-agents/connectors-and-skills)). The skill you built in Module 8 follows you into Office.
 - **One conversation spans the apps.** Context carries across your open Excel, PowerPoint, Word and Outlook files — "use the Q3 numbers from the workbook in slide 4" works.
 
-Install from Microsoft AppSource ("Claude for Microsoft 365"); on managed plans your admin deploys it centrally. Google-side there is no equivalent sidebar for Docs/Sheets — the route there is the Drive/Gmail/Calendar connectors from Module 3.
+Google-side there is no equivalent sidebar for Docs/Sheets — the route there is the Drive/Gmail/Calendar connectors from Module 3.
+
+:::warning The reality check: your IT decides, not you
+On a company Microsoft 365 tenant, Office add-ins are **admin-controlled** — most organisations block self-install from AppSource, and "Claude for Microsoft 365" reaches you only when IT deploys it centrally (Microsoft 365 admin center → Integrated apps). So this feature needs **two approvals that are often confused**: your Claude plan (the Anthropic side, which you may already have) *and* the add-in deployment (the Microsoft side, which many companies have not done). If typing `/` in Office shows nothing, or the add-in will not install, that is a policy gate — not a bug, and not something to work around with a personal account.
+
+The move is the same one Module 3 taught for a missing connector: **ask IT with a specific job and a specific benefit** — "the close commentary takes finance two days in Excel; the add-in cuts it to hours; here is Anthropic's admin deployment doc" beats "can we have the AI thing". And until the answer is yes, **nothing in this course is blocked**: export the workbook, drop it in your Cowork folder, and every lab works exactly as written — that file-based path is what the four lanes are built on.
+:::
 
 :::tip The lane pairings
 💼 Sales → **Outlook** (triage + drafted follow-ups you approve) · 📣 GTM → **PowerPoint** (launch decks in your template) · 🧭 Product → **Word** (PRDs revised in place) · 🧾 Finance → **Excel** (this is the surface the finance lane kept pointing at).
@@ -50,7 +56,14 @@ Q: You spend close week inside a 40-tab workbook. Where should Claude meet you?
 - Export the workbook and upload it to chat every time
 - Screenshots of each tab
 - Retype the numbers into Cowork
-> The add-ins work on the live file. Exporting copies is the pattern this lesson retires.
+> The add-in works on the live file — where IT has deployed it. Until then, the export-to-Cowork path does the same jobs on a copy.
+
+Q: The `/` menu shows nothing in Excel at work, though your colleague at another company has it. Most likely cause?
++ Your tenant's IT has not deployed the add-in — it is admin-controlled on company M365, so this is a policy request, not a troubleshooting session
+- Your Excel is too old
+- Skills do not work in Excel
+- You need to reinstall Windows
+> Two approvals: the Claude plan (Anthropic side) and the add-in deployment (Microsoft side). Ask IT with a specific job, and use file exports meanwhile.
 
 Q: What happens when Claude for Outlook writes an email for you?
 + It lands as an unsent draft for your review — the human send gate stays yours

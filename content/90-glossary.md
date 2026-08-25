@@ -114,6 +114,6 @@ Every term used in this lab, in one sentence each.
 
 **Claude Code** — the terminal-based agent for codebases. A separate course in this lab.
 
-**Claude for Excel** — the add-in that works on an open workbook directly: reads live formulas, edits without breaking dependencies, debugs formula errors. The better surface for heavy spreadsheet work.
+**Claude for Excel** — the add-in that works on an open workbook directly: reads live formulas, edits without breaking dependencies, debugs formula errors. The better surface for heavy spreadsheet work — deployed by your IT admin on company Microsoft 365 tenants, so its absence is a policy request, not a bug.
 
 **Web and mobile Cowork (beta)** — Cowork also runs on claude.ai and the mobile apps, without local-folder access. The product ships fast and evolves quickly, so screens and features shift; the concepts in this course do not.
