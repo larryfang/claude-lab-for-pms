@@ -126,6 +126,8 @@ $ npm test
 
 > ⚠️ **Authoring gotcha:** the Markdown engine is intentionally tiny. Avoid nesting triple-backtick code fences *inside* another fence. To show example `SKILL.md` or config, use a single fenced block (the content inside can contain `---`, headings, etc., just not another set of ```` ``` ````).
 
+> ⚠️ **Related:** inside a `:::` container, a code fence whose body contains a literal `:::` line will confuse the container's depth counting (it is fence-blind) and close or extend the block incorrectly. Keep literal `:::` examples out of fences that sit inside containers.
+
 ## Shipping a JS or CSS change
 
 `index.html` loads `styles.css` and the three JS files with a `?v=` query. Browsers cache
