@@ -64,10 +64,10 @@ Long run, many files. By file thirty it is applying subtly different criteria th
 **Detection:** compare the first and last items it produced. They should feel like the same author.
 
 ### 4. The Eager Rewrite
-You asked it to organise a folder. It also renamed your files, "improved" a document, and deleted two things it judged redundant.
+You asked it to organise a folder. It also renamed your files, "improved" a document, and overwrote a version you needed. (Permanent *deletions* always trigger a permission prompt first — which is one more reason to read prompts before clicking Allow. Edits, moves, renames and overwrites do not.)
 
 **Prevention:** *"Write only to `output/`. Do not modify, rename, or delete anything in the source folders."* Plus: work on copies.
-**Detection:** you cannot detect this after the fact. Prevent it.
+**Detection:** an overwrite or rename is very hard to detect after the fact. Prevent it.
 
 :::warning The Eager Rewrite is the only one that is not recoverable
 The other three cost you a re-run. This one costs you data. Copies, narrow scope, explicit write boundaries — every time, even when you are in a hurry. Especially when you are in a hurry.

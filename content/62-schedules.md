@@ -6,7 +6,7 @@ Both are genuinely powerful. Both have a specific failure mode worth understandi
 
 ## Part 1 — Scheduled tasks
 
-A saved job that runs on a cadence. Every Monday at 8am, the first of the month, every weekday at 6pm.
+A saved job that runs on a cadence. Every Monday at 8am, every weekday at 6pm, every morning before you start.
 
 ### What is worth scheduling
 
@@ -34,7 +34,7 @@ The difference from an interactive brief: it has to handle the boring cases, bec
 ```prompt
 Every Monday at 8am.
 
-Produce `output/weekly/pipeline-hygiene-YYYY-MM-DD.md` from the CRM, listing only what needs attention: deals with no logged activity in 21 days, deals with a close date in the past, deals with no next step, and deals where the amount or stage changed since last week's file in `output/weekly/`.
+Produce a file `pipeline-hygiene-YYYY-MM-DD.md` in this Project's files, from the CRM, listing only what needs attention: deals with no logged activity in 21 days, deals with a close date in the past, deals with no next step, and deals where the amount or stage changed since last week's file in this Project.
 
 Compare against last week's file. Report only the DELTA — what is newly a problem, and what has been fixed since last week. If the folder has no previous file, say "first run, no comparison available".
 
@@ -44,8 +44,12 @@ If you cannot reach the CRM, if it returns zero records, or if anything else pre
 
 If nothing needs attention, write "Nothing needs attention this week" and the status line. Do not pad the file.
 
-Read-only. Never modify the CRM. Write only to `output/weekly/`.
+Read-only. Never modify the CRM. Write only the report file, nothing else.
 ```
+
+:::warning Scheduled runs cannot see your local folders
+Scheduled tasks run remotely on Anthropic's infrastructure — they work with your **connectors and the files saved in your Claude account** (a Project is the natural home), and they *cannot* read or write a folder on your computer, like `output/weekly/`. So: create the schedule **inside a Project** and have it write its report to the Project's files, as the brief above does. If a job genuinely must touch local files, keep it manual and run it from the desktop app.
+:::
 
 Four things there earn their place:
 
@@ -64,7 +68,7 @@ If you have not read the last three outputs of a scheduled job, delete the job. 
 
 ### Practical notes
 
-- Scheduled runs go through the desktop app, so they generally need your machine awake and signed in. A job set for 8am Monday may run when you open your laptop, not at 8am.
+- Scheduled tasks run remotely, on their cadence, even when your computer is asleep or the app is closed. Check the run history under **Scheduled** in the sidebar; when a run fails, the usual cause is an expired connector token, not your machine being off.
 - Time zones matter. Check what your schedule is set relative to.
 - Start with **one** scheduled job. Get it right, read its output for a month, then add a second.
 

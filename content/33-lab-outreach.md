@@ -28,7 +28,7 @@ RESULT. For each account, a section in `output/outreach.md`:
 
 Then `output/outreach-log.csv`: account, recipient, title, hook, hook_source, hook_confidence, ready_to_send (yes/no).
 
-INPUTS. My CRM records, my past email with that domain, notes in `accounts/`, and each company's public website and news. Nothing else.
+INPUTS. My CRM records, my past email with that domain, notes in `sales/` (or your `accounts/` folder if you keep one), and each company's public website and news. Nothing else.
 
 EDGES. Every hook must be sourced to a URL with the date, or a named file. If you cannot find a genuine, specific hook for an account, write "NO HOOK FOUND" and skip the emails for it — do not substitute generic industry commentary or flattery. Never invent a mutual connection, a shared event, a stat about their business, or a customer of ours. Do not use my company's customer names unless they appear in a file I gave you. Do not send anything.
 

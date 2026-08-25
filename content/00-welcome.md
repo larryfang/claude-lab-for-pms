@@ -45,9 +45,9 @@ The three lanes are deliberately different jobs, not the same lab in three costu
 
 Tick each box that is true:
 
-- [ ] I have **Claude Desktop** installed (macOS or Windows) and I am signed in
+- [ ] I have **Claude Desktop** installed (macOS or Windows) and I am signed in — Cowork also runs on web and mobile, but this course's local-folder labs need the desktop app
 - [ ] I am on a **paid plan** — Pro, Max, Team or Enterprise
-- [ ] I can see a **Cowork** entry in the sidebar (if not, the next lessons cover it)
+- [ ] I can switch the **message box** from Chat to **Cowork** (if not, the next lessons cover it)
 - [ ] I have access to *at least one* real work system — CRM, Jira, Drive, Gmail or Slack
 - [ ] I know which **lane** I am doing first
 

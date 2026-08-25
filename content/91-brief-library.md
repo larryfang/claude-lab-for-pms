@@ -68,7 +68,7 @@ BACKGROUND. I am an AE. I have a call with [ACCOUNT] on [DATE] with [NAME, TITLE
 
 RESULT. `output/briefs/[account]-brief.md`, two pages maximum: (1) Snapshot — industry, size, HQ, what they do, in four lines. (2) Why now — trigger events with source and date. (3) What we already know — CRM history, past email, prior notes, each with its source named. (4) The people — who I am meeting, what they likely own, who else is in the buying group. (5) Likely pain — a hypothesis tied to specific evidence, labelled as a hypothesis. (6) Three questions specific to this account. (7) Risks and unknowns. (8) Sources with dates.
 
-INPUTS. Our CRM record, my email with their domain, notes in `accounts/`, their public website. Nothing else.
+INPUTS. Our CRM record, my email with their domain, notes in `sales/` (or your `accounts/` folder if you keep one), their public website. Nothing else.
 
 EDGES. Every factual claim needs a URL with the date read or a named file. Never invent a headcount, revenue figure, funding round, or named person. Do not draft or send any email. Read-only on the CRM.
 
@@ -269,12 +269,12 @@ Then tell me how many resolved items had a linked customer request and how many 
 
 ## Scheduled-job wrapper
 
-Add this to any brief you put on a schedule:
+Add this to any brief you put on a schedule. Remember: scheduled tasks run remotely against your connectors and the files in your Claude account — create the schedule inside a Project and write the report to the Project's files, not to a local folder.
 
 ```prompt
 Every [DAY] at [TIME].
 
-Compare against the previous file in `output/weekly/` and report only the DELTA — what is newly a problem and what has been fixed. If there is no previous file, say "first run, no comparison available".
+Compare against the previous report file in this Project and report only the DELTA — what is newly a problem and what has been fixed. If there is no previous file, say "first run, no comparison available".
 
 Start the file with a status line: date, records queried, records returned, and OK or PROBLEM.
 
@@ -282,5 +282,5 @@ If any source is unreachable, returns zero records, or anything else prevents a 
 
 If nothing needs attention, write "Nothing needs attention this week" plus the status line, and stop. Do not pad the file.
 
-Read-only on every source system. Write only to `output/weekly/`.
+Read-only on every source system. Write only the report file, nothing else.
 ```

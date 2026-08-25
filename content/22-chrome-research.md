@@ -4,6 +4,10 @@ Some of the most valuable inputs for all three lanes are not in a folder or a CR
 
 **Claude in Chrome** is a browser extension that lets Claude read and act on web pages in your own browser session — logged in as you, seeing what you see.
 
+:::note Two Chrome surfaces
+This lesson covers the **extension** (availability varies by plan). There is also a Cowork **side panel** in Chrome — on Max and Team, rolling out more widely — that runs full Cowork sessions, with your skills and connectors, next to the page you are reading. If you have it, everything in this lesson applies there too.
+:::
+
 ## What it gives you
 
 - **Read pages you can see.** Including things behind your own login that no public scraper can reach.

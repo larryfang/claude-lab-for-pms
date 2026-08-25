@@ -120,7 +120,7 @@ Move anything that fails (a), (b) or (d) into the DO NOT SAY section. Then tell 
 :::
 
 :::tip The survival rate is your quality signal
-A first-pass battlecard typically loses 20–40% of its claims to this filter. That is a healthy number and exactly what you want to discover before a rep is on a call, not after.
+A healthy first-pass battlecard loses a meaningful share of its claims to this filter. That is exactly what you want to discover before a rep is on a call, not after.
 
 If nothing failed the filter, the filter was not applied honestly. Re-run it and be harsher.
 :::
@@ -158,7 +158,7 @@ Q: What does OBSERVED / INFERRED labelling in the research file achieve?
 
 Q: Your safety filter rejected nothing at all. What is the most likely explanation?
 - The battlecard is excellent
-+ The filter was not applied honestly — a healthy first pass typically loses 20–40% of its claims
++ The filter was not applied honestly — a healthy first pass loses a meaningful share of its claims
 - The research was too narrow
 - The competitor has no public information
 > Re-run it and be harsher. Discovering this before a rep is on a call is the entire value.

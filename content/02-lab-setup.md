@@ -5,16 +5,16 @@ Twelve minutes to a working, safe Cowork setup. Do not skip the sandbox part —
 ## Part 1 — Find Cowork (3 min)
 
 :::lab Step 1 — Open it
-- [ ] Open **Claude Desktop** (not the browser — Cowork needs the app)
-- [ ] Look in the sidebar for **Cowork**
-- [ ] Click it. You should land on a screen that asks you to pick a folder or start a task
+- [ ] Open **Claude Desktop**. (Cowork also runs on web and mobile, but this course's labs use local folders, which only the desktop app can reach.)
+- [ ] In the **message box**, switch from Chat to **Cowork** — Chat and Cowork share one home
+- [ ] You should be able to pick a folder or start a task
 :::
 
 :::details I cannot see Cowork
 Check, in order:
 
 1. **Plan** — Cowork needs Pro, Max, Team or Enterprise. Free plans do not have it.
-2. **App version** — quit fully and reopen, or reinstall from `claude.ai/download`. Cowork is a research preview and ships fast.
+2. **App version** — quit fully and reopen, or reinstall from `claude.com/download`. Cowork ships fast; stale builds miss features.
 3. **Team/Enterprise admin settings** — on managed plans an admin may not have enabled it yet. That is a one-line ask: *"Please enable Cowork for my seat."*
 4. **Region / rollout** — availability has expanded in waves.
 
@@ -33,7 +33,7 @@ You are going to create a folder that contains nothing you care about, and do al
 :::
 
 :::warning Why "copies, never originals"
-Cowork can create, edit, move and delete files in the folder you grant. That is the whole value. It also means a badly-worded brief can genuinely reorganise your work. Grant the narrowest folder that lets the job get done — never your home directory, never `Documents`, never a synced Drive root you have not thought about.
+Cowork can create, edit, move and rename files in the folder you grant. That is the whole value. It also means a badly-worded brief can genuinely reorganise or overwrite your work — and unlike deletions, which always trigger a permission prompt before anything is permanently removed, an edit or a rename does not. Grant the narrowest folder that lets the job get done — never your home directory, never `Documents`, never a synced Drive root you have not thought about.
 :::
 
 ## Part 3 — Set your guardrails (3 min)
@@ -43,6 +43,10 @@ Two habits, adopted now, will save you later.
 :::lab Step 3 — Adopt the two habits
 - [ ] **Habit 1: always ask for the plan.** End briefs with *"Show me your plan before you start."* For anything destructive, add *"and wait for my approval."*
 - [ ] **Habit 2: write to `output/`, read from everywhere else.** Tell Cowork where deliverables go. It keeps source and result separate, so a bad run is one folder to delete.
+:::
+
+:::tip Approval modes
+Cowork has three approval modes — **Manually approve**, **Automatically approve**, and **Skip all approvals**. While you are learning, stay on **Manually approve**: it is the setting that makes Habit 1 real, because you see and confirm each consequential action before it happens.
 :::
 
 Try it on something harmless:
@@ -63,7 +67,7 @@ Two things. One: the access grant works and it is scoped where you think it is. 
 Before you point Cowork at company data, know what is already wired up.
 
 :::lab Step 4 — Audit your connectors
-- [ ] Open **Settings → Connectors** (label may vary)
+- [ ] Open **Customize → Connectors** (in Cowork; on claude.ai it is under Settings → Connectors)
 - [ ] Write down, in a note, every connector already enabled and what it can reach
 - [ ] Disable anything you do not recognise or do not need this week
 :::

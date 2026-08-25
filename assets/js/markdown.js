@@ -279,6 +279,7 @@
 
       const buf = [];
       while (i < lines.length && !/^\s*$/.test(lines[i]) && !isBlockStart(lines[i])) { buf.push(lines[i]); i++; }
+      if (!buf.length) { buf.push(lines[i]); i++; } // a block-start line no handler consumed: emit as text rather than loop forever
       out.push("<p>" + parseInline(buf.join("\n").trim()).replace(/\n/g, " ") + "</p>");
     }
     return out.join("\n");

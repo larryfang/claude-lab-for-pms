@@ -67,7 +67,7 @@ From the call notes in `calls/acme-2026-08-20.txt`, produce `output/acme-map.md`
 **Why it works:** it needs synthesis across CRM history, market signals, and product fit — lots of sources, one document, no ambiguity about the format.
 
 ```prompt
-Using our CRM data for my territory plus the account notes in `accounts/`, produce `output/territory-plan.md`: (1) my book segmented by ARR and expansion potential with the evidence for each judgement, (2) the ten accounts with the strongest expansion signal and what the signal is, (3) the five most likely churn risks and why, (4) whitespace — products they do not have that similar accounts do buy, (5) a ranked list of where I should spend my time next quarter. Every judgement needs a data point behind it. Flag any account where the CRM data is too thin to assess.
+Using our CRM data for my territory plus the account notes in `sales/` (or your `accounts/` folder if you keep one), produce `output/territory-plan.md`: (1) my book segmented by ARR and expansion potential with the evidence for each judgement, (2) the ten accounts with the strongest expansion signal and what the signal is, (3) the five most likely churn risks and why, (4) whitespace — products they do not have that similar accounts do buy, (5) a ranked list of where I should spend my time next quarter. Every judgement needs a data point behind it. Flag any account where the CRM data is too thin to assess.
 ```
 
 ## What Cowork must not do in sales

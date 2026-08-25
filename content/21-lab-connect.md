@@ -17,7 +17,7 @@ Do the connector audit and write your six data rules from the last lesson. If yo
 | 🧭 Product | Jira or Linear |
 
 :::lab Step 1 — Add the connector
-- [ ] **Settings → Connectors** (label may vary) → find your system → **Connect**
+- [ ] **Customize → Connectors** (on claude.ai: Settings → Connectors) → find your system → **Connect**
 - [ ] Complete the OAuth sign-in in the browser window that opens
 - [ ] **Read the consent screen.** Actually read it. Note whether it is asking for read or read-write
 - [ ] Return to Claude and confirm the connector shows as connected
@@ -119,7 +119,7 @@ Check, in order: are you querying the right instance or workspace (production ve
 :::
 
 :::details It says it cannot access the connector mid-run
-Auth tokens expire — commonly every 30 to 90 days, sometimes sooner. Reconnect in Settings. If a scheduled task started failing silently, this is usually why, which is a good argument for scheduled jobs that report their own failures.
+Auth tokens expire — commonly every 30 to 90 days, sometimes sooner. Reconnect under Customize → Connectors. If a scheduled task started failing silently, this is usually why, which is a good argument for scheduled jobs that report their own failures.
 :::
 
 :::details It returned fewer records than I expected

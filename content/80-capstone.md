@@ -134,7 +134,8 @@ One file per item that needs individual attention — per at-risk deal, per comp
 - [ ] Add the explicit failure path: *"If any source is unreachable or returns zero records, still write the file, put PROBLEM in the status line, state exactly what failed, and write nothing else. Never write a normal-looking report from missing data."*
 - [ ] Add the delta instruction: compare against last week's file and report only what changed
 - [ ] Add the empty case: *"If nothing needs attention, say so in one line and stop."*
-- [ ] Confirm it is **read-only** on every source system and writes only to `output/weekly/`
+- [ ] Confirm it is **read-only** on every source system and writes only its own report file
+- [ ] Move the job into a **Project** and point its output at the Project's files — scheduled tasks run remotely against connectors and files in your Claude account, and **cannot reach a local folder** like `output/weekly/`
 - [ ] Schedule it for Monday 8am
 - [ ] Run it **manually** once more and read the whole output
 :::

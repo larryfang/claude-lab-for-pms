@@ -53,7 +53,7 @@ Then put a quarterly reminder in your calendar for that review. Twenty minutes, 
 
 ## Where to keep learning
 
-- **The official docs** are the source of truth for anything that changed since this lab was written: `claude.com/docs`. Cowork is a research preview and it moves.
+- **The official docs** are the source of truth for anything that changed since this lab was written: `claude.com/docs`. Cowork ships fast and it moves.
 - **Read your own outputs critically.** Your best teacher is the error you find in your own deliverable at 9pm before a review.
 - **Talk to whoever else at your company is doing this.** The most useful thing you will exchange is not prompts; it is the definitions and reference files that encode how your company actually works.
 - **The other lanes in this course.** If you did Sales, the GTM lane will tell you why marketing writes what it writes. If you are a PM, the Sales lane will change how you write release notes.
@@ -67,7 +67,7 @@ Describe the outcome, not the steps. Name the sources, set the rules, and ask to
 Everything else — Skills, schedules, Projects, connectors — is machinery for doing that repeatedly and at scale.
 
 :::try You are done
-That is the **💯 Completionist** badge if you have worked through your lane, the fundamentals, and the capstone.
+That is the **💯 Completionist** badge if you have worked through everything — all three lanes, the fundamentals, and the capstone.
 
 Now go and give something a job.
 :::

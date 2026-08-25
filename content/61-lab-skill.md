@@ -55,13 +55,13 @@ Then, separately, tell me: which parts of my brief did you leave out and why, an
 :::lab Step 3 — Install it
 - [ ] Create a folder named after the Skill (kebab-case, e.g. `deal-review`)
 - [ ] Save `SKILL.md` inside it
-- [ ] Put it in your Skills location (personal Skills folder, or inside a Cowork Project)
 - [ ] Create any supporting `reference/` files it mentions — your FX rates, segment definitions, template
-- [ ] Restart or refresh Cowork so it picks up the new Skill
+- [ ] **Zip the folder**, then upload it: **Customize → Skills → + → Create skill → Upload a skill**
+- [ ] Confirm it appears in the Skills list, then type `/` in Cowork — installed skills show up there too
 :::
 
-:::details Where exactly does the folder go?
-This varies by version and plan, which is why this course does not hard-code a path. Look for a Skills section in Cowork settings, or in a Project's configuration — there is usually an "add skill" or "open skills folder" action.
+:::details If the upload flow looks different
+Labels shift as the product evolves — look for a Skills section under Customize with an upload or create action.
 
 If you genuinely cannot find it, you can still use the file: paste the contents of `SKILL.md` at the top of a brief. Less elegant, identical output, and it proves the content works before you worry about installation.
 :::
@@ -81,6 +81,10 @@ Run a deal review on my pipeline.
 - [ ] The output used **my definitions**, not generic ones
 - [ ] Every artefact appeared, correctly named
 - [ ] The rules were applied — check one specifically
+:::
+
+:::tip Explicit invocation
+Typing `/` in Cowork lists your installed skills and lets you call one by name. That is the *explicit* path — useful for confirming the skill is installed and works. The cold test above checks the harder thing: that it fires from natural language, which is how your colleagues will use it.
 :::
 
 :::warning If the Skill did not fire
@@ -139,12 +143,12 @@ This one prompt is what turns a personal shortcut into a team asset.
 :::
 
 :::concept Why one colleague first
-The first external user finds 80% of the problems, and they find them cheaply. Sharing to a team of twelve before that happens generates twelve people's confusion at once, and most of them will quietly stop using it rather than tell you why.
+The first external user finds most of the problems, and they find them cheaply. Sharing to a team of twelve before that happens generates twelve people's confusion at once, and most of them will quietly stop using it rather than tell you why.
 :::
 
 ## Bundle it (optional)
 
-Once you have three or four Skills that belong together, a **plugin** packages them — Skills, commands, and connector configuration in one installable unit.
+Once you have three or four Skills that belong together, a **plugin** packages them — Skills, connectors, and sub-agents in one installable unit (Customize → Plugins).
 
 ```prompt
 I have these Skills: [list them and what each does]. Explain how I would bundle them into a plugin for my team, what the structure would look like, and what I should include beyond the Skills themselves — a README, example prompts, and the reference files they share. Draft the README.

@@ -111,11 +111,11 @@ A Skill written before you know what good output looks like just freezes your fi
 
 ## Where Skills live
 
-- **Personal** — a Skills folder for your account. Available in your Cowork sessions.
-- **Project** — inside a Cowork Project, so it applies to that body of work only.
-- **Team** — shared with colleagues, so everyone runs the same play. Team distribution depends on your plan; the file itself is the same.
+- **Personal** — installed for your own account (Customize → Skills). Available in your Cowork sessions.
+- **Shared** — passed to colleagues to install, so everyone runs the same play. The file itself is the same.
+- **Organization** — on Team and Enterprise plans, an admin can distribute a Skill to everyone.
 
-Exact paths and menus vary by version. In Cowork, look for Skills in settings or in a Project's configuration. The **content** of the file is what this course teaches, and that does not change.
+Exact labels vary by version. The **content** of the file is what this course teaches, and that does not change.
 
 ## Supporting files
 
@@ -130,7 +130,7 @@ Reference them from `SKILL.md` and Claude reads them when needed. This is how yo
 
 ## Plugins, briefly
 
-A **plugin** bundles Skills, commands, and connector configuration into one installable package. It is how "here is my Skill" becomes "install this and you have the whole team's playbook".
+A **plugin** bundles Skills, connectors, and sub-agents into one installable package (Customize → Plugins). It is how "here is my Skill" becomes "install this and you have the whole team's playbook".
 
 For now: build one good Skill. Bundling matters when you have three or four that belong together — covered in Module 7's last lesson.
 

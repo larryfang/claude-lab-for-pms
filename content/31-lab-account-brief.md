@@ -25,7 +25,7 @@ RESULT. Produce `output/briefs/[account]-brief.md`, maximum two pages, with thes
 7. RISKS AND UNKNOWNS — what I do not know that could derail this call
 8. SOURCES — every URL and file you used, with dates
 
-INPUTS. Our CRM record for this account, my email history with anyone at their domain, any notes in `accounts/`, and their public website. Nothing else.
+INPUTS. Our CRM record for this account, my email history with anyone at their domain, any notes in `sales/` (or your `accounts/` folder if you keep one), and their public website. Nothing else.
 
 EDGES. Every factual claim needs a source — a URL with the date read, or a named file. If you cannot source something, leave it out rather than filling the gap. Never invent a headcount, a revenue figure, a funding round, or a named person. Do not send or draft any email. Read-only on the CRM.
 
@@ -74,7 +74,7 @@ RESULT. For each open opportunity, produce a separate file `output/briefs/<accou
 
 Then produce `output/briefs/_index.md`: a table of all accounts with columns account, stage, amount, close date, days since last contact, state of play in one line, and the single most important open question. Sort by close date.
 
-INPUTS. The CRM (or `opportunities.csv`), my email history, notes in `accounts/`, and each company's public website.
+INPUTS. The CRM (or `opportunities.csv`), my email history, notes in `sales/` (or your `accounts/` folder), and each company's public website.
 
 EDGES. Same rules: source every claim, never invent a figure or a person, read-only, write only to `output/briefs/`. Where an account has thin data, produce a short brief that says so rather than padding it out.
 

@@ -129,7 +129,7 @@ var COWORK_COURSE = {
           summary: "The PM work Cowork is genuinely good at, and the judgement calls it must never make for you.",
           keywords: ["product", "pm", "plays", "discovery", "prd", "roadmap", "prioritisation", "stakeholder"] },
         { id: "lab-discovery", file: "51-lab-discovery.md", title: "Lab: Transcripts → Insight Report", minutes: 22, level: "Core",
-          summary: "Hands-on. Eight interviews into a themed, quote-backed insight report you can defend in a review.",
+          summary: "Hands-on. Six interviews into a themed, quote-backed insight report you can defend in a review.",
           keywords: ["lab", "discovery", "interviews", "transcripts", "synthesis", "themes", "research", "quotes"] },
         { id: "lab-prd", file: "52-lab-prd.md", title: "Lab: The Evidence-Backed PRD", minutes: 22, level: "Core",
           summary: "Hands-on. Turn a brain-dump plus real evidence into a PRD, then have Cowork attack its own weak points.",
@@ -208,7 +208,7 @@ var COWORK_COURSE = {
 
   // Badges are earned automatically. `module` = earned when that module is 100% complete.
   badges: [
-    { id: "first-steps", emoji: "🐣", label: "Day One", when: { lesson: "welcome" } },
+    { id: "first-steps", emoji: "🐣", label: "Day One", when: { module: "start-here" } },
     { id: "brief-writer", emoji: "🧠", label: "Brief Writer", when: { module: "fundamentals" } },
     { id: "connected", emoji: "🔌", label: "Fully Connected", when: { module: "connect" } },
     { id: "closer", emoji: "💼", label: "The Closer", when: { module: "sales" } },

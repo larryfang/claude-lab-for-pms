@@ -134,7 +134,7 @@ This is the strongest candidate for a schedule in the whole course: read-only, s
 - [ ] Save the two briefs as a sequence
 - [ ] Note your actual project keys, statuses and RAG definitions
 - [ ] Note who each update goes to
-- [ ] Module 7 schedules it for Monday 8am, into a draft folder for you to review
+- [ ] Module 7 schedules it for Monday 8am, writing a draft into a Project for you to review
 
 ```quiz
 Q: Why check the tracker for stalled work before writing the update?

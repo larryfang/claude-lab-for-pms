@@ -2,7 +2,7 @@
 
 Seven things on the screen. Know what each one is for and nothing about a Cowork run will surprise you.
 
-:::note Research preview
+:::note A fast-moving product
 Cowork ships fast, so labels and layout move. This lesson teaches you what to **look for**, not where to click. If your screen differs, find the thing that does this job.
 :::
 
@@ -42,7 +42,7 @@ For bigger jobs Cowork splits work across parallel workers — one researching e
 
 ## 6 — Scheduled tasks
 
-Save a job, have it run on a cadence — every Monday 8am, first of the month. Chat cannot do this. Scheduled runs go through the desktop app, so they generally depend on your machine being awake.
+Save a job, have it run on a cadence — every Monday 8am, every weekday at 6pm. Chat cannot do this. Scheduled tasks run remotely, so they run on time even when your computer is asleep or the app is closed.
 
 **Where it matters to you:** a scheduled job runs with **no one reading the plan**. Only schedule jobs that are read-only or write to a scratch folder, and that you have run by hand successfully at least three times. Module 7.
 
@@ -54,7 +54,7 @@ A persistent workspace for recurring work: its own files, links, instructions an
 
 ## And one thing that is not on screen: connectors
 
-Connectors (Jira, Salesforce, HubSpot, Gmail, Slack, Drive) are configured in Settings, but they are what turns Cowork from "a very good file assistant" into something that knows your pipeline. Module 3.
+Connectors (Jira, Salesforce, HubSpot, Gmail, Slack, Drive) are configured under **Customize → Connectors**, but they are what turns Cowork from "a very good file assistant" into something that knows your pipeline. Module 3.
 
 ## Scavenger hunt
 

@@ -4,7 +4,7 @@ Every term used in this lab, in one sentence each.
 
 ## The core ideas
 
-**Cowork** — Claude that takes on a whole multi-step job in Claude Desktop, working on real files and producing real deliverables, rather than answering turn by turn.
+**Cowork** — Claude that takes on a whole multi-step job, working on real files and producing real deliverables, rather than answering turn by turn. Selected in the message box; available on desktop, web and mobile.
 
 **Brief** — the instructions you give Cowork for a whole job. Longer and more specific than a prompt, and the single biggest determinant of output quality.
 
@@ -44,7 +44,7 @@ Every term used in this lab, in one sentence each.
 
 **Progressive disclosure** — Claude reads every Skill's description but loads full instructions only when relevant, so many Skills do not bloat every conversation.
 
-**Plugin** — a bundle of Skills, commands, and connector configuration, packaged so a team can install the whole playbook at once.
+**Plugin** — a bundle of Skills, connectors, and sub-agents, packaged so a team can install the whole playbook at once (Customize → Plugins).
 
 **Project** — a persistent Cowork workspace with its own files, instructions, memory, and Skills. Where you stop re-explaining your business.
 
@@ -110,8 +110,8 @@ Every term used in this lab, in one sentence each.
 
 **Claude.ai / chat** — the browser interface. Answers and drafts, turn by turn.
 
-**Claude Desktop** — the desktop app. Chat plus files and connectors, and where Cowork lives.
+**Claude Desktop** — the desktop app. Chat plus files and connectors, and the only surface where Cowork can reach local folders. Cowork itself also runs on web and mobile (beta).
 
 **Claude Code** — the terminal-based agent for codebases. A separate course in this lab.
 
-**Research preview** — a product still changing quickly. Cowork is one, so screens and features shift; the concepts in this course do not.
+**Web and mobile Cowork (beta)** — Cowork also runs on claude.ai and the mobile apps, without local-folder access. The product ships fast and evolves quickly, so screens and features shift; the concepts in this course do not.

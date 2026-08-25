@@ -9,7 +9,7 @@ A **Project** in Cowork is a persistent workspace for a body of work. It holds:
 - **Files** — the source data, references, previous outputs
 - **Instructions** — the standing context for everything in this project
 - **Memory** — what has already been established, so you stop re-explaining
-- **Its own Skills** — plays specific to this work
+- **Its own Scheduled tasks** — recurring jobs that run against this project's context and write into its files
 
 The difference from a one-off session: open the Project next month and Claude already knows your naming conventions, your definitions, last quarter's numbers, and the three decisions you already made.
 

@@ -4,13 +4,12 @@ Start here when something does not work.
 
 ## Access and setup
 
-:::details I cannot see Cowork in the sidebar
+:::details I cannot find Cowork
 Check in order:
 
 1. **Plan** — Cowork needs Pro, Max, Team or Enterprise. Not available on Free.
-2. **App** — it is a desktop app feature. Quit fully and reopen, or reinstall from `claude.ai/download`.
+2. **Entry point** — Cowork is selected in the **message box**, not a sidebar item. On desktop, quit fully and reopen, or reinstall from `claude.com/download`. It also runs on web and mobile (still rolling out in beta), where this course's local-folder labs will not work.
 3. **Admin policy** — on Team or Enterprise a seat admin may not have enabled it. That is a one-line ask.
-4. **Rollout** — availability has expanded in waves; it is a research preview.
 
 You can read every lesson and write every brief without access.
 :::
@@ -31,7 +30,7 @@ Four causes, in likelihood order:
 :::
 
 :::details It says it cannot access a connector mid-run
-The auth token expired — commonly every 30 to 90 days. Reconnect in Settings. If a scheduled task started producing nothing, this is usually why, which is the argument for the status-line pattern in Module 7.
+The auth token expired — commonly every 30 to 90 days. Reconnect under Customize → Connectors. If a scheduled task started producing nothing, this is usually why, which is the argument for the status-line pattern in Module 7.
 :::
 
 ## Output quality
@@ -145,7 +144,7 @@ Then fix the design so it cannot fail silently again: add a status line, and *"I
 :::
 
 :::details My scheduled task did not run at the scheduled time
-Scheduled runs go through the desktop app, so they generally need your machine awake and signed in. A job set for 8am Monday may run when you open your laptop. Also check the time zone the schedule is set relative to.
+It is not your machine — scheduled tasks run remotely, on their cadence, even when your computer is asleep or the app is closed. Check the run history under **Scheduled** in the sidebar; the usual causes are an expired connector token, a job that tried to reach a **local folder** (scheduled runs can only use connectors and files in your Claude account), or the time zone the schedule is set relative to.
 :::
 
 :::details Output from a Project is subtly and consistently wrong
@@ -201,7 +200,7 @@ The recurring task you most reliably skip when busy. Not the hardest one, and no
 :::
 
 :::details Something in this course does not match what I see on screen
-Expected. Cowork is a research preview and ships fast. The concepts, the briefs and the verification discipline hold; a menu label may not.
+Expected. Cowork ships fast and evolves quickly. The concepts, the briefs and the verification discipline hold; a menu label may not.
 
 For current specifics, `claude.com/docs` is the source of truth.
 :::

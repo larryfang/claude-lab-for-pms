@@ -83,7 +83,7 @@ Start with **one**. The one whose data you retype most often.
 
 ## The connector audit — do this now
 
-- [ ] Open **Settings → Connectors** and list everything currently enabled
+- [ ] Open **Customize → Connectors** (on claude.ai: Settings → Connectors) and list everything currently enabled
 - [ ] For each: do I know what it can reach, and is it read-only or read-write?
 - [ ] Disable anything I do not need this month
 - [ ] For my top-priority connector, check what my own account can reach in that system
