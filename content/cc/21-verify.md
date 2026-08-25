@@ -14,6 +14,10 @@ Claude stops when the work **looks done**. Without a check it can run, "looks do
 - a **screenshot** compared to a design
 :::
 
+:::tip UI work: let Claude drive a real browser
+For frontend changes, "screenshot and compare" isn't hypothetical — **Claude in Chrome** (`claude --chrome`, [docs](https://code.claude.com/docs/en/chrome)) lets Claude open your app, click through the flow, and read the console to verify its own change end-to-end. The desktop app goes further with a built-in browser pane: select any element (⌘⇧S) and Claude reads its DOM, components and styles before editing ([@ClaudeDevs, 2026-07-10](https://x.com/ClaudeDevs/status/2075635283211772279)). The principle is the same as tests: the agent that can *see* the result can fix it.
+:::
+
 ## Put the check in your prompt
 
 The simplest version: ask for the work *and* the verification in one breath.
@@ -41,9 +45,10 @@ The longer Claude runs unattended, the harder you want the stop gated:
 | Gate | How |
 |---|---|
 | **Per-prompt** | "run the check and iterate in this same message" |
-| **Across a session** | set a `/goal` condition — an evaluator re-checks after every turn until it holds |
+| **Across a session** | set a **`/goal`** — Claude keeps working toward the condition across turns until it's met ([commands](https://code.claude.com/docs/en/commands)) |
 | **Deterministic** | a **Stop hook** runs your check as a script and blocks the turn from ending until it passes |
 | **Second opinion** | a **verification subagent** or `/code-review` re-checks the diff in a fresh context |
+| **Heavyweight** | `claude ultrareview` — a cloud-hosted **multi-agent** review of the whole branch or PR, from your shell or CI |
 
 ## Demand evidence, not assertions
 

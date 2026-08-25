@@ -12,7 +12,13 @@ The developers getting the most from Claude Code aren't typing the most prompts.
 - **Always give a way to verify** (tests, build, screenshot) and demand evidence.
 - **Commit often.** Small, verified commits make rewinds and reviews painless.
 - **Course-correct early.** `Esc` the moment it drifts; after two failed corrections, `/clear` and rewrite the prompt.
-- **Right-size the model & mode.** `opusplan` for hard planning; plan mode for unfamiliar code; skip planning for one-line diffs.
+- **Right-size the model, mode & effort.** `opusplan` for hard planning; `/effort xhigh` for gnarly problems, `low` for mechanical ones; plan mode for unfamiliar code; skip planning for one-line diffs.
+
+(The official distillation of these habits lives at [code.claude.com/docs/en/best-practices](https://code.claude.com/docs/en/best-practices) — it superseded the older engineering-blog post you may have bookmarked.)
+
+:::concept In the field: why one engineer 10x's and the org doesn't
+Boris Cherny (Claude Code's creator) frames team adoption as a ladder: first give Claude **end-to-end verification** of its own work (tests, builds, browsers), then trust **auto mode** so nobody babysits approvals, then move recurring fixing and maintenance to **background agents** — and measure the return in merged background PRs, not usage dashboards ([@bcherny, 2026-07-17](https://x.com/bcherny/status/2077929379661844559)). Notice the order: verification comes *first*, autonomy second. That's this course's Module 3 before Module 6, and it's not a coincidence.
+:::
 
 :::concept The meta-skill
 It all reduces to one thing: **manage context, and close the loop.** Feed Claude exactly what the task needs, give it a way to check its own work, and keep sessions tight. Master that and the tool feels telepathic.

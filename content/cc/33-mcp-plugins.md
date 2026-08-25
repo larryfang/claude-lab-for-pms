@@ -7,10 +7,18 @@ Two more ways to extend Claude Code — connecting **external tools** (MCP) and 
 **MCP (Model Context Protocol)** is the open standard that lets Claude talk to outside tools and data — GitHub, your database, Notion, Figma, Sentry, monitoring, etc. Add one with:
 
 ```bash
+# remote server over HTTP (the increasingly common form)
+claude mcp add --transport http sentry https://mcp.sentry.dev/mcp
+
+# local stdio server
 claude mcp add notion -- npx -y @notionhq/notion-mcp-server
 ```
 
-Once connected, you can ask Claude to *"implement the feature described in Notion ticket X,"* *"query the staging DB for users created today,"* or *"pull this Figma frame and build the component."* Manage servers with **`/mcp`**. Config lives in `.mcp.json` (project, committable) or `~/.claude.json` (user).
+Once connected, you can ask Claude to *"implement the feature described in Notion ticket X,"* *"query the staging DB for users created today,"* or *"pull this Figma frame and build the component."* Manage servers with **`/mcp`** in-session, or `claude mcp list` / `claude mcp login <name>` (OAuth) from the shell. Scope with `-s local` (default), `-s project` (writes committable `.mcp.json`), or `-s user` ([MCP docs](https://code.claude.com/docs/en/mcp)).
+
+:::warning Every connected tool costs context
+Each MCP server's tool definitions load into the context window. Claude Code mitigates this with **tool search** — tool schemas are deferred and fetched on demand, and a server can opt out per-tool with `alwaysLoad` ([MCP docs](https://code.claude.com/docs/en/mcp)). Still: connect the servers you use, not every server you can. `claude plugin details <name>` shows a plugin's projected token cost before you commit to it.
+:::
 
 :::tip CLI tools are often simpler than MCP
 For many services, a **CLI** is the most context-efficient integration. Install `gh` and Claude uses it natively for issues/PRs; same for `aws`, `gcloud`, `sentry-cli`. Try: *"Use `foo --help` to learn the tool, then do X."* Reach for MCP when there's no good CLI or you need structured, typed access.
@@ -18,13 +26,22 @@ For many services, a **CLI** is the most context-efficient integration. Install 
 
 ## Plugins: install a whole setup
 
-A **plugin** bundles skills, subagents, hooks, and MCP servers into one installable unit. Instead of wiring each piece, install a plugin and get a ready-made toolkit. Browse and install with:
+A **plugin** bundles skills, subagents, hooks, and MCP servers into one installable unit. Instead of wiring each piece, install a plugin and get a ready-made toolkit. `/plugin` opens the marketplace browser in-session; the full flow ([plugin docs](https://code.claude.com/docs/en/plugins)):
 
 ```bash
-/plugin
+# add a marketplace (a git repo with a marketplace manifest), then install from it
+/plugin marketplace add anthropics/claude-plugins-official
+/plugin install superpowers@claude-plugins-official
+
+# or from the shell
+claude plugin install superpowers@claude-plugins-official
 ```
 
-This opens the marketplace (Anthropic-built and community). Example: a **code-intelligence** plugin for your language gives Claude precise symbol navigation and automatic error detection after edits. A plugin is just files — `.claude-plugin/plugin.json` plus the usual `commands/`, `agents/`, `skills/`, `hooks/`, `.mcp.json`.
+Anthropic curates an official directory ([anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)) and mirrors community submissions ([anthropics/claude-plugins-community](https://github.com/anthropics/claude-plugins-community)); any GitHub/GitLab repo or zip can be a marketplace, so **teams host their own**. A plugin is just files — `.claude-plugin/plugin.json` plus the usual `commands/`, `agents/`, `skills/`, `hooks/`, `.mcp.json`.
+
+:::warning Plugins run with your permissions
+A plugin's hooks and MCP servers execute on your machine. Install from marketplaces you trust, review what `claude plugin details <name>` reports, and prefer official or well-known community sources — the ecosystem's own top repos warn about malicious look-alike mirrors.
+:::
 
 ## The .claude/ folder & settings hierarchy
 
@@ -50,7 +67,7 @@ Settings merge across four layers, highest priority last:
 | User | `~/.claude/settings.json` | all your projects |
 | Project | `.claude/settings.json` | the team (committed) |
 | Local | `.claude/settings.local.json` | you, this project (gitignored) |
-| Managed | `managed-settings.json` | org policy (wins over all) |
+| Managed | `managed-settings.json` (e.g. `/Library/Application Support/ClaudeCode/` on macOS, `/etc/claude-code/` on Linux) | org policy (wins over all) |
 
 ## Which mechanism do I use? (the decision table)
 

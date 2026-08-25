@@ -2,23 +2,31 @@
 
 Claude Code can edit files and run commands — that's the power, and the responsibility. This lesson is how to stay safe **without** clicking "approve" a hundred times a day.
 
-## The default: ask before acting
+## The permission model
 
-Out of the box, Claude asks permission before anything that could modify your system — file writes, Bash commands, MCP tool calls. Safe, but tedious: after the tenth approval you're not reviewing, you're just clicking. There are three ways to cut the noise.
+Claude Code gates anything that could modify your system — file writes, Bash commands, MCP tool calls. The classic behavior is **ask before acting**: safe, but tedious, because after the tenth approval you're not reviewing, you're just clicking.
 
-## Three ways to reduce interruptions
+That's why **auto mode is now the default** on Pro, Max and Team plans ([permission modes](https://code.claude.com/docs/en/permission-modes)): a separate classifier model reviews each action and interrupts you only for the genuinely risky ones. In a study Anthropic ran, dangerous commands were hidden inside realistic sessions — 1,053 professional developers manually approving caught **13.6%** of them; auto mode's classifier caught **89%** ([@adocomplete, 2026-08-13](https://x.com/adocomplete/status/2087957562859913525)). Cycle modes any time with **Shift+Tab**.
+
+## Three layers that cut the noise
 
 | Approach | What it is | Best when |
 |---|---|---|
-| **Auto mode** | A separate classifier reviews each command and blocks only risky things (scope escalation, unknown infra, hostile-content-driven actions) | You trust the task's direction but don't want to babysit each step |
+| **Auto mode** | A classifier reviews each action and blocks only risky things (scope escalation, unknown infra, hostile-content-driven actions) | Day-to-day work — it's the default for a reason |
 | **Permission allowlists** | Pre-approve specific safe tools/commands with `/permissions` or in `settings.json` | Repetitive safe commands like `npm run lint`, `git commit` |
-| **Sandboxing** | OS-level isolation (`/sandbox`) restricting filesystem/network access | Letting Claude work freely inside hard boundaries |
+| **Sandboxing** | OS-level isolation (`/sandbox`): a filesystem boundary plus a **network egress allowlist**, with credential masking built in ([sandboxing](https://code.claude.com/docs/en/sandboxing)) | Letting Claude work freely inside hard boundaries |
 
 Run auto mode non-interactively like this:
 
 ```bash
 claude --permission-mode auto -p "fix all lint errors"
 ```
+
+(Other `--permission-mode` values: `plan`, `acceptEdits`, `dontAsk`, `manual`, and `bypassPermissions`.)
+
+:::tip Tune the classifier in plain English
+Auto mode's rules are configurable as natural-language sentences in your settings — keep the shipped rules with `$defaults` and add your own ("never touch the prod database", "asking before any docker command"). Inspect the effective config with `claude auto-mode config`, and have Claude review your custom rules for ambiguity with `claude auto-mode critique` ([@lydiahallie, 2026-08-19](https://x.com/lydiahallie/status/2090134982161502394)).
+:::
 
 ## Allow and deny rules
 
@@ -60,6 +68,8 @@ You'll hear about `--dangerously-skip-permissions` (a.k.a. "YOLO mode"), which s
 **Legit uses:** a throwaway sandbox, a disposable container/VM, or CI where the environment is isolated and the repo is trusted.
 
 **Never** use it on **untrusted code or content.** Claude can be steered by **prompt injection** — malicious instructions hidden in a file, dependency, issue, or web page it reads — into running harmful commands. With permissions off and real filesystem access, that's a genuine risk. On any repo you don't fully trust, keep permissions on (or sandbox).
+
+Anthropic reports its stacked defenses (model training, input probes, an intent classifier) now catch close to 100% of *unseen* injection attacks in its evals ([@bcherny, 2026-08-07](https://x.com/bcherny/status/2085860677990883454)) — but independent researchers remain cautious about treating any such number as solved-problem territory ([Simon Willison's response](https://x.com/simonw/status/2086220154468442496)). Treat the defenses as seatbelts, not permission to drive blind.
 :::
 
 ## A sane default setup

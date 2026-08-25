@@ -18,7 +18,7 @@ Work through this guided session. Type each suggested command (or your own twist
 ```claude-sim
 # A tiny Node project is open. You launched Claude Code in it.
 $ cd todo-api && claude
-Claude Code v2.x — ready. Working directory: ~/code/todo-api
+Claude Code — ready. Working directory: ~/code/todo-api
 Type a request, or /help. Tip: press Shift+Tab to switch modes.
 > what does this project do and what's the test command?
 I read package.json, README.md, and src/. Summary:

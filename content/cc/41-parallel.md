@@ -16,7 +16,34 @@ cd ../proj-oauth   && claude    # terminal 1
 cd ../proj-billing && claude    # terminal 2
 ```
 
-Each session has its own files, its own branch, its own context. Merge the branches when done. (The **Claude Code desktop app** manages multiple sessions visually, each in its own worktree; **Claude Code on the web** runs them in isolated cloud VMs.)
+Each session has its own files, its own branch, its own context. Merge the branches when done. Claude Code can even do the git plumbing for you: **`claude -w`** (`--worktree`) starts the session in a fresh worktree in one step, and `--tmux` gives it its own pane.
+
+## Sessions that know about each other
+
+Two flags turn "several terminals" into a managed fleet:
+
+- **Name them** — `claude -n backend`, `claude -n frontend`. Named sessions can **message each other**: tell one *"tell frontend the order endpoint changed"* and it does, via cross-session messaging ([docs](https://code.claude.com/docs/en/cross-session-messaging); demo: [@adocomplete, 2026-08-13](https://x.com/adocomplete/status/2087728817012162973)).
+- **Background them** — `claude --bg "fix the flaky tests"` launches a session that runs without a terminal attached. **`claude agents`** is the control tower: one screen showing every session — running, blocked on a question, or done — and `claude agents --json` scripts it.
+
+```claude-sim
+# Your shell. Three sessions are live: two named terminals + one background agent.
+$ claude agents
+  ● backend      running   fixing order-endpoint validation      (worktree: proj-api)
+  ● frontend     waiting   needs input: "confirm new field name"  (worktree: proj-web)
+  ● bg-4f2a      running   --bg: migrate remaining class components
+$ claude -n backend --continue
+Claude Code — session "backend" (branch: feature/orders)
+> tell frontend the order endpoint now returns amounts in cents, field "amount_cents"
+Message sent to session "frontend". It acknowledged and is updating its formatter util.
+```
+
+## The desktop, the web, and your phone
+
+The same fleet idea runs beyond your terminal ([Claude Code on the web](https://code.claude.com/docs/en/web-quickstart)):
+
+- **Desktop app** — manages multiple sessions visually, each in its own worktree.
+- **Cloud sessions** — `claude --cloud "task"` hands work to an isolated VM at **claude.ai/code**; `claude --teleport` pulls a cloud session back down to your terminal. **Routines** run scheduled cloud agents ([docs](https://code.claude.com/docs/en/routines)), and self-hosted environments (`--environment`) run cloud sessions on your own infra.
+- **Remote Control** — start and steer a session on your machine from your phone ([docs](https://code.claude.com/docs/en/remote-control)).
 
 ## The Writer/Reviewer pattern
 
@@ -47,14 +74,24 @@ done
 Refine your prompt on the **first few files**, see what goes wrong, *then* run the whole set. A prompt that's 90% right across 500 files creates 50 messes. Validate small, then scale.
 :::
 
-## Agent teams (automated coordination)
+## Agent teams & dynamic workflows (automated coordination)
 
-When you want the coordination handled *for* you, **agent teams** run multiple sessions with a shared task list, inter-agent messaging, and a team lead — useful for large, multi-part work where you'd otherwise babysit several terminals. Orchestration patterns worth knowing: **fan-out/fan-in** (parallel work → synthesize), **validation chains** (builder → reviewer), and **specialist routing** (dispatch by domain).
+When you want the coordination handled *for* you, two mechanisms do it:
+
+- **Agent teams** run multiple full sessions with a shared task list, direct teammate messaging, and a team lead. Still experimental — enable with `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` ([docs](https://code.claude.com/docs/en/agent-teams)). Anthropic demoed the ceiling by having a team of Opus sessions build a working C compiler ([HN thread](https://news.ycombinator.com/item?id=46903616)).
+- **Dynamic workflows** — put the keyword **`ultracode`** in a prompt and Claude *generates* a multi-agent orchestration plan for that task, then runs it; `/workflows` shows the runs ([docs](https://code.claude.com/docs/en/workflows) · [launch post](https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code)).
+
+Orchestration patterns worth knowing either way: **fan-out/fan-in** (parallel work → synthesize), **validation chains** (builder → reviewer), and **specialist routing** (dispatch by domain).
+
+:::concept In the field: a maintenance fleet, not a chat
+Claude Code's creator Boris Cherny runs scheduled Claude sessions against Anthropic's own apps — a crash fuzzer, a duplicate-code unifier, a dead-code remover, an "abstraction police" — coordinated from a Slack channel. In a few weeks the fleet opened 388 PRs, 180 of which merged after automated review plus human sign-off ([@bcherny, 2026-08-13](https://x.com/bcherny/status/2088014489438621990)). The pattern to copy: background agents do the recurring maintenance; humans review the PRs, not the keystrokes.
+:::
 
 :::concept Pick your coordination level
 - **Worktrees** — you coordinate; max control, simplest mental model.
-- **Desktop/web sessions** — visual management of several at once.
-- **Agent teams / workflows** — automated coordination for jobs too big for one conversation.
+- **Named/background sessions** (`-n`, `--bg`, `claude agents`) — a fleet you steer from one screen.
+- **Desktop/web/cloud sessions** — visual management, or VMs that outlive your laptop lid.
+- **Agent teams / dynamic workflows** — automated coordination for jobs too big for one conversation.
 
 Start with worktrees. Reach for teams/workflows only when the task genuinely needs more agents than you can hand-coordinate.
 :::

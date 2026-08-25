@@ -19,6 +19,16 @@ claude -p "Analyze this log file" --output-format stream-json --verbose
 
 This is the building block for **pre-commit hooks, CI pipelines, and any automated workflow.** Output formats: plain text, `json`, or `stream-json`.
 
+Three flags worth knowing for serious pipelines (all in `claude --help`):
+
+```bash
+# force the output to match a schema — no more parsing prose
+claude -p "Extract the endpoints as {path, method, auth}" --json-schema '{"type":"object", "...": "..."}'
+
+# hard cost ceiling and a fallback when the primary model is overloaded
+claude -p "…" --max-budget-usd 2 --fallback-model sonnet
+```
+
 ## Pipe data in and out
 
 Claude Code is a good Unix citizen:
@@ -49,7 +59,7 @@ With no human in the loop, `--allowedTools` and `--permission-mode` are your saf
 
 ## In CI: GitHub Actions
 
-You can run Claude Code in CI to review PRs or even implement fixes. The common setup: install the **Claude Code GitHub app / action**, then **mention `@claude`** in an issue or PR comment to trigger it (review, implement, answer). A minimal workflow looks like:
+You can run Claude Code in CI to review PRs or even implement fixes. The easy setup path is **`/install-github-app`** from inside a session — it wires the GitHub app and a starter workflow for you. Then **mention `@claude`** in an issue or PR comment to trigger it (review, implement, answer). The action's v1 detects the mode itself: `@claude` mentions and issue assignments run interactively, while an explicit `prompt` input runs as pure automation ([github-actions docs](https://code.claude.com/docs/en/github-actions)). A minimal workflow looks like:
 
 ```yaml
 # .github/workflows/claude.yml
@@ -68,7 +78,11 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 ```
 
-Now commenting *"@claude please add tests for the auth module and open a PR"* on an issue kicks off a real run. (Check the action's current docs for exact inputs — they evolve.)
+Now commenting *"@claude please add tests for the auth module and open a PR"* on an issue kicks off a real run. Subscription users can pass `claude_code_oauth_token` instead of an API key. (Check the [action's docs](https://github.com/anthropics/claude-code-action) for the full input list — they evolve.)
+
+## Beyond the CLI: the Agent SDK
+
+`claude -p` is the door; the **Claude Agent SDK** is the whole building. It exposes the same engine that powers Claude Code — the agent loop, tools, permissions, hooks, MCP, subagents — as a [TypeScript / Python library](https://code.claude.com/docs/en/agent-sdk/overview) (`@anthropic-ai/claude-agent-sdk`), so a workflow you prototyped as a prompt can graduate into a proper service with programmatic control over every turn. If you're building a product on agents rather than scripting your own repo, start there. For lean CI containers, `claude --bare` skips hooks, plugins, and memory discovery for a minimal, reproducible run.
 
 ## A pre-commit gate example
 

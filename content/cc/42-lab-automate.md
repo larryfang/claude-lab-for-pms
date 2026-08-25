@@ -61,6 +61,8 @@ git worktree add ../$(basename "$PWD")-experiment -b experiment/claude-lab
 cd ../$(basename "$PWD")-experiment
 claude
 ```
+
+(Shortcut once you're comfortable: `claude -w` does the worktree creation *and* starts the session in it, one step.)
 - [ ] A second isolated checkout exists on its own branch
 - [ ] I started Claude there and asked it to make a small change
 - [ ] I confirmed my **original** working copy is untouched

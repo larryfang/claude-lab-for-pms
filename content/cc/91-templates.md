@@ -100,7 +100,7 @@ description: REST conventions for our services. Use when adding or changing endp
       {
         "matcher": "Edit|Write",
         "hooks": [
-          { "type": "command", "command": "npx prettier --write \"$CLAUDE_FILE_PATHS\"" }
+          { "type": "command", "command": "jq -r '.tool_input.file_path // empty' | xargs -r npx prettier --write" }
         ]
       }
     ]
@@ -111,14 +111,31 @@ description: REST conventions for our services. Use when adding or changing endp
 ## Connect an MCP server (shell)
 
 ```bash
-# GitHub (or use the gh CLI directly — often simpler)
-claude mcp add github -- npx -y @modelcontextprotocol/server-github
+# GitHub — the official remote server (or use the gh CLI directly — often simpler)
+claude mcp add --transport http github https://api.githubcopilot.com/mcp/
+claude mcp login github
 
-# A Postgres database (read-only example)
-claude mcp add db -- npx -y @modelcontextprotocol/server-postgres "postgresql://localhost/mydb"
+# Sentry — remote HTTP server (example straight from `claude mcp add --help`)
+claude mcp add --transport http sentry https://mcp.sentry.dev/mcp
 
-# then manage with /mcp inside a session
+# A local stdio server, with env vars
+claude mcp add my-server -e API_KEY=xxx -- npx -y my-mcp-server
+
+# then manage with /mcp inside a session, or `claude mcp list`
 ```
+
+## A path-scoped rule — `.claude/rules/migrations.md`
+
+```markdown
+---
+paths:
+  - "db/migrations/**"
+---
+Migration files are immutable once merged. Never edit an existing migration;
+create a new one. Every migration needs a paired down() that actually reverses it.
+```
+
+Rules load only when Claude touches matching files — module-specific guidance without bloating every session ([memory docs](https://code.claude.com/docs/en/memory)).
 
 ## A recommended .gitignore additions
 

@@ -27,7 +27,7 @@ This table is the whole art. Memorize the vibe:
 | Common gotchas / non-obvious behaviors | Self-evident advice like "write clean code" |
 
 :::warning Keep it short — bloat backfires
-A long `CLAUDE.md` is loaded **every turn**, eating context, and worse: **Claude starts ignoring it** because the important rules get buried. A good rule of thumb is **under ~200 lines**. For each line ask: *"Would removing this cause Claude to make a mistake?"* If not, cut it.
+A long `CLAUDE.md` is loaded **every turn**, eating context, and worse: **Claude starts ignoring it** because the important rules get buried. A good rule of thumb (a heuristic, not a law) is **under ~200 lines**; the official guidance is simply "keep it lean and move sometimes-relevant knowledge into skills" ([best practices](https://code.claude.com/docs/en/best-practices)). For each line ask: *"Would removing this cause Claude to make a mistake?"* If not, cut it.
 :::
 
 Here's the shape of a good one:
@@ -64,8 +64,14 @@ Claude merges `CLAUDE.md` files from several places — so you can scope context
 | `~/.claude/CLAUDE.md` | **Global** — applies to all your projects (personal prefs) |
 | `./CLAUDE.md` | **Project** — check into git to share with your team |
 | `./CLAUDE.local.md` | **Personal project notes** — add to `.gitignore` |
+| `.claude/rules/*.md` | **Path-scoped rules** — a `paths:` frontmatter limits each rule file to matching files ([memory docs](https://code.claude.com/docs/en/memory)) |
 | Parent dirs | Monorepo: `root/CLAUDE.md` + `root/app/CLAUDE.md` both apply |
 | Child dirs | Loaded **on demand** when Claude reads files in that subfolder |
+
+Two newer pieces complete the picture ([memory docs](https://code.claude.com/docs/en/memory)):
+
+- **Auto memory** — Claude also keeps its **own** notes per project (`~/.claude/projects/<project>/memory/`), loading the first ~200 lines of its index each session. It learns your repo's gotchas without you writing them down; manage it with `/memory`.
+- **`AGENTS.md`** — if your repo standardizes on the cross-tool `AGENTS.md` convention, import it rather than duplicating: put `@AGENTS.md` in your `CLAUDE.md`.
 
 :::concept Subfolders append, not replace
 Child `CLAUDE.md` files add to context when relevant, keeping module-specific rules out of every session. Put **universal** rules at the root; put **module-specific** rules deeper. This cascade is how big repos stay manageable.

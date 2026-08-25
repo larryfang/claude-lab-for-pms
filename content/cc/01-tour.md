@@ -17,15 +17,18 @@ Claude starts **in that directory** — it can see and work with the files there
 Claude Code's view of the world is rooted where you launched it. Start it at your repo root so it can find your code, your `CLAUDE.md`, and your config.
 :::
 
-## The three modes (Shift+Tab)
+## The modes (Shift+Tab)
 
 Press **Shift+Tab** to cycle the permission/working mode. This is one of the most important keys in the tool:
 
 | Mode | What it does |
 |---|---|
-| **Normal** | Asks permission before edits and commands (the safe default) |
-| **Auto-accept edits** | Applies file edits without asking (faster when you trust the task) |
+| **Auto** | A classifier model reviews each action and interrupts you only for risky ones — the **default** on Pro/Max/Team plans |
+| **Accept edits** | Applies file edits without asking (faster when you trust the task) |
 | **Plan mode** | **Read-only.** Claude can explore and propose a plan, but *cannot* edit files or run destructive commands |
+| **Manual** | Asks permission before every edit and command — the classic, most cautious mode |
+
+(The full set, including `dontAsk` and `bypassPermissions`, is in the [permission-modes docs](https://code.claude.com/docs/en/permission-modes) — more in the Permissions lesson.)
 
 :::concept Plan mode is enforced, not suggested
 In plan mode, Claude is blocked at the **tool level** from editing or running destructive commands — it can only read, search, and think. That's why it's the safe way to let Claude loose on an unfamiliar codebase. We'll go deep on it in the workflow module.
@@ -42,7 +45,7 @@ In plan mode, Claude is blocked at the **tool level** from editing or running de
 
 ## Slash commands you'll use constantly
 
-There are 60+ built-ins. The ones you'll actually reach for:
+There are dozens of built-ins (`/help` shows the live list). The ones you'll actually reach for:
 
 | Command | Does |
 |---|---|
@@ -51,11 +54,12 @@ There are 60+ built-ins. The ones you'll actually reach for:
 | `/clear` | Wipe context for a fresh, unrelated task |
 | `/compact` | Summarize the conversation to reclaim context (optionally `/compact focus on X`) |
 | `/rewind` | Restore a previous checkpoint (conversation, code, or both) |
-| `/model` | Switch models (e.g. `opusplan` — Opus to plan, Sonnet to execute) |
+| `/model` | Switch models (aliases like `opus`/`sonnet`, or `opusplan` — Opus to plan, Sonnet to execute) |
 | `/permissions` | Allowlist commands/tools so you're not asked every time |
 | `/agents`, `/hooks`, `/mcp`, `/plugin` | Manage subagents, hooks, MCP servers, plugins |
 | `/code-review` | Run a fresh-context review of your current diff |
-| `/cost`, `/context` | See token spend and what's filling your context |
+| `/cost`, `/context`, `/usage` | Token spend · what's filling your context · plan-limit usage |
+| `/statusline` | Put context %, model, and branch permanently in view |
 
 ## Sessions persist (treat them like branches)
 

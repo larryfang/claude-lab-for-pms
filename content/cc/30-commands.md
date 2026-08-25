@@ -76,6 +76,21 @@ Run the production deploy checklist, then `./scripts/deploy.sh prod`.
 
 Now it only runs when *you* type `/deploy-prod` — Claude won't trigger it on its own.
 
+## Skill frontmatter worth knowing
+
+Beyond `name`/`description`, skills accept ([skills reference](https://code.claude.com/docs/en/skills)):
+
+- **`allowed-tools`** — cap what the skill may do while it runs
+- **`model`** / **`effort`** — pin a model or reasoning level for this workflow
+- **`argument-hint`** — what to show after `/name` in the completion menu
+- **`hooks`** — hooks scoped to just this skill's lifetime
+
+Iterate fast with **`/reload-skills`** (hot-reload after editing a SKILL.md) and browse what's loaded with **`/skills`**.
+
+:::note The ecosystem speaks SKILL.md
+The format is an open standard ([agentskills.io](https://agentskills.io)), and Anthropic's own production skills — the docx/pdf/pptx/xlsx machinery — are source-available in [anthropics/skills](https://github.com/anthropics/skills), installable directly with `/plugin marketplace add anthropics/skills`. Reading two or three of those is the fastest way to learn what a well-engineered skill looks like; Anthropic's write-up of how its own team designs them is at [claude.com/blog](https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills).
+:::
+
 ## Try invoking one
 
 ```claude-sim

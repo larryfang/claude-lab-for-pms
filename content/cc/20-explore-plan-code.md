@@ -1,6 +1,6 @@
 # Explore → Plan → Code → Commit
 
-This is the workflow Anthropic's own teams use, and the single biggest upgrade to your results. The headline: **don't let Claude jump straight to code.** Separate *figuring out what to do* from *doing it*.
+This is the canonical workflow from Anthropic's own [best-practices guide](https://code.claude.com/docs/en/best-practices), and the single biggest upgrade to your results. The headline: **don't let Claude jump straight to code.** Separate *figuring out what to do* from *doing it*.
 
 ## The four phases
 
@@ -42,10 +42,13 @@ Commit with a descriptive message and open a PR.
 ## Plan mode, deeper
 
 :::concept Why plan mode is the biggest unlock
-Plan mode is **enforced at the tool level** — Claude literally *cannot* edit files or run destructive commands in it. So you get fearless exploration of unfamiliar code and a reviewable plan *before* a single line changes. Claude Code's own creator reportedly runs most non-trivial work through plan mode.
+Plan mode is **enforced at the tool level** — Claude literally *cannot* edit files or run destructive commands in it. So you get fearless exploration of unfamiliar code and a reviewable plan *before* a single line changes.
 :::
 
-Pro tip: `/model opusplan` uses **Opus to plan** (better reasoning) and **Sonnet to execute** (fast, efficient) — the best of both without manual switching.
+Two dials pair naturally with planning:
+
+- **`/model opusplan`** uses **Opus to plan** (better reasoning) and **Sonnet to execute** (fast, efficient) — the best of both without manual switching ([model config](https://code.claude.com/docs/en/model-config)).
+- **`/effort`** sets reasoning depth (`low` → `medium` → `high` → `xhigh` → `max`) — crank it up for a gnarly architectural plan, drop it for mechanical work. This replaced the old "think hard / ultrathink" magic words.
 
 ## When to skip the plan
 

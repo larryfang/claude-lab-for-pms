@@ -57,7 +57,11 @@ Run `/mcp` to see status. Common causes: the server command/args are wrong, a re
 ## Setup & CLI
 
 :::details `claude: command not found`
-**Close and reopen** your terminal (a freshly installed command needs a new session). If it persists, your PATH may not include the install location — reinstall via the official method or check the docs.
+**Close and reopen** your terminal (a freshly installed command needs a new session). If it persists, your PATH may not include the install location — run `claude doctor` from a shell that *can* find it, or reinstall via the official method. `claude update` keeps an existing install current.
+:::
+
+:::details Claude Code broke after I added a plugin/hook/MCP server
+Start with `claude --safe-mode` — it launches with **every** customization disabled (CLAUDE.md, skills, plugins, hooks, MCP, custom agents). If the problem disappears, re-enable pieces until you find the culprit. `/doctor` in-session can also diagnose and fix config issues.
 :::
 
 :::details Headless runs in CI fail with auth errors
@@ -67,7 +71,11 @@ Headless/CI needs credentials in the environment (e.g. `ANTHROPIC_API_KEY` as a 
 ## Cost & speed
 
 :::details It's using a lot of tokens / feels slow
-Token use tracks context size. Keep sessions focused, `/clear` often, `/compact` long ones, use subagents for big reads, and keep `CLAUDE.md` lean. Use `/cost` and `/context` to see where it's going. Reserve the biggest models (and high reasoning effort) for genuinely hard tasks.
+Token use tracks context size. Keep sessions focused, `/clear` often, `/compact` long ones, use subagents for big reads, and keep `CLAUDE.md` lean. Use `/cost` and `/context` to see where it's going. Reserve the biggest models (and `/effort xhigh`) for genuinely hard tasks.
+:::
+
+:::details I keep hitting my plan's usage limits
+Run **`/usage`** — it breaks consumption down by surface, so you can see whether a chatty MCP server, an always-loading skill, or a heavyweight subagent is eating the budget (then `/checkup` to prune). For longer-horizon reporting across sessions, the community-standard tool is [ccusage](https://github.com/ccusage/ccusage) (`npx ccusage`), which reads your local transcripts.
 :::
 
 ## Worktrees & parallel

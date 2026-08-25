@@ -13,7 +13,7 @@ Use hooks for the things that **must** happen every time: formatting, linting, r
 
 ## The lifecycle events
 
-Hooks fire on events in Claude's loop. The ones you'll use most:
+Hooks fire on events in Claude's loop — **31 events** as of v2.1.245 ([full list](https://code.claude.com/docs/en/hooks)). The ones you'll use most:
 
 | Event | Fires… | Great for |
 |---|---|---|
@@ -22,10 +22,13 @@ Hooks fire on events in Claude's loop. The ones you'll use most:
 | **Stop** | when Claude tries to end its turn | gate completion on a passing build/test |
 | **UserPromptSubmit** | when you send a prompt | inject standard context, log requests |
 | **SessionStart** | at session start | print branch/status, set up env |
+| **PostToolUseFailure** | after a tool call fails | log or react to failures |
+| **SubagentStop** | when a subagent finishes | collect subagent results, notify |
+| **PreCompact** | before context compaction | preserve state that must survive a compact |
 
 ## Configuring them
 
-Hooks live in `.claude/settings.json` (commit it to share with the team). Here's a PostToolUse hook that formats files after every edit:
+Hooks live in `.claude/settings.json` (commit it to share with the team). Your command receives the event as **JSON on stdin** — tool name, tool input, file paths — plus env vars like `$CLAUDE_PROJECT_DIR` ([hook I/O reference](https://code.claude.com/docs/en/hooks)). Here's a PostToolUse hook that formats files after every edit:
 
 ```json
 {
@@ -34,7 +37,7 @@ Hooks live in `.claude/settings.json` (commit it to share with the team). Here's
       {
         "matcher": "Edit|Write",
         "hooks": [
-          { "type": "command", "command": "npx prettier --write \"$CLAUDE_FILE_PATHS\"" }
+          { "type": "command", "command": "jq -r '.tool_input.file_path // empty' | xargs -r npx prettier --write" }
         ]
       }
     ]
@@ -51,7 +54,7 @@ And a PreToolUse hook that **blocks** edits to a protected folder:
       {
         "matcher": "Edit|Write",
         "hooks": [
-          { "type": "command", "command": "case \"$CLAUDE_FILE_PATHS\" in *db/migrations/*) echo 'Blocked: migrations are immutable' >&2; exit 2;; esac" }
+          { "type": "command", "command": "jq -r '.tool_input.file_path // empty' | grep -q 'db/migrations/' && { echo 'Blocked: migrations are immutable' >&2; exit 2; } || exit 0" }
         ]
       }
     ]
@@ -59,7 +62,11 @@ And a PreToolUse hook that **blocks** edits to a protected folder:
 }
 ```
 
-(A non-zero exit from a PreToolUse hook blocks the action and feeds the message back to Claude.)
+(Exit code **2** from a PreToolUse hook blocks the action and feeds the stderr message back to Claude. Hooks can also return a JSON decision on stdout for finer control.)
+
+:::note Beyond shell commands
+`"type": "command"` is just the classic form. Hooks can also be **HTTP** calls to an endpoint, **prompt** hooks (a fast LLM judges the event against a rule you write in English), and **agent** hooks (experimental) — see the [hooks reference](https://code.claude.com/docs/en/hooks). Prompt hooks are the middle ground when a rule is too fuzzy for a script but must still run every time.
+:::
 
 :::tip Let Claude write your hooks
 You rarely hand-write these. Just ask:

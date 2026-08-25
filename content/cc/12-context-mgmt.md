@@ -23,13 +23,16 @@ When you're **deep in one task** but the window is filling, don't clear (you'd l
 
 ## /rewind — checkpoints, not chaos
 
-Every prompt you send creates a **checkpoint**. Claude snapshots files before each change, so you can roll back.
+Every **user prompt** you send creates a **checkpoint**. Claude snapshots files before each change, so you can roll back ([checkpointing docs](https://code.claude.com/docs/en/checkpointing)).
 
 - **`Esc` `Esc`** (double-tap) or `/rewind` → open the rewind menu
 - Restore **conversation only**, **code only**, **both**, or **summarize from here**
+- Since v2.1.191 you can even restore checkpoints from **before a `/clear`** ([changelog](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md))
 
 :::concept Be bold, then rewind
 Because rewinding is cheap, you can tell Claude to **try something risky**. If it goes sideways, rewind and try another angle. Checkpoints persist across sessions. *(They track Claude's changes only — not a replacement for git.)*
+
+Want to keep the current state *and* explore an alternative? **`/branch`** forks the conversation to try another direction, and **`/fork`** copies the whole session into a new background session that keeps working while you continue here.
 :::
 
 ## Subagents — investigate without polluting
@@ -46,9 +49,13 @@ The subagent explores in its **own context window** and returns just a **summary
 
 - **`@file`** — `@src/auth.ts` pulls a specific file in (beats "read the whole repo").
 - **Paste/drag images** — screenshots, mockups, error dialogs, design comps.
-- **Pipe data in** — `cat error.log | claude` sends file contents directly.
+- **Pipe data in** — `cat error.log | claude -p "root cause?"` sends file contents directly.
 - **Give URLs** — and `/permissions` to allowlist docs domains you use often.
-- **`/btw`** — ask a quick aside that *doesn't* enter the conversation history (no context cost).
+- **`/btw`** — ask a quick side question that *doesn't* enter the conversation history ([commands](https://code.claude.com/docs/en/commands)).
+
+:::tip Audit the standing overhead: /checkup
+Context isn't only what you add mid-session — it's also what loads *every* session: skills, MCP servers, plugins, CLAUDE.md. **`/checkup`** audits that standing setup — flagging unused pieces and duplicated rules — and offers fixes. Claude Code's creator shipped it exactly because most long-time setups accumulate dead weight ([@bcherny, 2026-07-08](https://x.com/bcherny/status/2074997570317779038)).
+:::
 
 ## Course-correct early
 

@@ -13,11 +13,11 @@ Now `/standup` will: diff against main, group changes by area, and output bullet
 ✎ created .claude/agents/code-reviewer.md  (tools: Read, Grep, Bash; model: sonnet)
 Use it with: "use the code-reviewer subagent".
 > write a hook that runs prettier on files after I edit them
-✎ updated .claude/settings.json → PostToolUse(Edit|Write): npx prettier --write $CLAUDE_FILE_PATHS
+✎ updated .claude/settings.json → PostToolUse(Edit|Write): jq reads the edited path from stdin → prettier --write
 Run /hooks to verify. It'll format every file I edit from now on.
 > /hooks
 Configured hooks:
-  PostToolUse  Edit|Write → npx prettier --write "$CLAUDE_FILE_PATHS"
+  PostToolUse  Edit|Write → jq -r '.tool_input.file_path // empty' | xargs -r npx prettier --write
 > now try /standup
 Running /standup…
   Auth:   added Google OAuth (oauth.ts), CSRF state check

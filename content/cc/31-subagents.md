@@ -32,12 +32,13 @@ specific suggested fix. Report only issues that affect correctness or the stated
 requirements. If the diff is clean, say so.
 ```
 
-Key frontmatter:
+Key frontmatter ([sub-agents reference](https://code.claude.com/docs/en/sub-agents)):
 - **`name`** / **`description`** — the description is how Claude decides when to delegate.
 - **`tools`** — restrict what it can do (a reviewer needs Read/Grep/Bash, not Write).
 - **`model`** — e.g. `haiku` for fast read-only research, `opus` for hard reasoning.
+- **`memory`** — give the subagent its **own persistent memory** across sessions (subagents don't share the main session's auto memory), loaded before it starts and written back after ([@lydiahallie, 2026-07-20](https://x.com/lydiahallie/status/2079255826355892464)).
 
-Manage them interactively with **`/agents`**.
+Manage them with **`/agents`**. Subagents spawned mid-session run **in the background by default**, so your conversation keeps moving while they work.
 
 ## Invoke them — by name or on purpose
 
@@ -50,6 +51,11 @@ Use a subagent to investigate how token refresh works and whether we have OAuth 
 Use the code-reviewer subagent on my current diff.
 ```
 
+Two related commands round out delegation ([commands reference](https://code.claude.com/docs/en/commands)):
+
+- **`/subtask`** — hand a side task to a subagent; the result comes back into *this* conversation.
+- **`/fork`** — copy the whole conversation into a **new background session** that inherits everything you've discussed, then keep working here. Perfect for "also try the other approach while I continue."
+
 ## The built-ins: Explore & Plan
 
 Claude Code ships with subagents it invokes automatically:
@@ -60,7 +66,7 @@ Claude Code ships with subagents it invokes automatically:
 | **Plan** | Does the research during plan mode so your main agent stays focused on presenting the plan |
 
 :::warning Don't shadow the built-ins
-Don't name a custom subagent `Explore` or `Plan` — you'll override the built-ins and break plan mode in subtle ways. Also note: subagents **don't spawn other subagents** (no infinite nesting).
+Don't name a custom subagent `Explore` or `Plan` — you'll override the built-ins and break plan mode in subtle ways.
 :::
 
 ## Two rules that make subagents great

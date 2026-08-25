@@ -261,8 +261,8 @@ var CC_COURSE = {
           summary: "The agentic loop, why context is THE constraint, and how to think about Claude Code.",
           keywords: ["claude code", "agentic", "what is", "context window", "loop", "mental model"] },
         { id: "cc-tour", file: "cc/01-tour.md", title: "The TUI & Session Basics", minutes: 10, level: "Beginner",
-          summary: "Modes (incl. Plan Mode), the keys that matter, /clear, /rewind, /resume, interrupting.",
-          keywords: ["tui", "plan mode", "shift tab", "esc", "clear", "rewind", "resume", "shortcuts", "modes"] },
+          summary: "Modes (auto is now the default), the keys that matter, /clear, /rewind, /resume, /usage, interrupting.",
+          keywords: ["tui", "plan mode", "auto mode", "shift tab", "esc", "clear", "rewind", "resume", "usage", "statusline", "shortcuts", "modes"] },
         { id: "cc-first", file: "cc/02-first-session.md", title: "Lab: Your First Session", minutes: 12, level: "Beginner",
           summary: "Hands-on in the in-browser terminal: ask codebase questions, make a tiny change, verify.",
           keywords: ["lab", "first session", "simulator", "terminal", "hands on", "onboarding"] }
@@ -338,11 +338,11 @@ var CC_COURSE = {
       desc: "Multiply yourself: headless mode, CI, git worktrees, parallel sessions, and fan-out.",
       lessons: [
         { id: "cc-headless", file: "cc/40-headless.md", title: "Headless Mode & CI", minutes: 10, level: "Advanced",
-          summary: "claude -p, output formats, piping data, pre-commit hooks, and GitHub Actions (@claude).",
-          keywords: ["headless", "-p", "non-interactive", "ci", "json", "pipe", "github actions", "automation"] },
+          summary: "claude -p, output formats, JSON schemas, budget caps, GitHub Actions (@claude), and the Agent SDK.",
+          keywords: ["headless", "-p", "non-interactive", "ci", "json", "json schema", "pipe", "github actions", "agent sdk", "automation"] },
         { id: "cc-parallel", file: "cc/41-parallel.md", title: "Parallel Sessions & Worktrees", minutes: 10, level: "Advanced",
-          summary: "git worktrees, writer/reviewer pattern, fan-out across files, and agent teams.",
-          keywords: ["worktrees", "parallel", "writer reviewer", "fan out", "agent teams", "scale"] },
+          summary: "git worktrees, background agents (claude agents), named sessions that message each other, cloud sessions, agent teams, and dynamic workflows.",
+          keywords: ["worktrees", "parallel", "writer reviewer", "fan out", "agent teams", "background agents", "cloud", "teleport", "workflows", "ultracode", "scale"] },
         { id: "cc-lab-automate", file: "cc/42-lab-automate.md", title: "Lab: Headless + Worktree Run", minutes: 16, level: "Advanced",
           summary: "Hands-on: a one-liner batch job and a parallel worktree workflow.",
           keywords: ["lab", "headless", "worktree", "batch", "simulator", "automate"] }
@@ -376,7 +376,10 @@ var CC_COURSE = {
           keywords: ["templates", "claude.md", "settings", "starter", "copy", "boilerplate"] },
         { id: "cc-faq", file: "cc/92-faq.md", title: "Troubleshooting & FAQ", minutes: null, level: "Reference",
           summary: "When Claude Code misbehaves, start here.",
-          keywords: ["faq", "troubleshooting", "errors", "help", "fix", "problems"] }
+          keywords: ["faq", "troubleshooting", "errors", "help", "fix", "problems", "safe mode", "usage limits"] },
+        { id: "cc-whats-new", file: "cc/93-whats-new.md", title: "What's New in Claude Code", minutes: null, level: "Reference",
+          summary: "The dated digest: auto mode, background agents, agent teams, cloud sessions, dynamic workflows, and the ecosystem — verified against v2.1.245.",
+          keywords: ["whats new", "updates", "changelog", "auto mode", "agent teams", "workflows", "ultracode", "cloud", "background agents", "ecosystem", "plugins", "version"] }
       ]
     }
   ],

@@ -37,7 +37,11 @@ You'll learn each of these in the next lessons; here's the map so the pieces con
 | **`/rewind`** | Roll back to a clean checkpoint |
 
 :::tip See it filling
-Run `/context` to see what's currently occupying the window, and consider a status line that tracks token usage continuously. You can't manage what you can't see — and once you *watch* a session fill up, this all becomes second nature.
+Run `/context` to see what's currently occupying the window, `/usage` to see which skills, subagents and MCP servers are eating your plan limits, and `/statusline` to keep a context-usage readout permanently in view. You can't manage what you can't see — and once you *watch* a session fill up, this all becomes second nature.
+:::
+
+:::concept In the field: even Anthropic prunes
+Context discipline isn't just for your prompts — Anthropic cut roughly **80% of Claude Code's own system prompt** for its newest models, on the principle that every non-essential instruction competes with your task ([@trq212, Claude Code engineer, 2026-07-24](https://x.com/trq212/status/2080710971228918066)). If the tool's makers prune that hard, your CLAUDE.md deserves the same treatment (next lesson).
 :::
 
 ```quiz
