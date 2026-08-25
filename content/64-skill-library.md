@@ -8,6 +8,8 @@ They are deliberately not finished. Each has `[BRACKETS]` where your company's s
 **Path 1 — upload the file.** Save the skill as `SKILL.md` in a folder named after it, zip the folder, then **Customize → Skills → + → Create skill → Upload a skill** ([how to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)). The description field is capped at 200 characters, and it is how Claude decides when the skill fires — spend your best minute there.
 
 **Path 2 — have Claude build it.** In a Cowork session, ask Claude to create the skill: it interviews you (what the job is, when it should trigger, what good output looks like) and produces the installable folder. Later you can say *"add a step that…"* and it updates the skill in place ([same guide](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)). Paste any template below as the starting point for that interview.
+
+(There is also a third path for workflows easier to show than describe — **Record a skill**, Mac-only — covered in the lab lesson before this one.)
 :::
 
 ## How they run: automatically, or as a slash command

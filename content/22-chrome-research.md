@@ -8,7 +8,23 @@ Some of the most valuable inputs for every lane are not in a folder or a CRM. Th
 This lesson covers the **extension** (availability varies by plan). There is also a Cowork **side panel** in Chrome — on Max and Team, rolling out more widely — that runs full Cowork sessions, with your skills and connectors, next to the page you are reading. If you have it, everything in this lesson applies there too.
 :::
 
-## What it gives you
+## The research ladder — Chrome is the third rung
+
+Claude has three ways onto the web, and most people reach for the most powerful (and riskiest) one first. Climb in this order:
+
+| Rung | What it is | Reach for it when |
+|---|---|---|
+| **1. Web search** | Built-in quick lookups, available on every plan (Team/Enterprise: admin enables it once) | A fact, a price, a date — one or two searches' worth ([when to use what](https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research)) |
+| **2. Research** | Paid plans: a multi-step investigation over a few minutes that searches the web **and your connected tools** (mail, docs, calendar), returning a **cited report** ([guide](https://support.claude.com/en/articles/11088861-use-research-on-claude)) | "Build me a competitive picture of X" — breadth, citations, no babysitting |
+| **3. Claude in Chrome** | An extension acting in **your logged-in browser** | Only what rungs 1–2 cannot reach: pages behind your login, multi-step navigation, acting on a page |
+
+Cowork sessions have their own built-in web search and page fetch, so a Cowork research brief uses rungs 1–2 natively — no extension required ([Cowork guide](https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork)).
+
+:::tip Default to rung 2
+Research gives you the thing this course keeps demanding — **citations** — by default, and it cannot click "submit" on anything. Most competitive briefs, prospect research, and market scans in the lane labs are rung-2 jobs. Chrome earns its risk only when the page needs *your* session.
+:::
+
+## What the extension gives you
 
 - **Read pages you can see.** Including things behind your own login that no public scraper can reach.
 - **Navigate and click.** Multi-step research: search, open results, follow links, gather.
@@ -89,6 +105,7 @@ That last line — **list the URLs first** — is the cheapest control there is.
 
 ## When not to use browser control
 
+- When **web search or Research covers it** (rungs 1–2). Public pages do not need your session.
 - When an **API or connector exists**. It is more reliable, more auditable, and does not need your logged-in session.
 - When the site's **terms forbid automated access**. That is a real constraint and your problem, not Claude's.
 - When you need the answer to be **exactly reproducible**. Live pages change; save what you read.
@@ -128,6 +145,6 @@ Q: A connector exists for the system you want to research. Should you use Chrome
 > Prefer the API path whenever there is one. Browser control is for what has no other route.
 ```
 
-:::try Module complete
-That is your **🔌 Fully Connected** badge. Now pick your lane — Sales, GTM, Product or Finance — and go do the work you were hired for.
+:::try Next
+One lesson left in this module: Claude in the apps you already live in — Excel, PowerPoint, Outlook, Slack, and your phone.
 :::

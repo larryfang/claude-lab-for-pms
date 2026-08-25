@@ -51,9 +51,9 @@ var COWORK_COURSE = {
         { id: "the-brief", file: "11-the-brief.md", title: "The B.R.I.E.F. Framework", minutes: 11, level: "Core",
           summary: "Five parts every good Cowork brief has. Skip one and you get confident, useless work.",
           keywords: ["brief", "prompting", "framework", "outcome", "constraints", "sources", "format"] },
-        { id: "deliverables", file: "12-deliverables.md", title: "Ask for Real Deliverables", minutes: 9, level: "Core",
-          summary: "Decks, spreadsheets with live formulas, formatted docs, CSVs — and how to specify them so they land right.",
-          keywords: ["deliverables", "excel", "powerpoint", "word", "csv", "artifacts", "output", "format"] },
+        { id: "deliverables", file: "12-deliverables.md", title: "Ask for Real Deliverables", minutes: 10, level: "Core",
+          summary: "Decks, spreadsheets with live formulas, docs, CSVs — plus interactive artifacts and self-refreshing live dashboards.",
+          keywords: ["deliverables", "excel", "powerpoint", "word", "csv", "artifacts", "live artifacts", "dashboard", "output", "format"] },
         { id: "steering", file: "13-steering.md", title: "Plans, Steering & When to Stop", minutes: 9, level: "Core",
           summary: "Read the plan, interrupt early, redirect cheaply, and recognise the four ways a run goes wrong.",
           keywords: ["plan", "steering", "interrupt", "redirect", "stop", "failure", "review", "control"] },
@@ -66,7 +66,7 @@ var COWORK_COURSE = {
       id: "connect",
       emoji: "🔌",
       title: "Connect Your Revenue Stack",
-      desc: "Cowork is only as good as what it can see. Plug in CRM, mail, chat, docs, tickets — safely.",
+      desc: "Cowork is only as good as what it can see. Plug in CRM, mail, chat, docs and the web — safely — then meet Claude inside Office, Slack and your phone.",
       lessons: [
         { id: "connectors-trust", file: "20-connectors-trust.md", title: "Connectors & the Trust Model", minutes: 11, level: "Core",
           summary: "What MCP and connectors actually are, what Claude can and cannot see, and the data rules to agree before you start.",
@@ -74,9 +74,12 @@ var COWORK_COURSE = {
         { id: "lab-connect", file: "21-lab-connect.md", title: "Lab: Wire Up CRM, Mail & Docs", minutes: 18, level: "Core",
           summary: "Hands-on. Add your connectors, prove each one works with a read-only smoke test, and log what you granted.",
           keywords: ["lab", "connect", "salesforce", "hubspot", "gmail", "slack", "drive", "jira", "atlassian", "confluence", "mcp", "setup"] },
-        { id: "chrome-research", file: "22-chrome-research.md", title: "Claude in Chrome: Live Research", minutes: 9, level: "Core",
-          summary: "When local files and CRM are not enough — let Cowork read the live web, with the fences you need.",
-          keywords: ["chrome", "browser", "web", "research", "extension", "computer use", "scraping"] }
+        { id: "chrome-research", file: "22-chrome-research.md", title: "Web Research: Search, Research & Chrome", minutes: 11, level: "Core",
+          summary: "The research ladder — built-in web search, the cited Research mode, and Claude in Chrome for what sits behind your login.",
+          keywords: ["chrome", "browser", "web", "research", "web search", "research mode", "citations", "extension", "computer use", "scraping"] },
+        { id: "everywhere", file: "23-everywhere.md", title: "Claude Where You Already Work", minutes: 10, level: "Core",
+          summary: "Excel, PowerPoint, Word and Outlook add-ins (your skills work there too), Cowork on mobile, dictated briefs, and Claude Tag in Slack.",
+          keywords: ["excel", "powerpoint", "word", "outlook", "office", "m365", "add-in", "mobile", "phone", "dictation", "slack", "claude tag"] }
       ]
     },
     {

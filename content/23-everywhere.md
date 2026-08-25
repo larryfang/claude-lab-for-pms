@@ -1,0 +1,79 @@
+# Claude Where You Already Work
+
+The Cowork window is headquarters. But your actual day happens in Excel, PowerPoint, Outlook, Slack, and on your phone between meetings — and Claude now works in all of them, with the same skills and connectors you have already set up. This lesson is the map, so you stop copy-pasting between Claude and the tool the work actually lives in.
+
+## The Microsoft 365 add-ins
+
+Claude works **inside** Office — not on exported copies, but on the open file ([announcement](https://claude.com/blog/collaborate-with-claude-across-excel-powerpoint-word-and-outlook)):
+
+| App | Status | What it does on the open file |
+|---|---|---|
+| **Excel** | GA, all paid plans | Answers with cell-level citations, changes assumptions without breaking formula chains, debugs errors, builds multi-tab models ([guide](https://support.claude.com/en/articles/12650343-use-claude-for-excel)) |
+| **PowerPoint** | GA, all paid plans | Builds and restyles decks in your template, on the deck itself |
+| **Word** | GA, all paid plans | Drafts and revises in the document, tracked-changes style |
+| **Outlook** | Public beta | Inbox triage and drafts — **drafts land unsent, for your review**; calendar invites via the native event form ([guide](https://support.claude.com/en/articles/14855664-use-claude-for-outlook)) |
+
+Two things make this more than a sidebar gimmick:
+
+- **Your Skills work there.** Type **`/`** in the add-in sidebar and your installed skills appear — `/deck-check` before a QBR, `/variance-pack` in the live workbook — and skills also fire automatically when relevant ([office docs](https://claude.com/docs/office-agents/connectors-and-skills)). The skill you built in Module 8 follows you into Office.
+- **One conversation spans the apps.** Context carries across your open Excel, PowerPoint, Word and Outlook files — "use the Q3 numbers from the workbook in slide 4" works.
+
+Install from Microsoft AppSource ("Claude for Microsoft 365"); on managed plans your admin deploys it centrally. Google-side there is no equivalent sidebar for Docs/Sheets — the route there is the Drive/Gmail/Calendar connectors from Module 3.
+
+:::tip The lane pairings
+💼 Sales → **Outlook** (triage + drafted follow-ups you approve) · 📣 GTM → **PowerPoint** (launch decks in your template) · 🧭 Product → **Word** (PRDs revised in place) · 🧾 Finance → **Excel** (this is the surface the finance lane kept pointing at).
+:::
+
+## Cowork in your pocket
+
+Cowork runs in beta on **web and mobile** (Pro/Max/Team; Enterprise where enabled), with sessions running in Anthropic's cloud — start a task from your phone, steer it with follow-ups, review the output, resume a session you started elsewhere ([guide](https://support.claude.com/en/articles/15520349-use-claude-cowork-on-web-desktop-and-mobile)).
+
+The honest caveats: **local folders, browser use and computer use** need your desktop app open at home — cloud sessions work from connectors and uploaded files instead. So the pattern that works is:
+
+> **Kick off before the commute, review on the phone.** Start the account-brief run at your desk; approve the plan; read the finished brief on the train. Or start from the phone entirely, as long as the inputs come from connectors, not your laptop's folders.
+
+And for the brief itself: **dictate it**. Mobile dictation is available on all plans ([guide](https://support.claude.com/en/articles/10065434-use-dictation-on-claude-mobile)) — a spoken brief is usually longer and richer than a typed one, and B.R.I.E.F. works just as well out loud.
+
+## Claude in your team's Slack: Claude Tag
+
+The old "Claude in Slack" app was replaced on **2026-08-03** by **Claude Tag** — public beta, **Team and Enterprise plans only**, and admin-provisioned rather than self-serve ([overview](https://claude.com/docs/claude-tag/overview) · [what is Claude Tag](https://support.claude.com/en/articles/15594475-what-is-claude-tag)).
+
+Tag `@Claude` in a channel and hand it actual work: it posts its checklist in the thread, does the job (turn this decision thread into a doc; chase these three owners; investigate this customer report), and follows up on its own. An org Owner sets it up and controls which credentials and resources it can use per channel — so if you want it, this is a request to your admin naming a specific job, exactly like a missing connector in Module 3.
+
+:::concept One account, many doors
+Everything in this lesson runs on the same account: the same skills, the same connectors, the same permissions and data rules you set in Module 3. Nothing here is a new trust decision — it is the trust decisions you already made, available where the work is. That is also the argument to your security team: no new data paths, just new doors into the ones you governed.
+:::
+
+```quiz
+Q: You spend close week inside a 40-tab workbook. Where should Claude meet you?
++ The Claude for Excel add-in — it works on the open workbook with cell-level citations and preserves formula chains
+- Export the workbook and upload it to chat every time
+- Screenshots of each tab
+- Retype the numbers into Cowork
+> The add-ins work on the live file. Exporting copies is the pattern this lesson retires.
+
+Q: What happens when Claude for Outlook writes an email for you?
++ It lands as an unsent draft for your review — the human send gate stays yours
+- It sends immediately
+- It only writes subject lines
+- It CCs Anthropic
+> Drafts, not sends. The same review-before-it-leaves rule the whole course teaches, enforced by the surface.
+
+Q: You start a Cowork task from your phone on the train. What is the key constraint?
++ Cloud sessions work from connectors and uploads — your laptop's local folders need the desktop app open
+- Mobile can only read, never start tasks
+- Skills don't work on mobile
+- There is no constraint
+> Mobile Cowork is real, but local-folder and browser work still lives on the desktop.
+
+Q: Your team wants Claude Tag in Slack. What is the correct move?
++ Ask your org admin, naming a specific job — it is Team/Enterprise only and admin-provisioned per channel
+- Install it yourself from the Slack app store
+- Use a personal account in the channel
+- It does not exist
+> Admin-gated, like connectors on managed plans. A concrete ask beats a vague one.
+```
+
+:::try Module complete
+That is the full connection story: files, connectors, the live web, and now the apps and devices you already live in. Pick your lane and put it to work.
+:::

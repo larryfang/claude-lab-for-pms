@@ -15,6 +15,7 @@ Cowork produces **real files** — the kind you attach to an email, present in a
 | **Markdown** (`.md`) | Plain, versionable text | Internal docs, wikis, anything going into Confluence or a repo |
 | **Organised folders** | Files sorted, renamed, moved | The mess itself is the problem |
 | **A set of files** | One per account / per customer / per region | Twelve pre-call briefs, one per opportunity |
+| **Interactive artifact** | A live page — dashboard, calculator, tracker | The audience should *explore* the numbers, not read them |
 
 :::tip The two-artefact rule
 Ask for **data plus narrative** almost every time.
@@ -92,6 +93,14 @@ Two things to notice. **"Same structure in every file"** makes fourteen document
 - If it feeds a system, ask for **CSV** and specify the exact column headers that system expects.
 - If a person will edit it collaboratively, ask for a format your team actually uses. There is no prize for a beautiful file nobody can open.
 - If you live in a workbook all day, there is also the **Claude for Excel add-in**: it works on the open workbook directly, reads the live formulas, and edits without breaking cell dependencies. For heavy spreadsheet work — finance and RevOps especially — editing the real file often beats generating a new one.
+
+## When the deliverable should be alive
+
+Files are snapshots. Sometimes the right deliverable is a page people interact with — and that is an **artifact**: an interactive dashboard, a what-if calculator with sliders, a filterable tracker ([artifacts guide](https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them)). Ask the same way you ask for a file: name the sections, the controls, and where each number must come from.
+
+Cowork on desktop goes one step further with **live artifacts** — a dashboard that stays on your machine and **refreshes itself from your connectors**, so Monday's pipeline view is current without re-running anything ([live artifacts guide](https://support.claude.com/en/articles/14729249-use-live-artifacts-in-claude-cowork)). Desktop-only and local to that machine, so it is *your* cockpit, not the thing you send the CFO.
+
+The choice is simple: **a file when someone needs to keep, attach, or audit it; an artifact when someone needs to explore it.** The two-artefact rule still applies — a dashboard without its underlying CSV is a claim you cannot check.
 
 :::warning Charts, and being honest about them
 Cowork can produce charts in spreadsheets and decks. Check the axes, the units, and whether the chart type matches the data — a line chart across unordered categories looks fine and means nothing. A chart is an argument in visual form, and a wrong one is more persuasive than a wrong sentence.

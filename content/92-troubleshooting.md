@@ -196,7 +196,9 @@ Connector queries are often paginated or capped — the first page, the first fe
 :::
 
 :::details Usage limits are shared, and big runs spend them
-Your plan's usage is shared across Chat, Cowork and Claude Code, on a rolling session window plus a weekly cap (the exact numbers depend on plan and change — check your plan's usage page). A forty-account fan-out or a long unattended run spends real budget. Practical consequences: test fan-outs on two items before forty, schedule heavy jobs thoughtfully, and if a "limit reached" message appears and never clears when it should, that is a support conversation, not something to engineer around.
+Your plan's usage is shared across Chat, Cowork and Claude Code, on a rolling session window plus a weekly cap (the exact numbers depend on plan and change — check your plan's usage page). A forty-account fan-out or a long unattended run spends real budget.
+
+Two tools for seeing it: type **`/usage`** or **`/cost`** inside a Cowork task for an inline card of your plan limits and the session's spend — it costs nothing to check ([Cowork changelog](https://claude.com/docs/cowork/changelog)) — and **Settings → Usage** for the account view. Practical habits from the official guidance: batch related work into one session rather than many small ones, use plain chat for simple questions, test fan-outs on two items before forty, and schedule heavy jobs thoughtfully. If a "limit reached" message appears and never clears when it should, that is a support conversation, not something to engineer around.
 :::
 
 :::details It does not remember your last session

@@ -57,6 +57,10 @@ Then, separately, tell me: which parts of my brief did you leave out and why, an
 If you just finished running the job in a Cowork session, there is a shortcut practitioners swear by: before closing that session, say *"Write a SKILL.md recording exactly how you did this task — the steps, my corrections, and the rules you learned."* The session that did the work documents the work, and your next run starts from its own experience. ([firsthand CPA account, r/ClaudeAI](https://www.reddit.com/r/ClaudeAI/comments/1rd7b9i/am_i_using_claude_cowork_wrong/))
 :::
 
+:::tip Or record it: show, don't describe
+For workflows easier to *do* than to explain, Cowork on **Claude for Mac** has **Record a skill**: the **+** menu (or Customize → Skills → Add → "Record your screen") records your screen, clicks and voice narration for up to ~10 minutes while you do the job once — then Claude reviews the recording and proposes the skill, which you save or dismiss. Availability caveat, straight from the official guide: *"available on Pro, Max, and Team plans, in Cowork in Claude for Mac. It isn't available in chat, on Windows, or on Free and Enterprise plans"* ([how to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)). The cold test below applies to a recorded skill exactly as much as a written one.
+:::
+
 :::lab Step 3 — Install it
 - [ ] Create a folder named after the Skill (kebab-case, e.g. `deal-review`)
 - [ ] Save `SKILL.md` inside it
