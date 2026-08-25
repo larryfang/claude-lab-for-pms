@@ -19,7 +19,7 @@ Confirm you granted **that** folder and not its parent or a sibling. Then run th
 
 If the probe comes back empty or wrong, re-grant. If the folder is in iCloud, OneDrive or Dropbox and files are not downloaded locally, the sync client may be showing placeholders rather than real files — download them first.
 
-The reverse risk is worse: a "copy" of a not-downloaded placeholder copies an empty stub, so a reorganisation can lose the real files. Sync is not backup — keep Cowork away from synced folders that have no separate backup.
+The reverse risk is worse: a reorganisation that copies not-downloaded placeholders can lose the real files — the "copies, never originals" warning in the setup lab covers this in full. Sync is not backup.
 :::
 
 :::details A connector is connected but returns nothing

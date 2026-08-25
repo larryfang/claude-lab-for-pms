@@ -54,6 +54,7 @@
       return freeze('<a href="' + escAttr(safeUrl(href)) + '"' + (title ? ' title="' + escAttr(title) + '"' : "") + (ext ? ' target="_blank" rel="noopener"' : "") + ">" + emphasize(t) + "</a>");
     });
     text = emphasize(text);
+    // restore frozen HTML before code spans: link text may contain a \u0000 code placeholder
     text = text.replace(/\u0001(\d+)\u0001/g, function (m, i) { return frozen[+i]; });
     text = text.replace(/\u0000(\d+)\u0000/g, function (m, i) { return "<code>" + escapeHtml(codes[+i]) + "</code>"; });
     return text;
