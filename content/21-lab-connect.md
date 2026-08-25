@@ -33,6 +33,43 @@ Three routes, in order of ease:
 On a Team or Enterprise plan, a missing connector is usually an admin policy. Ask, naming the job.
 :::
 
+### Two worked examples, end to end
+
+The steps above are generic on purpose. Here are the two connectors this course's readers ask about most, walked through completely — do one of them even if your lane starts elsewhere, because the pattern transfers to every connector.
+
+:::details Worked example — Atlassian (Jira + Confluence) via MCP
+Atlassian's official **Rovo MCP server** covers Jira, Confluence and JSM, and sits in the connector directory ([claude.com/connectors/atlassian](https://claude.com/connectors/atlassian)).
+
+1. **Customize → Connectors → +** → search **Atlassian** → **Connect**
+2. The OAuth screen lists the sites and scopes — note whether you granted read-only or read-write, per product
+3. Every action then runs **as you**: Atlassian's own docs state the server "respects the user's existing access controls" ([Atlassian's getting-started guide](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/))
+
+Smoke-test it with something you can check in ten seconds:
+
+```prompt
+Using the Atlassian connector only: (1) list every issue in project [YOUR-KEY] that changed status in the last 7 days — key, summary, status, assignee; (2) find the most recently updated Confluence page in space [YOUR-SPACE] and give me its title, author, and last-edited date. Tell me which Jira site you queried. Change nothing.
+```
+
+Then the cross-source move that makes it real: *"Draft next week's sprint update from the Jira changes above, using the format of that Confluence page."*
+
+If your admin has not enabled the directory connector, the same server is reachable as a **custom connector by URL** — `https://mcp.atlassian.com/v1/mcp/authv2` (Atlassian's current recommended endpoint; the older `/v1/sse` form is legacy) ([Atlassian docs](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/)). On managed plans that still needs an Owner — which is the policy conversation from the last lesson.
+:::
+
+:::details Worked example — Gmail
+Gmail is a first-party Google Workspace connector (with Calendar and Drive alongside), available on all plans ([Google Workspace connectors guide](https://support.claude.com/en/articles/10166901-use-google-workspace-connectors)).
+
+1. **Customize → Connectors** → **Gmail** → **Connect** → Google OAuth
+2. Read the consent screen — this one can **read, draft, and (with your approval per action, by default) send, reply and forward**. That approval gate is exactly the "read and write are different grants" rule from the last lesson, enforced by the product; on Team/Enterprise, Owners decide whether members can waive it.
+
+Smoke-test with a known answer:
+
+```prompt
+Using the Gmail connector only, find every email from the [customer-domain.com] domain in the last 14 days. Table: date, sender, subject, one-line gist. Then tell me the date of my single most recent email with them. Read-only — draft nothing, send nothing.
+```
+
+Then the useful version: *"For each thread above where they asked a question we have not answered, draft (do not send) a reply in my tone."* Drafts land in your Gmail drafts folder — the human-review gate stays yours.
+:::
+
 ## Part 2 — The read-only smoke test (4 min)
 
 Never trust a connector because it says "connected". Prove it, with a query where you already know the answer.

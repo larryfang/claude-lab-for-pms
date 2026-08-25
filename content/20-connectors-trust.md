@@ -16,7 +16,15 @@ Before USB-C, every device had its own cable. Before MCP, every AI integration w
 MCP is the standard socket. A tool vendor implements it once; every MCP-speaking assistant can then use that tool. That is why the list of things Claude can connect to grows so fast — and why "is there an MCP server for X?" is now a sensible question to ask about any system you use.
 :::
 
-You do not need to understand the protocol. You need to understand the **shape of the access**.
+You do not need to understand the protocol. You need to understand the **shape of the access** — and the three ways a connector reaches you:
+
+| Route | What it is | Who can use it |
+|---|---|---|
+| **The directory** | Vetted, one-click connectors at [claude.ai/connectors](https://claude.com/connectors) — Gmail, Google Drive, Atlassian (Jira/Confluence), Salesforce, HubSpot, Slack, Notion and hundreds more. Each listing states its read/write capabilities before you connect. | All plans ([connectors guide](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities)) |
+| **A custom connector by URL** | Any remote **MCP server** — paste its URL under **Customize → Connectors → + → Add custom connector**, authenticate, done. This is how you reach an internal tool or a vendor not in the directory. | All plans (Free: one custom connector). On Team/Enterprise only an Owner can add one ([custom connectors guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)) |
+| **An admin-provisioned set** | On Team/Enterprise, Owners enable connectors org-wide and can set per-tool rules — e.g. *read email: always allow; send email: needs approval*. | Managed plans |
+
+One architectural fact worth knowing before your security team asks: with a custom connector, *"Claude connects to your remote MCP server from Anthropic's cloud infrastructure, rather than from your local device"* ([official guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)) — so the server must be reachable from the internet, and the vendor's security posture matters. Anthropic's own warning applies double for custom servers: *"Malicious MCP servers may include hidden instructions that try to make Claude perform unintended actions."* Only add servers whose publisher you trust and whose URL you verified against the vendor's own documentation.
 
 ## What Cowork can and cannot see
 

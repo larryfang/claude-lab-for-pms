@@ -76,7 +76,7 @@ and state the rate used.
 
 Three parts:
 
-**The frontmatter** — `name` and `description` between `---` lines. The description is the most important line in the file, because it is how Claude decides whether this Skill applies. Write it as *"Use when the user asks for X, Y or Z"* and name the actual words people use.
+**The frontmatter** — `name` and `description` between `---` lines. The description is the most important line in the file, because it is how Claude decides whether this Skill applies — and it is capped at **200 characters**, so every word must earn its place ([official skill-creation guide](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)). Write it as *"Use when the user asks for X, Y or Z"* and name the actual words people use.
 
 **The definitions** — your company's specifics. This is the section that makes the output *yours* rather than generically competent.
 
@@ -109,9 +109,14 @@ Write the brief. Run it three or four times. Notice what you correct every time 
 A Skill written before you know what good output looks like just freezes your first guess, and it is harder to notice a Skill is wrong than a brief is wrong, because the Skill is invisible while it runs.
 :::
 
+## Two ways a Skill runs
+
+1. **Automatically** — Claude matches your request against every installed description and loads the one that fits. This is the main path: your colleague types "run a deal review" and the Skill fires without being named.
+2. **As a slash command** — type **`/`** in Cowork and your installed skills appear as `/skill-name`; Cowork sessions run on the same engine as Claude Code, where a skill *is* a command ([slash-commands docs](https://code.claude.com/docs/en/slash-commands)). Use the explicit form when the run must be exact and deliberate — `/deal-review` before the forecast call, no ambiguity about whether it fired.
+
 ## Where Skills live
 
-- **Personal** — installed for your own account (Customize → Skills). Available in your Cowork sessions.
+- **Personal** — installed for your own account (Customize → Skills). Available in your Cowork sessions — which load the skills enabled on your claude.ai account, synced at session start.
 - **Shared** — passed to colleagues to install, so everyone runs the same play. The file itself is the same.
 - **Organization** — on Team and Enterprise plans, an admin can distribute a Skill to everyone.
 
@@ -130,9 +135,11 @@ Reference them from `SKILL.md` and Claude reads them when needed. This is how yo
 
 ## Plugins, briefly
 
-A **plugin** bundles Skills, connectors, and sub-agents into one installable package (Customize → Plugins). It is how "here is my Skill" becomes "install this and you have the whole team's playbook".
+A **plugin** bundles Skills, connectors, and sub-agents into one installable package (Customize → Plugins → Browse plugins). It is how "here is my Skill" becomes "install this and you have the whole team's playbook".
 
-For now: build one good Skill. Bundling matters when you have three or four that belong together — covered in Module 8's last lesson.
+Anthropic ships open-source plugins for **eleven business functions** — sales, marketing, finance, product, legal and more — via a marketplace that is enabled by default, and teams can add any GitHub repo as their own marketplace ([use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude) · [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)).
+
+For now: build one good Skill. Bundling matters when you have three or four that belong together — and the next-but-one lesson hands you a ready-to-adapt Skill for each function.
 
 ```quiz
 Q: What is the single most important line in a SKILL.md?
