@@ -6,7 +6,7 @@
 
 Learn by *doing*: auto-saving checklists, instant-feedback quizzes, copy-paste prompts, and an **in-browser Claude Code terminal you can actually type into**.
 
-[**▶ Live demo**](https://larryfang.github.io/claude-lab-for-pms/) · [Quick start](#-quick-start) · [Add a course](#-add-a-course-or-lesson) · [Contribute](CONTRIBUTING.md)
+[**▶ Live demo**](https://larryfang.github.io/claude-lab/) · [Quick start](#-quick-start) · [Add a course](#-add-a-course-or-lesson) · [Contribute](CONTRIBUTING.md)
 
 </div>
 

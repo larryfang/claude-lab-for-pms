@@ -7,7 +7,7 @@
 window.SITE = {
   title: "Claude Lab",
   tagline: "Hands-on, interactive courses for getting genuinely good at Claude.",
-  repo: "https://github.com/larryfang/claude-lab-for-pms"
+  repo: "https://github.com/larryfang/claude-lab"
 };
 
 var COWORK_COURSE = {
