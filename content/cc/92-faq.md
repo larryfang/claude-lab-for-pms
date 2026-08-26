@@ -37,7 +37,7 @@ That's correct — plan mode is **read-only by design**. Press **Shift+Tab** to 
 :::
 
 :::details My subagent ignores project rules
-Subagents **don't inherit CLAUDE.md** — they start with only their own system prompt. **Embed** any rules they must follow directly in the subagent's prompt.
+Custom and general-purpose subagents normally **do inherit the CLAUDE.md and memory hierarchy**. The built-in Explore and Plan agents are the exceptions: they skip CLAUDE.md and git status to stay lean. If a rule is essential, restate it in the delegation prompt—especially when using Explore or Plan—and check that you did not accidentally shadow a built-in agent name.
 :::
 
 :::details Plan mode broke after I added a subagent

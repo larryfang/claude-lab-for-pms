@@ -18,6 +18,22 @@ var COWORK_COURSE = {
   tagline: "Stop prompting. Start delegating. A hands-on lab that turns Cowork into a teammate who does your account research, launch kits, PRDs, and variance packs — no code required.",
   audience: "AEs · GTM & PMM · Product managers · Finance",
   level: "No code required",
+  fastPaths: [
+    { id: "essentials", emoji: "⚡", title: "90-minute essentials", audience: "Anyone new to Cowork", desc: "Learn the safe delegation loop: set up, brief, steer, produce a real deliverable, and verify it.", lessons: ["welcome", "what-is-cowork", "lab-setup", "lab-first-run", "the-brief", "deliverables", "steering", "verify"] },
+    { id: "sales", emoji: "💼", title: "Sales quick start", audience: "AEs and sales engineers", desc: "Get from safe setup to a defensible pre-call brief and pipeline review.", lessons: ["welcome", "what-is-cowork", "lab-setup", "the-brief", "connectors-trust", "sales-plays", "lab-account-brief", "lab-pipeline", "verify"] },
+    { id: "gtm", emoji: "📣", title: "GTM quick start", audience: "PMM and growth teams", desc: "Build a launch kit and evidence-backed battlecard without losing control of claims.", lessons: ["welcome", "what-is-cowork", "lab-setup", "the-brief", "connectors-trust", "gtm-plays", "lab-launch-kit", "lab-battlecard", "verify"] },
+    { id: "product", emoji: "🧭", title: "Product quick start", audience: "Product managers", desc: "Turn research into an insight report and PRD you can trace and defend.", lessons: ["welcome", "what-is-cowork", "lab-setup", "the-brief", "product-plays", "lab-discovery", "lab-prd", "verify"] },
+    { id: "finance", emoji: "🧾", title: "Finance quick start", audience: "Finance and RevOps", desc: "Create a live-formula variance pack and reconciliation workflow with a strict review pass.", lessons: ["welcome", "what-is-cowork", "lab-setup", "the-brief", "finance-plays", "lab-variance", "lab-reconciliation", "verify"] }
+  ],
+  freshness: {
+    "what-is-cowork": { verifiedDate: "2026-08-26", sourceLabel: "Claude Help Center", sourceUrl: "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" },
+    "lab-setup": { verifiedDate: "2026-08-26", sourceLabel: "Claude Help Center", sourceUrl: "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" },
+    "workspace-tour": { verifiedDate: "2026-08-26", sourceLabel: "Claude Help Center", sourceUrl: "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" },
+    "connectors-trust": { verifiedDate: "2026-08-26", sourceLabel: "Claude Help Center", sourceUrl: "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities" },
+    "chrome-research": { verifiedDate: "2026-08-26", sourceLabel: "Claude Help Center", sourceUrl: "https://support.claude.com/en/articles/11088861-use-research-on-claude" },
+    "everywhere": { verifiedDate: "2026-08-26", sourceLabel: "Claude Help Center", sourceUrl: "https://support.claude.com/en/articles/15520349-use-claude-cowork-on-web-desktop-and-mobile" },
+    "skills": { verifiedDate: "2026-08-26", sourceLabel: "Claude Help Center", sourceUrl: "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills" }
+  },
   modules: [
     {
       id: "start-here",
@@ -222,9 +238,9 @@ var COWORK_COURSE = {
         { id: "glossary", file: "90-glossary.md", title: "Glossary", minutes: null, level: "Reference",
           summary: "Every term in this lab, defined in one sentence, in plain language.",
           keywords: ["glossary", "definitions", "terms", "jargon", "dictionary"] },
-        { id: "brief-library", file: "91-brief-library.md", title: "Brief Library — Sales · GTM · Product", minutes: null, level: "Reference",
+        { id: "brief-library", file: "91-brief-library.md", title: "Brief Library — Sales · GTM · Product · Finance", minutes: null, level: "Reference",
           summary: "Copy-paste Cowork briefs for the jobs each role does every week.",
-          keywords: ["prompts", "briefs", "library", "templates", "recipes", "copy", "sales", "gtm", "product"] },
+          keywords: ["prompts", "briefs", "library", "templates", "recipes", "copy", "sales", "gtm", "product", "finance"] },
         { id: "troubleshooting", file: "92-troubleshooting.md", title: "Troubleshooting & FAQ", minutes: null, level: "Reference",
           summary: "It stalled, it invented a number, it cannot see the folder — start here.",
           keywords: ["troubleshooting", "faq", "errors", "help", "problems", "fix", "stuck"] }
@@ -256,6 +272,26 @@ var CC_COURSE = {
   tagline: "Go from 'I installed it' to agentic engineering — context, plan mode, subagents, hooks, MCP, and automation — with an in-browser terminal you can actually type into.",
   audience: "Engineers · already installed, new to Claude Code",
   level: "Hands-on · terminal",
+  fastPaths: [
+    { id: "foundations", emoji: "⚡", title: "Foundations in 80 minutes", audience: "Developers new to Claude Code", desc: "Build the core mental model, manage context, plan work, and close the verification loop.", lessons: ["cc-what", "cc-tour", "cc-first", "cc-context", "cc-claudemd", "cc-context-mgmt", "cc-epcc", "cc-verify"] },
+    { id: "ship-feature", emoji: "🔁", title: "Ship a feature safely", audience: "Developers ready to use Claude on a real repository", desc: "Go from context and plan mode through permissions, tests, and a complete feature lab.", lessons: ["cc-what", "cc-context", "cc-claudemd", "cc-epcc", "cc-verify", "cc-permissions", "cc-lab-feature"] },
+    { id: "automation", emoji: "🚀", title: "Automation power path", audience: "Experienced users building repeatable workflows", desc: "Combine skills, subagents, hooks, headless runs, and worktrees without skipping safety.", lessons: ["cc-permissions", "cc-commands", "cc-subagents", "cc-hooks", "cc-mcp-plugins", "cc-headless", "cc-parallel", "cc-lab-automate"] }
+  ],
+  freshness: {
+    "cc-tour": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/commands" },
+    "cc-claudemd": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/memory" },
+    "cc-context-mgmt": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/commands" },
+    "cc-epcc": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/best-practices" },
+    "cc-permissions": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/permission-modes" },
+    "cc-commands": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/skills" },
+    "cc-subagents": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/sub-agents" },
+    "cc-hooks": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/hooks" },
+    "cc-mcp-plugins": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/mcp" },
+    "cc-headless": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/github-actions" },
+    "cc-parallel": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs/en/cross-session-messaging" },
+    "cc-cheatsheet": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code docs", sourceUrl: "https://code.claude.com/docs" },
+    "cc-whats-new": { verifiedDate: "2026-08-26", sourceLabel: "Claude Code changelog", sourceUrl: "https://code.claude.com/docs/en/whats-new" }
+  },
   modules: [
     {
       id: "cc-foundations",
@@ -384,7 +420,7 @@ var CC_COURSE = {
           summary: "When Claude Code misbehaves, start here.",
           keywords: ["faq", "troubleshooting", "errors", "help", "fix", "problems", "safe mode", "usage limits"] },
         { id: "cc-whats-new", file: "cc/93-whats-new.md", title: "What's New in Claude Code", minutes: null, level: "Reference",
-          summary: "The dated digest: auto mode, background agents, agent teams, cloud sessions, dynamic workflows, and the ecosystem — verified against v2.1.245.",
+          summary: "The dated digest: auto mode, background agents, agent teams, cloud sessions, dynamic workflows, and the ecosystem — verified against v2.1.246.",
           keywords: ["whats new", "updates", "changelog", "auto mode", "agent teams", "workflows", "ultracode", "cloud", "background agents", "ecosystem", "plugins", "version"] }
       ]
     }

@@ -495,9 +495,17 @@ a { color: var(--link); text-underline-offset: 2px; }
 @media (min-width: 981px) { .scrim { display: none !important; } }
 
 @media (max-width: 520px) {
+  .topbar { gap: 6px; padding-inline: 10px; }
+  .brand-text, .topbar-progress-track { display: none; }
+  .brand { gap: 0; }
+  .topbar-progress { gap: 3px; }
+  .topbar-progress-label { min-width: 30px; }
+  .topbar-actions { gap: 0; }
+  .icon-btn { width: 36px; height: 36px; }
   .hero-stats { gap: 16px; }
   .pager { flex-direction: column; }
   .github-link { display: none; }
+  .course-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
@@ -520,6 +528,33 @@ a { color: var(--link); text-underline-offset: 2px; }
 .course-meta .dot { opacity: .5; }
 .course-btn { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-family: var(--font-display); font-weight: 600; font-size: .95rem; padding: 11px 18px; border-radius: 11px; background: linear-gradient(135deg, var(--clay), var(--clay-deep)); color: #fff; box-shadow: var(--shadow-sm); }
 .course-card:hover .course-btn { box-shadow: var(--shadow); }
+
+.route-chooser { margin: 14px 0 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.route-chooser summary { cursor: pointer; padding: 14px 18px; font-family: var(--font-display); font-weight: 700; color: var(--clay-deep); }
+.route-chooser-body { padding: 0 18px 16px; color: var(--ink-2); }
+.route-chooser-body p { margin: 0 0 10px; }
+.route-question { padding: 12px 14px; border-radius: 10px; background: var(--surface-2); }
+.fast-path-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 34px; }
+.fast-path-card { display: flex; gap: 14px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: inherit; text-decoration: none; transition: transform .15s, border-color .15s, box-shadow .15s; }
+.fast-path-card:hover { transform: translateY(-2px); border-color: var(--clay); box-shadow: var(--shadow); }
+.fast-path-emoji { font-size: 1.6rem; }
+.fast-path-card h3 { margin: 0 0 5px; font-family: var(--font-display); font-size: 1.02rem; }
+.fast-path-card p { margin: 0 0 9px; color: var(--muted); font-size: .86rem; }
+.fast-path-meta { font-size: .76rem; font-weight: 700; color: var(--clay-deep); }
+.path-hero { padding: 34px 0 20px; max-width: 760px; }
+.path-hero h1 { margin: 10px 0; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.04; letter-spacing: -.035em; }
+.path-audience { color: var(--ink-2); }
+.path-summary { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px 18px; margin: 12px 0 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-2); color: var(--ink-2); font-size: .88rem; }
+.path-list { list-style: none; margin: 0; padding: 0; max-width: 760px; }
+.path-list li { margin-bottom: 10px; }
+.path-list a { display: flex; align-items: center; gap: 14px; padding: 15px 17px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: inherit; text-decoration: none; }
+.path-list a:hover { border-color: var(--clay); box-shadow: var(--shadow-sm); }
+.path-step { flex: 0 0 32px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--clay-soft); color: var(--clay-deep); font-weight: 800; }
+.path-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 3px; }
+.path-copy small { color: var(--muted); }
+.path-arrow { color: var(--clay-deep); font-weight: 800; }
+.freshness { font-size: .74rem; color: var(--tip); text-decoration: none; white-space: nowrap; }
+.freshness:hover { text-decoration: underline; }
 
 .nav-allcourses { display: block; padding: 8px 10px; margin-bottom: 6px; border-radius: 9px; font-size: .82rem; font-weight: 600; color: var(--muted); text-decoration: none; }
 .nav-allcourses:hover { background: var(--surface-2); color: var(--clay-deep); }
@@ -565,3 +600,4 @@ a { color: var(--link); text-underline-offset: 2px; }
 .ccsim-run:hover { filter: brightness(1.08); }
 .ccsim-run:disabled { opacity: .5; cursor: default; }
 .ccsim-note { font-family: var(--font-sans); font-size: .72rem; color: var(--term-dim); padding: 8px 14px; background: #0a0d13; border-top: 1px solid #161b25; }
+.ccsim-mismatch { font-family: var(--font-sans); font-size: .76rem; color: #ffd3c2; padding: 9px 14px; background: #3a1e19; border-top: 1px solid #6b3026; }

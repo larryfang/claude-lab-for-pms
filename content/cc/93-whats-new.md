@@ -1,6 +1,6 @@
 # What's New in Claude Code
 
-Claude Code ships fast — this page pins the course to a date so you always know what's current. **Verified against v2.1.245, 2026-08-25.** The two sources that keep you up to date afterwards: the official [weekly digests](https://code.claude.com/docs/en/whats-new) and the [changelog](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
+Claude Code ships fast — this page pins the course to a date so you always know what's current. **Verified against v2.1.246, 2026-08-26.** The two sources that keep you up to date afterwards: the official [weekly digests](https://code.claude.com/docs/en/whats-new) and the [changelog](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 ## The headline shifts (Mar–Aug 2026)
 

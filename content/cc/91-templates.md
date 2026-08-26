@@ -60,7 +60,7 @@ model: sonnet
 ---
 You are a senior reviewer. Flag only correctness and security issues (not style).
 For each finding give file:line and a specific fix. If the diff is clean, say so.
-Remember our rules: <embed any project rules — subagents don't read CLAUDE.md>.
+Follow the project rules in CLAUDE.md. Restate any rule that is critical to this review here as an explicit handoff constraint.
 ```
 
 ## A skill — `.claude/skills/api-conventions/SKILL.md`

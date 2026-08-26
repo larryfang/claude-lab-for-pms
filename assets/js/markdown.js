@@ -194,7 +194,7 @@
       '<div class="ccsim-bar"><span class="ccsim-dots"><i></i><i></i><i></i></span><span class="ccsim-title">claude — simulated session</span><button class="ccsim-reset" type="button">↻ Reset</button></div>' +
       '<div class="ccsim-screen" data-screen></div>' +
       '<div class="ccsim-inputline"><span class="ccsim-prompt" data-prompt>❯</span><input class="ccsim-input" data-input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder=""><button class="ccsim-run" data-run type="button">Run ▶</button></div>' +
-      '<div class="ccsim-note">Simulated for learning — type the suggested command (or your own) and press Enter. Always run real commands in your own terminal.</div>' +
+      '<div class="ccsim-note">Guided simulation — type the suggested command exactly, or leave the field blank and choose Run. Always run real commands in your own terminal.</div>' +
       "</div>";
   }
 

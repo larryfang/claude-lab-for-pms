@@ -1,6 +1,6 @@
 # Command & Shortcut Cheat-Sheet
 
-Everything you'll reach for, on one page. Bookmark it. Every command below is verified against **Claude Code v2.1.245** (2026-08-25); the authoritative, always-current list is [code.claude.com/docs](https://code.claude.com/docs) and `/help` in-session.
+Everything you'll reach for, on one page. Bookmark it. Every command below is verified against **Claude Code v2.1.246** (2026-08-26); the authoritative, always-current list is [code.claude.com/docs](https://code.claude.com/docs) and `/help` in-session.
 
 ## Launch & flags (your shell)
 

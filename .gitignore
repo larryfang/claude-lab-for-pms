@@ -13,3 +13,8 @@ Thumbs.db
 
 # Internal QA artifact — not part of the course
 REVIEW.md
+
+# Local verification output
+node_modules/
+playwright-report/
+test-results/

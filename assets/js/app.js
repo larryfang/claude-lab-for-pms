@@ -55,6 +55,16 @@
   }
   function lessonHref(cid, lid) { return "#/" + cid + "/" + lid; }
   function courseHref(cid) { return "#/" + cid; }
+  function fastPathHref(cid, pid) { return "#/" + cid + "/path/" + pid; }
+  function fastPathMinutes(c, path) {
+    return path.lessons.reduce(function (total, id) { var info = lessonInfo(c, id); return total + (info && info.lesson.minutes ? info.lesson.minutes : 0); }, 0);
+  }
+  function formatVerifiedDate(iso) {
+    var p = String(iso || "").split("-");
+    if (p.length !== 3) return iso;
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return parseInt(p[2], 10) + " " + months[parseInt(p[1], 10) - 1] + " " + p[0];
+  }
   function levelChip(level) {
     var map = { Beginner: "level-beginner", Core: "level-core", Advanced: "level-advanced", Reference: "level-core" };
     return '<span class="level-chip ' + (map[level] || "level-core") + '">' + level + "</span>";
@@ -74,6 +84,7 @@
     var p = progressPct(byId[cid]);
     $("#topbarProgressFill").style.width = p.pct + "%";
     $("#topbarProgressLabel").textContent = p.pct + "%";
+    wrap.setAttribute("aria-valuenow", String(p.pct));
   }
 
   /* ---------- Nav ---------- */
@@ -106,14 +117,16 @@
       group.dataset.module = m.id;
       var btn = document.createElement("button");
       btn.className = "nav-group-btn";
+      var ul = document.createElement("ul"); ul.className = "nav-lessons"; ul.id = "nav-" + c.id + "-" + m.id;
+      btn.setAttribute("aria-expanded", String(!collapsed));
+      btn.setAttribute("aria-controls", ul.id);
       btn.innerHTML =
         '<span class="nav-group-emoji">' + m.emoji + "</span>" +
         '<span class="nav-group-title">' + m.title + "</span>" +
         '<span class="nav-group-meter">' + mp.done + "/" + mp.total + "</span>" +
         '<span class="nav-group-chev"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>';
-      btn.addEventListener("click", function () { group.classList.toggle("collapsed"); s.collapsed[m.id] = group.classList.contains("collapsed"); save(); });
+      btn.addEventListener("click", function () { group.classList.toggle("collapsed"); s.collapsed[m.id] = group.classList.contains("collapsed"); btn.setAttribute("aria-expanded", String(!s.collapsed[m.id])); save(); });
       group.appendChild(btn);
-      var ul = document.createElement("ul"); ul.className = "nav-lessons";
       m.lessons.forEach(function (l) {
         var li = document.createElement("li");
         var a = document.createElement("a");
@@ -130,7 +143,7 @@
   function setActiveNav(id) {
     $all(".nav-link").forEach(function (a) { a.classList.toggle("active", a.dataset.lesson === id); });
     var info = lessonInfo(byId[currentCourseId], id);
-    if (info) { var g = $('.nav-group[data-module="' + info.module.id + '"]'); if (g && g.classList.contains("collapsed")) { g.classList.remove("collapsed"); cstate(currentCourseId).collapsed[info.module.id] = false; save(); } }
+    if (info) { var g = $('.nav-group[data-module="' + info.module.id + '"]'); if (g && g.classList.contains("collapsed")) { g.classList.remove("collapsed"); var btn = $(".nav-group-btn", g); if (btn) btn.setAttribute("aria-expanded", "true"); cstate(currentCourseId).collapsed[info.module.id] = false; save(); } }
   }
   function refreshNavMeters(c) {
     c.modules.forEach(function (m) { var g = $('.nav-group[data-module="' + m.id + '"] .nav-group-meter'); if (g) { var mp = moduleProgress(c, m); g.textContent = mp.done + "/" + mp.total; } });
@@ -141,7 +154,7 @@
     currentCourseId = null;
     refreshTopProgress(null);
     buildHubNav();
-    document.title = SITE.title + " — Cowork for Sales, GTM & Product";
+    document.title = SITE.title + " — Cowork for Sales, GTM, Product & Finance";
     var html = "";
     html += '<section class="hero">';
     html += '<span class="hero-eyebrow">✦ Hands-on · Interactive · Open source</span>';
@@ -202,6 +215,19 @@
     (c.badges || []).forEach(function (b) { var has = earned.indexOf(b) !== -1; html += '<span class="badge ' + (has ? "earned" : "") + '">' + (has ? b.emoji : "🔒") + " " + b.label + "</span>"; });
     html += "</div></div></div>";
 
+    if (c.fastPaths && c.fastPaths.length) {
+      html += '<h2 class="section-title">Choose your route</h2><p class="section-desc">Short on time? Pick the outcome closest to your job. Every route still counts toward the full course.</p>';
+      html += '<details class="route-chooser"><summary>60-second route chooser</summary><div class="route-chooser-body">';
+      html += '<p><strong>Choose “Essentials”</strong> if you are new or unsure. Otherwise, choose the role or outcome you need this week. You can switch routes at any time; progress is shared.</p>';
+      html += '<p class="route-question"><strong>Quick check:</strong> Can you already explain the safety model, write a constrained brief, and verify an output? If not, start with Essentials.</p></div></details>';
+      html += '<div class="fast-path-grid">';
+      c.fastPaths.forEach(function (path) {
+        var mins = fastPathMinutes(c, path);
+        html += '<a class="fast-path-card" href="' + fastPathHref(c.id, path.id) + '"><span class="fast-path-emoji">' + path.emoji + '</span><div><h3>' + esc(path.title) + '</h3><p>' + esc(path.desc) + '</p><span class="fast-path-meta">' + path.lessons.length + ' lessons · about ' + mins + ' min</span></div></a>';
+      });
+      html += "</div>";
+    }
+
     html += '<h2 class="section-title">The path</h2><p class="section-desc">' + c.modules.filter(function (m) { return !isRef(m); }).length + " modules. Each ends with a knowledge check or a hands-on lab.</p>";
     html += '<div class="module-grid">';
     var step = 0;
@@ -223,6 +249,30 @@
       ref.lessons.forEach(function (l) { html += '<a class="module-card" href="' + lessonHref(c.id, l.id) + '"><h3>' + l.title + "</h3><p>" + l.summary + "</p></a>"; });
       html += "</div>";
     }
+    $("#content").innerHTML = html;
+    window.scrollTo(0, 0);
+  }
+
+  function renderFastPath(cid, pid) {
+    var c = byId[cid]; if (!c) { location.hash = "#/"; return; }
+    var path = (c.fastPaths || []).filter(function (x) { return x.id === pid; })[0];
+    if (!path) { location.hash = courseHref(cid); return; }
+    currentCourseId = cid;
+    refreshTopProgress(cid);
+    buildCourseNav(c, null);
+    document.title = path.title + " · " + c.title;
+    var s = cstate(cid);
+    var firstOpen = path.lessons.filter(function (id) { return !s.completed[id]; })[0] || path.lessons[0];
+    var html = '<div class="lesson-top"><a class="crumb" href="#/">All courses</a><span>›</span><a class="crumb" href="' + courseHref(c.id) + '">' + c.emoji + ' ' + c.title + '</a><span>›</span><span class="crumb">' + path.emoji + ' ' + esc(path.title) + '</span></div>';
+    html += '<section class="path-hero"><span class="hero-eyebrow">' + path.emoji + ' Curated learning route</span><h1>' + esc(path.title) + '</h1><p class="hero-sub">' + esc(path.desc) + '</p><p class="path-audience"><strong>Best for:</strong> ' + esc(path.audience) + '</p><div class="hero-cta"><a class="btn btn-primary" href="' + lessonHref(cid, firstOpen) + '">' + (s.completed[firstOpen] ? 'Review route' : 'Start or resume') + ' →</a><a class="btn btn-ghost" href="' + courseHref(cid) + '">← Course home</a></div></section>';
+    html += '<div class="path-summary"><strong>' + path.lessons.length + ' lessons</strong><span>·</span><strong>about ' + fastPathMinutes(c, path) + ' minutes</strong><span>·</span><span>complete in this order</span></div>';
+    html += '<ol class="path-list">';
+    path.lessons.forEach(function (id, index) {
+      var info = lessonInfo(c, id); if (!info) return;
+      var done = !!s.completed[id];
+      html += '<li><a href="' + lessonHref(cid, id) + '"><span class="path-step">' + (done ? '✓' : index + 1) + '</span><span class="path-copy"><strong>' + esc(info.lesson.title) + '</strong><small>' + esc(info.module.title) + ' · ' + info.lesson.minutes + ' min</small></span><span class="path-arrow">→</span></a></li>';
+    });
+    html += '</ol>';
     $("#content").innerHTML = html;
     window.scrollTo(0, 0);
   }
@@ -256,6 +306,8 @@
       html += '<a class="crumb" href="#/">All courses</a><span>›</span>';
       html += '<a class="crumb" href="' + courseHref(c.id) + '">' + c.emoji + " " + c.title + "</a><span>›</span>";
       html += '<span class="crumb">' + m.emoji + " " + m.title + "</span><span style=\"flex:1\"></span>";
+      var freshness = c.freshness && c.freshness[id];
+      if (freshness) html += '<a class="freshness" href="' + freshness.sourceUrl + '" target="_blank" rel="noopener">Verified ' + formatVerifiedDate(freshness.verifiedDate) + ' · ' + esc(freshness.sourceLabel) + '</a>';
       html += '<span class="lesson-meta">' + levelChip(l.level) + (l.minutes ? "<span>· " + l.minutes + " min</span>" : "") + "</span>";
       html += "</div>";
       html += '<article class="lesson">' + bodyHtml + "</article>";
@@ -336,6 +388,7 @@
       var i = 0, busy = false;
       function scrollDown() { screen.scrollTop = screen.scrollHeight; }
       function resp(t) { return esc(t).replace(/\n/g, "<br>"); }
+      function clearMismatch() { var old = $(".ccsim-mismatch", sim); if (old) old.remove(); input.removeAttribute("aria-invalid"); }
       function showStep() {
         if (i >= steps.length) {
           promptEl.textContent = ""; input.value = ""; input.placeholder = "✓ done — press Reset to replay"; input.disabled = true; runBtn.disabled = true;
@@ -347,13 +400,21 @@
       }
       function reset() {
         i = 0; busy = false; input.disabled = false; runBtn.disabled = false; input.value = "";
+        clearMismatch();
         screen.innerHTML = intro ? '<div class="ccsim-intro">' + resp(intro) + "</div>" : "";
         showStep();
       }
       function run() {
         if (busy || i >= steps.length) return;
         var st = steps[i];
-        var typed = input.value.trim() || st.cmd || "";
+        var entered = input.value.trim(), expected = (st.cmd || "").trim();
+        if (entered && expected && entered.replace(/\s+/g, " ") !== expected.replace(/\s+/g, " ")) {
+          clearMismatch();
+          var mismatch = document.createElement("div"); mismatch.className = "ccsim-mismatch"; mismatch.setAttribute("role", "status"); mismatch.textContent = "Guided step: type the suggested command shown in the field, or leave it blank and choose Run.";
+          sim.insertBefore(mismatch, $(".ccsim-note", sim)); input.setAttribute("aria-invalid", "true"); input.focus(); return;
+        }
+        clearMismatch();
+        var typed = entered || expected;
         var line = document.createElement("div"); line.className = "ccsim-line";
         line.innerHTML = '<span class="ccsim-prompt">' + (st.kind === "shell" ? "$" : "❯") + '</span> <span class="ccsim-cmd">' + esc(typed) + "</span>";
         screen.appendChild(line); input.value = ""; scrollDown();
@@ -425,10 +486,10 @@
   }
 
   /* ---------- Search (across all courses) ---------- */
-  var searchSel = -1, searchHits = [];
+  var searchSel = -1, searchHits = [], searchReturnFocus = null;
   function allSearchItems() { var items = []; COURSES.forEach(function (c) { courseLessons(c).forEach(function (x) { items.push({ course: c, module: x.module, lesson: x.lesson }); }); }); return items; }
-  function openSearch() { $("#searchModal").hidden = false; var input = $("#searchInput"); input.value = ""; input.focus(); runSearch(""); }
-  function closeSearch() { $("#searchModal").hidden = true; searchSel = -1; }
+  function openSearch() { var modal = $("#searchModal"); if (modal.hidden) searchReturnFocus = document.activeElement; modal.hidden = false; var input = $("#searchInput"); input.value = ""; input.focus(); runSearch(""); }
+  function closeSearch() { var modal = $("#searchModal"); if (modal.hidden) return; modal.hidden = true; searchSel = -1; var target = searchReturnFocus && searchReturnFocus.isConnected ? searchReturnFocus : $("#searchBtn"); searchReturnFocus = null; if (target && target.focus) target.focus(); }
   function runSearch(q) {
     q = q.trim().toLowerCase();
     var items = allSearchItems(), hits;
@@ -453,6 +514,14 @@
     if (e.key === "ArrowDown") { e.preventDefault(); setSel(Math.min(searchSel + 1, searchHits.length - 1)); }
     else if (e.key === "ArrowUp") { e.preventDefault(); setSel(Math.max(searchSel - 1, 0)); }
     else if (e.key === "Enter") { e.preventDefault(); if (searchHits[searchSel]) { location.hash = lessonHref(searchHits[searchSel].course.id, searchHits[searchSel].lesson.id); closeSearch(); } }
+  });
+  $("#searchModal").addEventListener("keydown", function (e) {
+    if (e.key !== "Tab") return;
+    var focusable = $all('input, a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])', e.currentTarget).filter(function (el) { return !el.hidden && el.offsetParent !== null; });
+    if (!focusable.length) return;
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
   /* ---------- Keyboard ---------- */
@@ -491,6 +560,7 @@
     if (parts[0] === "lesson" && parts[1]) { renderLesson(currentCourseId || COURSES[0].id, parts.slice(1).join("/")); return; }
     var c = byId[parts[0]];
     if (c) {
+      if (parts[1] === "path" && parts[2]) { renderFastPath(c.id, parts.slice(2).join("/")); return; }
       if (parts[1] === "lesson" && parts[2]) { renderLesson(c.id, parts.slice(2).join("/")); return; }
       if (parts[1]) { renderLesson(c.id, parts.slice(1).join("/")); return; }
       renderCourseHome(c.id); return;

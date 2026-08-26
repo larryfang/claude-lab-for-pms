@@ -48,6 +48,11 @@ That's it — the sidebar, search, progress, and routing all update automaticall
 
 To add a whole **module**, add a new object to the `modules` array (give it an `id`, `emoji`, `title`, `desc`, and `lessons`). To add a **badge**, append to the `badges` array.
 
+Course manifests can also define:
+
+- `fastPaths`: ordered, time-estimated lesson routes for a role or outcome. Every referenced lesson ID must exist in that same course.
+- `freshness`: verification metadata for volatile lessons: `verifiedDate` (`YYYY-MM-DD`), `sourceLabel`, and an authoritative HTTPS `sourceUrl`.
+
 ## Markdown + custom blocks cheat-sheet
 
 Standard Markdown works (headings, **bold**, *italic*, `code`, lists, tables, links, images, blockquotes, code fences). Plus these custom blocks:
@@ -122,6 +127,8 @@ $ npm test
 
 > Author responses so they **don't start a line with `>` or `$`** (those would be parsed as new steps). Indent or reword if needed.
 
+The simulator is deliberately guided: a learner must type the suggested step (whitespace differences are fine), or leave the field blank and choose Run. It does not execute arbitrary input and should never be described as a real shell or model response.
+
 > 💡 **Line-length gotcha:** `prompt` blocks render with `white-space: pre-wrap`, so long lines wrap and you can write briefs as normal paragraphs. Plain fences (no language, or `text`) use `overflow-x: auto` instead — keep those lines under ~88 characters or the learner has to scroll sideways. Quiz options are rendered as HTML and wrap too.
 
 > ⚠️ **Authoring gotcha:** the Markdown engine is intentionally tiny. Avoid nesting triple-backtick code fences *inside* another fence. To show example `SKILL.md` or config, use a single fenced block (the content inside can contain `---`, headings, etc., just not another set of ```` ``` ````).
@@ -142,6 +149,17 @@ sed -i '' 's/?v=2026-08-24/?v=2026-09-15/g' index.html
 All four URLs deliberately carry the identical string, so one find-and-replace does it. Lesson
 Markdown needs no version — `app.js` fetches `content/` with `cache: "no-cache"`, so edits to
 a `.md` file go live on the next page load.
+
+## Run the checks
+
+```bash
+npm install
+npm run check:content  # manifest, lesson files, quizzes, custom blocks, routes, metadata
+npm run check:browser  # every lesson plus learner interactions and responsive layouts
+npm run check:links    # external URLs; also runs weekly in GitHub Actions
+```
+
+Run `npm test` before a pull request to execute the content and browser suites together.
 
 ## Style guide
 

@@ -8,7 +8,7 @@ Start here when something does not work.
 Check in order:
 
 1. **Plan** — Cowork needs Pro, Max, Team or Enterprise. Not available on Free.
-2. **Entry point** — Cowork is selected in the **message box**, not a sidebar item. On desktop, quit fully and reopen, or reinstall from `claude.com/download`. It also runs on web and mobile (still rolling out in beta), where this course's local-folder labs will not work.
+2. **Entry point** — Cowork is selected in the **message box**, not a sidebar item. On desktop, quit fully and reopen, or reinstall from `claude.com/download`. It also runs on web and mobile (still rolling out in beta), but these labs are taught on Desktop because cloud access to connected local folders depends on that Desktop app remaining open.
 3. **Admin policy** — on Team or Enterprise a seat admin may not have enabled it. That is a one-line ask.
 
 You can read every lesson and write every brief without access.

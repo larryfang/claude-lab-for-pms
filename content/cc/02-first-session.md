@@ -13,7 +13,7 @@ That's the atomic unit of working with Claude Code. Everything scales up from he
 
 ## Part 1 — The simulator
 
-Work through this guided session. Type each suggested command (or your own twist) and press **Enter**. Hit **↻ Reset** to replay.
+Work through this guided session. Type each suggested command exactly and press **Enter**, or leave the field blank and choose **Run ▶**. This guided transcript checks each expected step before showing the canned response. Hit **↻ Reset** to replay.
 
 ```claude-sim
 # A tiny Node project is open. You launched Claude Code in it.

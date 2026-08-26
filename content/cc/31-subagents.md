@@ -62,7 +62,7 @@ Claude Code ships with subagents it invokes automatically:
 
 | Built-in | Role |
 |---|---|
-| **Explore** | Fast, **read-only** codebase research (often on Haiku) — used to gather context for a plan |
+| **Explore** | Fast, **read-only** codebase research — it inherits the main session's model (capped at Opus on the Claude API) and keeps bulky exploration out of the main context |
 | **Plan** | Does the research during plan mode so your main agent stays focused on presenting the plan |
 
 :::warning Don't shadow the built-ins
@@ -75,8 +75,8 @@ Don't name a custom subagent `Explore` or `Plan` — you'll override the built-i
 A **feature-specific** subagent (`payment-flow-reviewer`, `migration-explorer`) outperforms a vague one (`qa`, `backend-engineer`). Specificity buys better tool selection and tighter context.
 :::
 
-:::warning Subagents don't inherit CLAUDE.md
-A subagent starts with **only** its own system prompt (the built-in Explore/Plan deliberately skip CLAUDE.md and git status to stay lean). So if a subagent needs a project rule, **embed it in the subagent's prompt** — don't assume it read `CLAUDE.md`.
+:::warning Know the two lean exceptions
+Custom and general-purpose subagents load the same `CLAUDE.md` and memory hierarchy as the main conversation. The built-in **Explore** and **Plan** agents deliberately skip `CLAUDE.md` and git status to stay lean. Restate a rule in the delegation prompt when Explore or Plan must follow it, or when the rule is important enough to make explicit in the handoff.
 :::
 
 ## See it delegate
@@ -101,12 +101,12 @@ Q: What's the #1 reason to use a subagent?
 - It removes the need for tests
 > Investigation/review reads lots of files. Subagents quarantine that token cost and report back a distilled result.
 
-Q: Your reviewer subagent ignores a project rule that's in CLAUDE.md. Why?
-+ Subagents don't inherit CLAUDE.md — embed needed rules directly in the subagent's prompt
-- CLAUDE.md is broken
-- Subagents can't read rules at all
-- You must restart Claude
-> Subagents start with only their own system prompt. Put any rule they must follow into that prompt.
+Q: Which built-in subagents deliberately skip CLAUDE.md and git status to keep research lean?
++ Explore and Plan; custom and general-purpose subagents load the normal memory hierarchy
+- Every subagent
+- Only custom reviewer agents
+- No subagent ever skips project memory
+> Explore and Plan are the lean exceptions. Custom and general-purpose subagents receive CLAUDE.md and project memory, while still starting without your conversation history unless you explicitly fork it.
 
 Q: Which subagent design is better?
 + A specific one like "payment-flow-reviewer" with a tight toolset

@@ -87,7 +87,7 @@ Cowork needs more trust than chat because it can act. You keep control in four w
 4. **You review the output.** Non-negotiable. Module 9.
 
 :::warning Requirements and expectations
-Cowork needs a **paid plan** (Pro, Max, Team or Enterprise). It runs on desktop, web and mobile — this course uses the **Claude Desktop app**, because the local-folder labs only work there. Cowork **ships fast and evolves quickly**, so screens and features shift. If your interface differs slightly from these lessons, that is expected — the concepts and the briefs still hold. Frame every UI instruction in this course as "look for something that does this", not "click exactly here".
+Cowork needs a **paid plan** (Pro, Max, Team or Enterprise). It runs on desktop, web and mobile. This course uses the **Claude Desktop app** because the labs depend on reliable local-folder access; a cloud session on web or mobile can reach a folder you connected on your computer only while Desktop is open there. Cowork **ships fast and evolves quickly**, so screens and features shift. If your interface differs slightly from these lessons, that is expected — the concepts and the briefs still hold. Frame every UI instruction in this course as "look for something that does this", not "click exactly here".
 :::
 
 ```quiz

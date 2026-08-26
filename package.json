@@ -1,0 +1,15 @@
+{
+  "name": "claude-lab-course",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:content": "node scripts/verify-course.mjs",
+    "check:browser": "playwright test",
+    "check:links": "node scripts/check-links.mjs",
+    "test": "npm run check:content && npm run check:browser"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1"
+  }
+}

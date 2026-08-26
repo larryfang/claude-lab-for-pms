@@ -74,7 +74,7 @@ Use `/rename` to name a session (e.g. `oauth-migration`) so you can find it late
 
 ## See it in action
 
-Here's a *simulated* session so you can feel the rhythm. **Type the suggested command (or your own) and press Enter** — or hit **Run ▶**.
+Here's a *simulated* session so you can feel the rhythm. **Type the suggested command exactly and press Enter** — or leave the field blank and hit **Run ▶**. This is a guided transcript, so each step checks the expected input before showing its response.
 
 ```claude-sim
 # Welcome to Claude Code (simulated). Try the steps below.

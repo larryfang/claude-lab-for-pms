@@ -77,7 +77,7 @@ Q: You start a Cowork task from your phone on the train. What is the key constra
 - Mobile can only read, never start tasks
 - Skills don't work on mobile
 - There is no constraint
-> Mobile Cowork is real, but local-folder and browser work still lives on the desktop.
+> Mobile Cowork is real, but local-folder and full browser/computer work still depend on an open Desktop app. Use cloud surfaces to start, steer and review; use Desktop when the job must reliably touch the machine.
 
 Q: Your team wants Claude Tag in Slack. What is the correct move?
 + Ask your org admin, naming a specific job — it is Team/Enterprise only and admin-provisioned per channel

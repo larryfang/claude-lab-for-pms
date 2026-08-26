@@ -5,7 +5,7 @@ Twelve minutes to a working, safe Cowork setup. Do not skip the sandbox part —
 ## Part 1 — Find Cowork (3 min)
 
 :::lab Step 1 — Open it
-- [ ] Open **Claude Desktop**. (Cowork also runs on web and mobile, but this course's labs use local folders, which only the desktop app can reach.)
+- [ ] Open **Claude Desktop**. (Cowork also runs on web and mobile, but this course uses Desktop for reliable local-folder access. A cloud session can reach a connected local folder only while the Desktop app is open on that computer.)
 - [ ] In the **message box**, switch from Chat to **Cowork** — Chat and Cowork share one home
 - [ ] You should be able to pick a folder or start a task
 :::

@@ -32,11 +32,13 @@ It's built to be **forked**: swap in your company's examples, project keys, and 
 - **Multi-course hub** with per-course progress, badges, and a course switcher
 - **Four role lanes** in the Cowork course — Sales, GTM, Product and Finance — so learners practise on the work they actually do
 - **Interactive terminal simulator** — a guided, in-browser Claude Code session learners type into (with copy-paste commands for their real terminal too)
+- **Role-based fast paths** — short, time-estimated routes for Sales, GTM, Product, Finance, Claude Code foundations, feature delivery, and automation
+- **Freshness evidence** — volatile product lessons show the date and official source used for their latest verification
 - **Hands-on labs** in every module, with auto-saving checklists
 - **Instant-feedback quizzes** and **copy-to-clipboard prompt/command cards**
 - **Progress & badges** with a little confetti 🎉 (saved locally, no account)
 - **Beautiful, responsive UI**, light/dark mode, full keyboard nav (`/` search, `←`/`→` lessons)
-- **No build step, no framework, no CDN** — pure HTML/CSS/JS; content is plain Markdown
+- **No build step or runtime JavaScript dependencies** — pure HTML/CSS/JS; content is plain Markdown. Google Fonts are optional and fall back cleanly to system fonts offline.
 
 ## 🚀 Quick start
 
@@ -69,6 +71,16 @@ Everything is driven by `assets/js/content.js`.
 - **Add a course:** push a new course object to `window.COURSES` (give it an `id`, `emoji`, `title`, `tagline`, `modules`, `badges`) and create its lesson files. The hub, routing, progress, and badges all wire up automatically.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the Markdown + custom-block cheat-sheet (callouts, labs, quizzes, prompt cards, and the **terminal simulator** block).
+
+## Verification
+
+```bash
+npm install
+npm test              # content structure + all browser interactions
+npm run check:links   # live external-link check
+```
+
+The browser suite renders every registered lesson and checks progress persistence, quizzes, search, keyboard navigation, guided simulations, route pages, accessibility state, and 390 px / 320 px layouts. GitHub Actions runs the main suite on every push and pull request, plus a weekly external-link check.
 
 ## 📁 Project structure
 

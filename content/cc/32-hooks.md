@@ -13,7 +13,7 @@ Use hooks for the things that **must** happen every time: formatting, linting, r
 
 ## The lifecycle events
 
-Hooks fire on events in Claude's loop — **31 events** as of v2.1.245 ([full list](https://code.claude.com/docs/en/hooks)). The ones you'll use most:
+Hooks fire on events in Claude's loop — **31 events** as of v2.1.246 ([full list](https://code.claude.com/docs/en/hooks)). The ones you'll use most:
 
 | Event | Fires… | Great for |
 |---|---|---|
